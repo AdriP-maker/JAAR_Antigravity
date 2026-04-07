@@ -74,7 +74,6 @@ Cliente    → Su historial personal + Leer avisos del Foro
 ## 📁 Estructura del Proyecto
 
 ```
-JaarApp_Web/
 ├── login.html          # Página principal de acceso
 ├── registro.html       # Solicitud de nueva cuenta
 ├── admin.html          # Panel de administración
@@ -108,7 +107,7 @@ JaarApp_Web/
    ```bash
    git clone https://github.com/[tu-usuario]/[tu-repositorio].git
    ```
-2. Abre la carpeta `JaarApp_Web/`
+2. Entra en la carpeta del repositorio.
 3. Haz doble clic en `login.html`
 4. ¡Listo! No requiere servidor ni instalación.
 
