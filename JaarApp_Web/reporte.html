@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Reporte MINSA - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .filtros-panel { background:white; padding:1rem; border-radius:var(--radius-md); box-shadow:var(--shadow-sm); margin-bottom:1rem; }
+        .filtros-panel h3 { font-size:0.875rem; color:var(--text-muted); margin-bottom:0.75rem; font-weight:600; }
+        .filtros-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; }
+        .filtros-checks { display:flex; gap:1rem; margin-top:0.5rem; }
+        .filtros-checks label { display:flex; align-items:center; gap:0.35rem; font-size:0.85rem; color:var(--text-main); cursor:pointer; }
+        .export-btns { display:flex; gap:0.75rem; margin-bottom:1rem; }
+        .btn-excel { flex:1; padding:0.75rem; background:#16a34a; color:white; border:none; border-radius:var(--radius-md); font-weight:600; font-family:'Outfit',sans-serif; cursor:pointer; font-size:0.9rem; }
+        .btn-pdf   { flex:1; padding:0.75rem; background:var(--primary-dark); color:white; border:none; border-radius:var(--radius-md); font-weight:600; font-family:'Outfit',sans-serif; cursor:pointer; font-size:0.9rem; }
+        .btn-excel:active, .btn-pdf:active { transform:scale(0.98); }
+        .resumen-box { background:linear-gradient(135deg, #f0fdf4, #dcfce7); border-radius:var(--radius-md); padding:1.25rem; margin-top:1rem; text-align:center; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-nav glass">
+            <div class="nav-content">
+                <div class="brand">
+                    <div class="logo-icon">📊</div>
+                    <h1>Reporte MINSA (Dec. 1839)</h1>
+                </div>
+            </div>
+        </header>
+
+        <main class="content">
+
+            <!-- Filtros -->
+            <div class="filtros-panel">
+                <h3>🔍 Filtros de Reporte</h3>
+                <div class="filtros-grid">
+                    <div class="form-group" style="margin:0;">
+                        <label style="font-size:0.78rem;">Desde</label>
+                        <input type="month" id="filtroDesde" class="form-input" style="padding:0.5rem;">
+                    </div>
+                    <div class="form-group" style="margin:0;">
+                        <label style="font-size:0.78rem;">Hasta</label>
+                        <input type="month" id="filtroHasta" class="form-input" style="padding:0.5rem;">
+                    </div>
+                </div>
+                <div class="filtros-checks">
+                    <label><input type="checkbox" id="chkIngresos" checked> Ingresos</label>
+                    <label><input type="checkbox" id="chkEgresos"  checked> Egresos</label>
+                    <label><input type="checkbox" id="chkJornales" checked> Jornales</label>
+                </div>
+                <button class="btn-primary" id="btnAplicar" style="margin-top:0.75rem; padding:0.6rem;">Aplicar Filtros</button>
+            </div>
+
+            <!-- Botones de Exportación -->
+            <div class="export-btns">
+                <button class="btn-excel" id="btnExcel">📥 Exportar Excel</button>
+                <button class="btn-pdf"   id="btnPdf">🖨️ Exportar PDF</button>
+            </div>
+
+            <!-- Reporte -->
+            <div id="reporteContenido">
+                <div id="secIngresos">
+                    <h3 style="font-size:1rem; margin:1rem 0 0.5rem; color:var(--text-main);">Ingresos / Recaudación</h3>
+                    <table class="data-table">
+                        <thead><tr><th>Concepto</th><th>Fecha</th><th style="text-align:right;">Monto</th></tr></thead>
+                        <tbody id="tablaIngresos"></tbody>
+                        <tfoot><tr><th colspan="2">Total Ingresos</th><th style="text-align:right; color:var(--success);" id="tIngresos">$0.00</th></tr></tfoot>
+                    </table>
+                </div>
+
+                <div id="secEgresos">
+                    <h3 style="font-size:1rem; margin:1.5rem 0 0.5rem; color:var(--text-main);">Egresos Operativos</h3>
+                    <table class="data-table">
+                        <thead><tr><th>Concepto</th><th>Fecha</th><th style="text-align:right;">Monto</th></tr></thead>
+                        <tbody id="tablaEgresos"></tbody>
+                        <tfoot><tr><th colspan="2">Total Egresos</th><th style="text-align:right; color:var(--danger);" id="tEgresos">-$0.00</th></tr></tfoot>
+                    </table>
+                </div>
+
+                <div id="secJornales">
+                    <h3 style="font-size:1rem; margin:1.5rem 0 0.5rem; color:var(--text-main);">Participación Comunitaria (Jornales)</h3>
+                    <table class="data-table">
+                        <thead><tr><th>Vecino</th><th>Tarea</th><th style="text-align:right;">Horas / Multa</th></tr></thead>
+                        <tbody id="tablaJornales"></tbody>
+                    </table>
+                </div>
+
+                <div class="resumen-box">
+                    <h4 style="font-size:0.85rem; color:var(--text-muted);">SALDO NETO (Caja)</h4>
+                    <h2 style="font-size:1.75rem; color:var(--primary-dark);" id="saldoNeto">$0.00</h2>
+                </div>
+            </div>
+
+        </main>
+
+        <nav class="bottom-nav"></nav>
+    </div>
+
+    <!-- SheetJS local -->
+    <script src="js/lib/xlsx.full.min.js"></script>
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/reporte.js"></script>
+</body>
+</html>

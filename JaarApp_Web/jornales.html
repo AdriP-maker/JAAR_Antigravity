@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Jornales - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-nav glass">
+            <div class="nav-content">
+                <div class="brand">
+                    <div class="logo-icon">⛏️</div>
+                    <h1>Registro de Jornales</h1>
+                </div>
+            </div>
+            <div id="toastNotification" class="toast hidden">Guardado</div>
+        </header>
+
+        <main class="content">
+            <section class="action-section">
+                <div class="user-card" style="display:block;">
+                    <h2 style="margin-bottom:1rem; font-size:1.1rem;">Aportes de Trabajo</h2>
+                    <div class="form-group">
+                        <label>Vecino/Trabajador</label>
+                        <select id="jornalVecino" class="form-input"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tarea Realizada</label>
+                        <input type="text" id="jornalTarea" class="form-input" placeholder="Ej: Limpieza de toma de agua">
+                    </div>
+                    <div class="form-group">
+                        <label>Asistencia al Trabajo</label>
+                        <select id="jornalAsistencia" class="form-input">
+                            <option value="si">Sí asiste</option>
+                            <option value="no">No asiste</option>
+                        </select>
+                    </div>
+
+                    <div id="panelAsiste" style="display:block;">
+                        <div class="form-group">
+                            <label>¿Quién asiste?</label>
+                            <select id="jornalQuien" class="form-input">
+                                <option value="personal">Titular (Personalmente)</option>
+                                <option value="sustituto">Mandó a un sustituto</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="grupoSustituto" style="display:none;">
+                            <label>Nombre del Sustituto</label>
+                            <input type="text" id="jornalNombreSustituto" class="form-input" placeholder="Ej: Carlos López">
+                        </div>
+                        <div class="form-group">
+                            <label>Horas Aportadas</label>
+                            <input type="number" id="jornalHoras" class="form-input" placeholder="0">
+                        </div>
+                    </div>
+
+                    <div id="panelNoAsiste" style="display:none; background: #fff1f2; padding: 1rem; border-radius: 8px; border: 1px solid #fda4af; margin-bottom: 1rem;">
+                        <div class="form-group" style="margin-bottom:0;">
+                            <label style="color: #be123c;">Generar Multa por Inasistencia ($)</label>
+                            <input type="number" id="jornalMulta" class="form-input" placeholder="Ej: 15.00" value="15.00">
+                        </div>
+                    </div>
+
+                    <button class="btn-primary" id="btnGuardarJornal">Registrar Jornal</button>
+                </div>
+            </section>
+
+            <section class="list-section">
+                <h2 style="font-size:1rem; color:var(--text-muted); margin-bottom: 0.5rem;">Historial Reciente</h2>
+                <div id="jornalesList" class="cards-grid"></div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav"></nav>
+    </div>
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/jornales.js"></script>
+</body>
+</html>

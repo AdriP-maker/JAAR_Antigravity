@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Mi Historial - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .section-box { background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); margin-bottom: 1.5rem; }
+        .section-box h3 { color: var(--primary-dark); font-size: 1.1rem; margin-bottom: 0.5rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.5rem;}
+        .data-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f8fafc; font-size: 0.9rem;}
+        .data-row:last-child { border-bottom: none; }
+        .good { color: var(--success); font-weight: 600; }
+        .bad { color: var(--danger); font-weight: 600; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-nav glass">
+            <div class="nav-content">
+                <div class="brand">
+                    <div class="logo-icon">👤</div>
+                    <h1>Mi Historial</h1>
+                </div>
+            </div>
+            <div id="toastNotification" class="toast hidden">Guardado</div>
+        </header>
+
+        <main class="content">
+            <div class="section-box">
+                <h3>Estado de Cuenta General</h3>
+                <div class="data-row">
+                    <span>Estatus de Agua</span>
+                    <span class="good" id="cliStatusAgua">Al día</span>
+                </div>
+                <div class="data-row">
+                    <span>Último Pago</span>
+                    <span id="cliUltPago">-</span>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <h3>Registro de Jornales (Comunidad)</h3>
+                <div class="data-row">
+                    <span>Horas Aportadas 2026</span>
+                    <span id="cliHoras" style="font-weight:600;">0 Hrs</span>
+                </div>
+                <div class="data-row">
+                    <span>Multas por inasistencia</span>
+                    <span class="bad" id="cliMultas">$0.00</span>
+                </div>
+            </div>
+
+            <div style="text-align:center; padding: 1rem;">
+                <p style="font-size:0.8rem; color:var(--text-muted);">
+                    Para realizar pagos o disputar multas, acérquese a la directiva de la JAAR en los días laborables indicados en la pestaña de Avisos.
+                </p>
+            </div>
+        </main>
+
+        <!-- Se dibuja via auth.js -->
+        <nav class="bottom-nav"></nav>
+    </div>
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Logica simulada para el cliente
+            // Tomamos el primer miembro que tenga el sistema 'Juan Perez' para simular su historial
+            const miembros = Store.getMiembros();
+            if(miembros.length > 0) {
+                const yo = miembros[0];
+                document.getElementById('cliStatusAgua').textContent = yo.pagadoEsteMes ? 'Al día (Pagado)' : 'En Mora';
+                document.getElementById('cliStatusAgua').className = yo.pagadoEsteMes ? 'good' : 'bad';
+                document.getElementById('cliUltPago').textContent = yo.pagadoEsteMes ? 'Reciente' : 'Pendiente';
+            }
+
+            const jornales = Store.getJornales();
+            // Buscar si hay multas o horas aportadas (asumiendo ID=1 que es Juan)
+            let misHoras = 0;
+            let misMultas = 0;
+            jornales.forEach(j => {
+                if(j.miembroId.toString() === '1'){
+                    if(j.asiste === 'si') misHoras += parseFloat(j.horas||0);
+                    else misMultas += parseFloat(j.multa||0);
+                }
+            });
+            document.getElementById('cliHoras').textContent = misHoras + " Hrs";
+            document.getElementById('cliMultas').textContent = "$" + misMultas.toFixed(2);
+            if(misMultas === 0) document.getElementById('cliMultas').className = '';
+        });
+    </script>
+</body>
+</html>

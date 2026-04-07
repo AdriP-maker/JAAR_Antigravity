@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Panel Admin - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-header { background: var(--primary-dark); color:white; padding:1rem 1.25rem; display:flex; justify-content:space-between; align-items:center; }
+        .admin-header h1 { font-size:1.1rem; font-family:'Outfit',sans-serif; }
+        .section-title { font-size:1rem; font-weight:600; color:var(--primary-dark); margin:1.5rem 0 0.75rem; border-left:4px solid var(--primary); padding-left:0.75rem; }
+        .user-row { display:flex; align-items:center; gap:0.75rem; padding:0.875rem 1rem; background:white; border-radius:var(--radius-md); margin-bottom:0.5rem; box-shadow:var(--shadow-sm); flex-wrap:wrap; }
+        .user-row .info { flex:1; min-width:150px; }
+        .user-row .info strong { display:block; font-size:0.9rem; }
+        .user-row .info small { color:var(--text-muted); font-size:0.775rem; }
+        .badge { display:inline-block; font-size:0.7rem; font-weight:700; padding:0.15rem 0.5rem; border-radius:99px; }
+        .badge.pendiente { background:#fef9c3; color:#92400e; }
+        .badge.activo { background:#dcfce7; color:#166534; }
+        .badge.rechazado { background:#fee2e2; color:#991b1b; }
+        .badge.suspendido { background:#f3f4f6; color:#6b7280; }
+        .btn-sm { padding:0.35rem 0.75rem; border:none; border-radius:var(--radius-sm); font-size:0.775rem; font-weight:600; cursor:pointer; }
+        .btn-approve { background:#dcfce7; color:#166534; }
+        .btn-reject { background:#fee2e2; color:#991b1b; }
+        .btn-suspend { background:#f3f4f6; color:#374151; }
+        .btn-reset { background:#e0f2fe; color:#0c4a6e; }
+        .empty-state { text-align:center; color:var(--text-muted); padding:2rem; font-size:0.9rem; }
+        .rol-badge { font-size:0.7rem; font-weight:600; padding:0.15rem 0.5rem; border-radius:99px; background:#e0f2fe; color:#0c4a6e; margin-left:0.35rem; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="admin-header">
+            <div>
+                <div style="font-size:0.7rem; opacity:0.7; margin-bottom:2px;">PANEL ADMINISTRADOR</div>
+                <h1>Gestión de Usuarios</h1>
+            </div>
+            <button onclick="Auth.logout()" style="background:rgba(255,255,255,0.2); border:none; color:white; padding:0.5rem 0.75rem; border-radius:8px; cursor:pointer; font-family:'Inter',sans-serif; font-size:0.8rem;">🚪 Salir</button>
+        </div>
+
+        <div style="padding:1rem;">
+            <div id="estadisticas" style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.75rem; margin-bottom:1rem;"></div>
+
+            <div class="section-title">⏳ Solicitudes Pendientes</div>
+            <div id="listaPendientes"></div>
+
+            <div class="section-title">✅ Usuarios Activos</div>
+            <div id="listaActivos"></div>
+
+            <div class="section-title">🚫 Rechazados / Suspendidos</div>
+            <div id="listaInactivos"></div>
+        </div>
+
+        <nav class="bottom-nav"></nav>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

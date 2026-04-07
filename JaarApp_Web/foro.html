@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Foro / Avisos - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .mensaje-card {
+            background: white;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            box-shadow: var(--shadow-sm);
+        }
+        .mensaje-card.urgente { border-left-color: var(--danger); }
+        .mensaje-autor { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.25rem; font-weight: 600;}
+        .mensaje-texto { font-size: 0.95rem; color: var(--text-main); }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-nav glass">
+            <div class="nav-content">
+                <div class="brand">
+                    <div class="logo-icon">💬</div>
+                    <h1>Foro y Avisos</h1>
+                </div>
+            </div>
+            <div id="toastNotification" class="toast hidden">Guardado</div>
+        </header>
+
+        <main class="content">
+            <section class="action-section">
+                <div class="user-card" style="display:block;">
+                    <h2 style="margin-bottom:1rem; font-size:1.1rem;">Nuevo Anuncio</h2>
+                    <div class="form-group">
+                        <input type="text" id="foroAutor" class="form-input" placeholder="Tu Nombre o Cargo (Ej: Tesorera)">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="foroMensaje" class="form-input" placeholder="Escribe el aviso a la comunidad..." rows="3" style="resize:none;"></textarea>
+                    </div>
+                    <div class="form-group" style="display:flex; align-items:center; gap:0.5rem;">
+                        <input type="checkbox" id="foroUrgente"> 
+                        <label for="foroUrgente" style="margin:0; color:var(--danger);">Marcar como Urgente</label>
+                    </div>
+                    <button class="btn-primary" id="btnPublicarForo">Publicar Aviso</button>
+                </div>
+            </section>
+
+            <section class="list-section">
+                <h2 style="font-size:1rem; color:var(--text-muted); margin-bottom: 0.5rem;">Tablón de Anuncios</h2>
+                <div id="forosList"></div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav"></nav>
+    </div>
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/foro.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Acceso - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { display:flex; align-items:center; justify-content:center; min-height:100vh; background:linear-gradient(135deg, #134e4a 0%, #0d9488 100%); padding:1rem; flex-direction:column;}
+        .login-card { background:white; padding:2rem; border-radius:var(--radius-lg); width:100%; max-width:400px; box-shadow:0 20px 40px rgba(0,0,0,0.3); }
+        .login-card h2 { color:var(--primary-dark); margin-bottom:0.25rem; }
+        .login-card p  { color:var(--text-muted); font-size:0.875rem; margin-bottom:1.5rem; }
+        .links-row { display:flex; justify-content:space-between; margin-top:1rem; }
+        .links-row a { color:var(--primary); font-size:0.8rem; text-decoration:none; }
+        .links-row a:hover { text-decoration:underline; }
+        .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:100; align-items:center; justify-content:center; padding:1rem; }
+        .modal-overlay.show { display:flex; }
+        .modal-box { background:white; padding:1.5rem; border-radius:var(--radius-lg); width:100%; max-width:380px; }
+        .modal-box h3 { margin-bottom:0.5rem; color:var(--primary-dark); }
+        .modal-box p  { font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem; }
+        @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div style="font-size:3rem; margin-bottom:0.75rem; text-align:center;">💧</div>
+        <h2 style="text-align:center;">Cuentas Claras</h2>
+        <p style="text-align:center;">Sistema de Gestión JAAR · Panamá</p>
+
+        <div class="form-group">
+            <label>Usuario</label>
+            <input type="text" id="loginUser" class="form-input" placeholder="Tu usuario">
+        </div>
+        <div class="form-group">
+            <label>Contraseña</label>
+            <input type="password" id="loginPass" class="form-input" placeholder="****">
+        </div>
+
+        <button class="btn-primary" id="btnLogin" style="margin-top:0.75rem;">Ingresar al Sistema</button>
+
+        <div class="links-row">
+            <a href="#" onclick="document.getElementById('modalRecover').classList.add('show')">¿Olvidé mi contraseña?</a>
+            <a href="registro.html">Solicitar Acceso →</a>
+        </div>
+    </div>
+
+    <!-- Modal Recuperar Contraseña -->
+    <div class="modal-overlay" id="modalRecover">
+        <div class="modal-box">
+            <h3>🔑 Recuperar Contraseña</h3>
+            <p>Ingresa tu número de casa y podrás ver tu usuario registrado. Para un cambio de contraseña contacta al administrador.</p>
+            <div class="form-group">
+                <label>Número de Casa / ID</label>
+                <input type="text" id="recoverCasa" class="form-input" placeholder="Ej: Casa-07">
+            </div>
+            <button class="btn-primary" id="btnRecover">Buscar mi Cuenta</button>
+            <div id="recoverResult"></div>
+            <div style="text-align:center; margin-top:1rem;">
+                <a href="#" onclick="document.getElementById('modalRecover').classList.remove('show')" style="color:var(--text-muted); font-size:0.85rem;">Cerrar</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

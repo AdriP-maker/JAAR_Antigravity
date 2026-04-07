@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Egresos - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-nav glass">
+            <div class="nav-content">
+                <div class="brand">
+                    <div class="logo-icon">🧾</div>
+                    <h1>Egresos de la Junta</h1>
+                </div>
+            </div>
+            <div id="toastNotification" class="toast hidden">Guardado</div>
+        </header>
+
+        <main class="content">
+            <section class="action-section">
+                <div class="user-card" style="display:block;">
+                    <h2 style="margin-bottom:1rem; font-size:1.1rem;">Registrar Compra / Gasto</h2>
+                    
+                    <div class="form-group">
+                        <label>Monto Aprobado ($)</label>
+                        <input type="number" id="gastoMonto" class="form-input" placeholder="0.00" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label>Descripción / Número de Factura</label>
+                        <input type="text" id="gastoDesc" class="form-input" placeholder="Ej: Compra de cloro (Fac 101)">
+                    </div>
+                    
+                    <button class="btn-primary" id="btnGuardarGasto">Registrar Egreso</button>
+                </div>
+            </section>
+
+            <section class="list-section">
+                <h2 style="font-size:1rem; color:var(--text-muted); margin-bottom: 0.5rem;">Historial de Gastos</h2>
+                <div id="gastosList" class="cards-grid"></div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav"></nav>
+    </div>
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/gastos.js"></script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Node / npm
+node_modules/
+npm-debug.log*
+
+# Sistema Operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDEs
+.vscode/
+*.code-workspace
+.idea/
+
+# Android Studio (ya no se usa)
+JaarApp/

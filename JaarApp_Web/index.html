@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Agua Limpia - Piloto PWA</title>
+    <!-- Manifest para PWA -->
+    <link rel="manifest" href="manifest.json">
+    <!-- Fuentes Google: Outfit para títulos, Inter para lectura -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Encabezado Fijo -->
+        <header class="top-nav glass">
+            <div class="nav-content">
+                <div class="brand">
+                    <div class="logo-icon">💧</div>
+                    <h1>Cuentas Claras</h1>
+                </div>
+                <button id="syncBtn" class="sync-btn" aria-label="Sincronizar a la nube">
+                    <span class="icon">☁️</span>
+                    <span class="sync-text">Sincronizar</span>
+                </button>
+            </div>
+            
+            <div class="status-bar" id="statusBar">
+                <span id="connectionBadge" class="badge online">Buscando red...</span>
+                <span class="pendings">Cobros sin subir: <strong id="pendingCount">0</strong></span>
+            </div>
+        </header>
+
+        <!-- Contenido Deslizable -->
+        <main class="content">
+            <section class="action-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Buscar vecino o sector..." autocomplete="off">
+                </div>
+                <!-- Notificación animada -->
+                <div id="toastNotification" class="toast hidden">
+                    Mensaje del sistema
+                </div>
+            </section>
+
+            <section class="list-section">
+                <div class="section-header">
+                    <h2>Comunidad (Cobro Offline)</h2>
+                    <button class="btn-icon" id="addDemoUserBtn" aria-label="Crear Demo">+</button>
+                </div>
+                
+                <div id="usersList" class="cards-grid">
+                    <!-- Las tarjetas se generan mediante app.js -->
+                    <div class="empty-state">Cargando datos locales...</div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Se dibuja via auth.js según el Rol -->
+        <nav class="bottom-nav"></nav>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
