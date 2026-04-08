@@ -26,7 +26,7 @@ La realidad cotidiana de muchas Juntas hoy:
 
 ## 2. La Solución Propuesta — PWA: Simple, Accesible y Segura
 
-Desarrollamos una **Aplicación Web Progresiva (PWA)** diseñada específicamente para las JAAR. Funciona directamente desde el navegador de cualquier teléfono inteligente, comportándose como una aplicación nativa pero **sin requerir descargas pesadas ni internet constante**.
+Desarrollamos una **Plataforma Web (PWA)** diseñada específicamente para las JAAR. Funciona directamente desde el navegador web de cualquier teléfono o computadora, **sin requerir descargas, instalación en el dispositivo, ni internet constante**.
 
 **¿Cómo funciona en la práctica?**
 

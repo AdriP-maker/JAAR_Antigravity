@@ -14,7 +14,7 @@
 - Conexión real con Supabase (reemplazar `localStorage` por SDK de Supabase).
 - Autenticación real con Supabase Auth.
 - Service Worker completo para caché offline de los archivos de la app.
-- Pruebas con 1 JAAR seleccionada.
+- Pruebas reales con la JAAR Los Alonsos (Caballero, Antón).
 
 ### 🚀 Fase 3: Despliegue Oficial V1
 - Módulo de notificaciones push (nuevos avisos en el foro).
@@ -60,7 +60,7 @@ git push origin main
 - **En producción con Supabase:** Las contraseñas se resetean por email automático.
 
 ### Respaldo de Datos
-- **Fase piloto:** Los datos están en el `localStorage` de cada dispositivo.
+- **Fase piloto:** Los datos están en el `localStorage` de cada dispositivo (Navegador).
 - **Con Supabase:** Backups diarios automáticos en la nube.
 
 ---

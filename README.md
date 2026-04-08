@@ -1,7 +1,7 @@
 # JAAR Digital · Cuentas Claras 💧
 
 > **Sistema de Gestión para Juntas Administradoras de Acueductos Rurales (JAAR) — Panamá**  
-> Aplicación Web Progresiva (PWA) · Offline-First · HTML + CSS + JavaScript Vainilla
+> Portal Web de Gestión (PWA) · Offline-First · HTML + CSS + JavaScript Vainilla
 
 ---
 

@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const pagados = usuarios.filter(u => u.pagadoEsteMes);
         if(pagados.length > 0) {
-            const sum = pagados.length * 5.00;
+            const sum = pagados.length * 3.00; // Ajustado al Piloto Caballero ($1.00 Agua + $1.00 Tanque + $1.00 Puerco)
             totalIn += sum;
             ingresos.push({ desc:`Cuotas Vecinales (${pagados.length} casas)`, fecha:'Período actual', monto:sum });
         }

@@ -32,8 +32,9 @@ function init() {
     } else {
         // Datos mock iniciales si es la primera vez
         appState.usuarios = [
-            { id: 1, nombre: "Juan Pérez", sector: "Sector Arriba", pagadoEsteMes: false },
-            { id: 2, nombre: "María Gómez", sector: "Sector Centro", pagadoEsteMes: true }
+            { id: 1, nombre: "Sanchez Maylene", sector: "Caballero Centro", pagadoEsteMes: false },
+            { id: 2, nombre: "Familia Rodriguez", sector: "Caballero Arriba", pagadoEsteMes: true },
+            { id: 3, nombre: "Los Alonsos", sector: "Caballero Abajo", pagadoEsteMes: false }
         ];
         saveUsersLocal();
     }
@@ -93,7 +94,7 @@ function renderUsers(filterText = '') {
             <button class="btn-pay ${user.pagadoEsteMes ? 'paid' : ''}" 
                     onclick="registrarCobro(${user.id})" 
                     ${user.pagadoEsteMes ? 'disabled' : ''}>
-                ${user.pagadoEsteMes ? 'Pagado' : 'Cobrar $5.00'}
+                ${user.pagadoEsteMes ? 'Pagado' : 'Cobrar $3.00'}
             </button>
         `;
         usersListEl.appendChild(div);
@@ -134,7 +135,7 @@ function registrarCobro(userId) {
         const recibo = {
             idPago: Date.now(),
             usuarioId: userId,
-            monto: 5.00,
+            monto: 3.00,
             fecha: new Date().toISOString()
         };
         appState.pagosPendientes.push(recibo);

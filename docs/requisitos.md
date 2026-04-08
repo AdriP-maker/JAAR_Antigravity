@@ -27,9 +27,9 @@
 ## 3. Escenarios Críticos de Uso
 
 ### Escenario 1: Cobro en Zona Sin Internet
-**Contexto:** El cobrador visita el sector sin señal celular. El vecino Juan paga $5.00.
+**Contexto:** El cobrador visita el sector sin señal celular. El vecino paga su cuota unificada de $3.00.
 
-1. El cobrador abre `index.html` en su celular (funciona sin internet).
+1. El cobrador abre el Portal Web en su navegador (funciona sin internet).
 2. Registra el pago → se guarda en `localStorage` con estado `pendiente`.
 3. La app muestra el indicador **"Sin Red"** en la cabecera.
 4. Al llegar a una zona con señal, presiona **"Sincronizar"** → los datos suben a Supabase.

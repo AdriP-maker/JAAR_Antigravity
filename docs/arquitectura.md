@@ -22,7 +22,7 @@ La solución está construida bajo una arquitectura **"Offline-First" (Primero L
 
 ```mermaid
 graph TD
-    subgraph Dispositivo del Usuario
+    subgraph Portal Web
         UI[Pantallas HTML/CSS/JS] <--> Store[store.js - localStorage]
         Auth[auth.js - Control de Roles] --> UI
         Store -..-> SyncQueue[Cola de Sincronización]
