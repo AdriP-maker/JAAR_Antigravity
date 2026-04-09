@@ -21,6 +21,9 @@
 - **RF-06** Historial del Cliente: Vista personal de estado de pagos y horas donadas.
 - **RF-07** Reportes MINSA: Generación con filtros por fecha y tipo, exportación PDF y Excel (.xlsx).
 - **RF-08** Sincronización Automática: Cola local que se envía a Supabase al recuperar conexión.
+- **RF-09** Filtros en Cobros: La pantalla principal permite filtrar vecinos por mes (enero–diciembre) y por estado de pago.
+- **RF-10** Estados de Pago en Cobros: Cada vecino muestra visualmente su estado — **Activo/Al Día**, **Moroso** (1–2 meses sin pagar) o **Para Corte** (3+ meses sin pagar).
+- **RF-11** Confirmación de Jornal por el Cliente: Los vecinos pueden ver los jornales programados por la directiva y confirmar si asistirán o no, quedando el registro en el sistema.
 
 ---
 

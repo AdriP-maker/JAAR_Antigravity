@@ -13,7 +13,23 @@
         .data-row { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f8fafc; font-size: 0.9rem;}
         .data-row:last-child { border-bottom: none; }
         .good { color: var(--success); font-weight: 600; }
-        .bad { color: var(--danger); font-weight: 600; }
+        .bad  { color: var(--danger);  font-weight: 600; }
+
+        /* Tarjeta de Jornal Pendiente */
+        .jornal-pendiente {
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+        }
+        .jornal-pendiente h4 { font-size: 0.95rem; color: #92400e; margin-bottom: 0.25rem; }
+        .jornal-pendiente p  { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+        .jornal-confirm-btns { display: flex; gap: 0.5rem; }
+        .btn-confirm { flex:1; padding:0.6rem; border:none; border-radius:var(--radius-md); font-weight:600; font-size:0.85rem; cursor:pointer; }
+        .btn-si  { background:#dcfce7; color:#166534; }
+        .btn-no  { background:#fee2e2; color:#991b1b; }
+        .btn-confirm:active { transform: scale(0.97); }
     </style>
 </head>
 <body>
@@ -29,6 +45,7 @@
         </header>
 
         <main class="content">
+            <!-- Estado de Cuenta -->
             <div class="section-box">
                 <h3>Estado de Cuenta General</h3>
                 <div class="data-row">
@@ -39,10 +56,15 @@
                     <span>Último Pago</span>
                     <span id="cliUltPago">-</span>
                 </div>
+                <div class="data-row">
+                    <span>Meses sin pagar</span>
+                    <span id="cliMesesDeuda" style="font-weight:600;">0</span>
+                </div>
             </div>
 
+            <!-- Jornales y Multas -->
             <div class="section-box">
-                <h3>Registro de Jornales (Comunidad)</h3>
+                <h3>Registro de Jornales</h3>
                 <div class="data-row">
                     <span>Horas Aportadas 2026</span>
                     <span id="cliHoras" style="font-weight:600;">0 Hrs</span>
@@ -53,43 +75,120 @@
                 </div>
             </div>
 
-            <div style="text-align:center; padding: 1rem;">
+            <!-- Confirmación de Jornales Pendientes -->
+            <div class="section-box">
+                <h3>📋 Jornales por Confirmar</h3>
+                <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.75rem;">
+                    Confirma si puedes asistir a los trabajos comunitarios programados.
+                </p>
+                <div id="listJornalesPendientes">
+                    <div class="empty-state">No hay jornales pendientes de confirmación.</div>
+                </div>
+            </div>
+
+            <div style="text-align:center; padding: 0.5rem 1rem 2rem;">
                 <p style="font-size:0.8rem; color:var(--text-muted);">
                     Para realizar pagos o disputar multas, acérquese a la directiva de la JAAR en los días laborables indicados en la pestaña de Avisos.
                 </p>
             </div>
         </main>
 
-        <!-- Se dibuja via auth.js -->
         <nav class="bottom-nav"></nav>
     </div>
     <script src="js/store.js"></script>
     <script src="js/auth.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Logica simulada para el cliente
-            // Tomamos el primer miembro que tenga el sistema 'Juan Perez' para simular su historial
             const miembros = Store.getMiembros();
-            if(miembros.length > 0) {
-                const yo = miembros[0];
-                document.getElementById('cliStatusAgua').textContent = yo.pagadoEsteMes ? 'Al día (Pagado)' : 'En Mora';
-                document.getElementById('cliStatusAgua').className = yo.pagadoEsteMes ? 'good' : 'bad';
-                document.getElementById('cliUltPago').textContent = yo.pagadoEsteMes ? 'Reciente' : 'Pendiente';
+            const users    = JSON.parse(localStorage.getItem('jaar_users') || '[]');
+
+            // Determinar el usuario con sesión (primer miembro como demo)
+            const yo = miembros.length > 0 ? miembros[0] : null;
+            const yoUser = users.find(u => u.id === 1) || (users.length > 0 ? users[0] : null);
+
+            const mesesSinPagar = yoUser ? (yoUser.mesesSinPagar || 0) : 0;
+
+            if (yo) {
+                let estadoTxt = 'Al día (Pagado)';
+                let estadoCls = 'good';
+                if (!yo.pagadoEsteMes) {
+                    if (mesesSinPagar >= 3) { estadoTxt = 'Para Corte'; estadoCls = 'bad'; }
+                    else if (mesesSinPagar >= 1) { estadoTxt = 'Moroso'; estadoCls = 'bad'; }
+                    else { estadoTxt = 'Pendiente este mes'; estadoCls = 'bad'; }
+                }
+                document.getElementById('cliStatusAgua').textContent  = estadoTxt;
+                document.getElementById('cliStatusAgua').className     = estadoCls;
+                document.getElementById('cliUltPago').textContent      = yo.pagadoEsteMes ? 'Este mes' : 'Sin pago reciente';
+                document.getElementById('cliMesesDeuda').textContent   = mesesSinPagar;
+                document.getElementById('cliMesesDeuda').style.color   = mesesSinPagar > 0 ? 'var(--danger)' : 'inherit';
             }
 
             const jornales = Store.getJornales();
-            // Buscar si hay multas o horas aportadas (asumiendo ID=1 que es Juan)
-            let misHoras = 0;
-            let misMultas = 0;
+            let misHoras = 0, misMultas = 0;
             jornales.forEach(j => {
-                if(j.miembroId.toString() === '1'){
-                    if(j.asiste === 'si') misHoras += parseFloat(j.horas||0);
-                    else misMultas += parseFloat(j.multa||0);
+                if (j.miembroId?.toString() === '1') {
+                    if (j.asiste === 'si') misHoras += parseFloat(j.horas || 0);
+                    else misMultas += parseFloat(j.multa || 0);
                 }
             });
-            document.getElementById('cliHoras').textContent = misHoras + " Hrs";
+            document.getElementById('cliHoras').textContent  = misHoras + " Hrs";
             document.getElementById('cliMultas').textContent = "$" + misMultas.toFixed(2);
-            if(misMultas === 0) document.getElementById('cliMultas').className = '';
+            if (misMultas === 0) document.getElementById('cliMultas').className = '';
+
+            // ————————————————————————————
+            // Jornales Programados por Confirmar
+            // ————————————————————————————
+            const KEY_PROG = 'jaar_jornales_programados';
+            const KEY_CONF = 'jaar_confirmaciones';
+
+            if (!localStorage.getItem(KEY_PROG)) {
+                // Datos demo: jornales programados por la directiva
+                localStorage.setItem(KEY_PROG, JSON.stringify([
+                    { id: 'jp1', tarea: 'Limpieza de toma de agua', fecha: '20/04/2026', hora: '7:00 AM' },
+                    { id: 'jp2', tarea: 'Revisión de tuberías sector arriba', fecha: '27/04/2026', hora: '8:00 AM' }
+                ]));
+            }
+
+            const programados   = JSON.parse(localStorage.getItem(KEY_PROG) || '[]');
+            const confirmaciones= JSON.parse(localStorage.getItem(KEY_CONF) || '{}');
+            const listEl        = document.getElementById('listJornalesPendientes');
+
+            const renderPendientes = () => {
+                listEl.innerHTML = '';
+                if (programados.length === 0) {
+                    listEl.innerHTML = `<div class="empty-state">No hay jornales programados.</div>`;
+                    return;
+                }
+                programados.forEach(jp => {
+                    const respuesta = confirmaciones[jp.id];
+                    const div = document.createElement('div');
+                    div.className = 'jornal-pendiente';
+                    div.innerHTML = `
+                        <h4>⛏️ ${jp.tarea}</h4>
+                        <p>📅 ${jp.fecha} &nbsp;·&nbsp; 🕐 ${jp.hora}</p>
+                        ${respuesta
+                            ? `<p style="font-weight:600; color:${respuesta==='si'?'#166534':'#991b1b'};">
+                                 ${respuesta==='si'? '✅ Confirmaste asistencia' : '❌ No puedes asistir'}
+                               </p>`
+                            : `<div class="jornal-confirm-btns">
+                                 <button class="btn-confirm btn-si"  onclick="confirmarJornal('${jp.id}','si')">✅ Sí puedo ir</button>
+                                 <button class="btn-confirm btn-no"  onclick="confirmarJornal('${jp.id}','no')">❌ No puedo ir</button>
+                               </div>`
+                        }
+                    `;
+                    listEl.appendChild(div);
+                });
+            };
+
+            window.confirmarJornal = (id, respuesta) => {
+                const conf = JSON.parse(localStorage.getItem(KEY_CONF) || '{}');
+                conf[id] = respuesta;
+                localStorage.setItem(KEY_CONF, JSON.stringify(conf));
+                Store.showToast(respuesta === 'si' ? '✅ Asistencia confirmada' : '❌ Ausencia registrada');
+                renderPendientes();
+            };
+
+            renderPendientes();
         });
     </script>
 </body>
