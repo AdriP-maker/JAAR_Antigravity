@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de Estados — JAAR Digital</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+        }
+
+        .mermaid {
+            display: flex;
+            justify-content: center;
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #e2e8f0;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            overflow-x: auto;
+        }
+
+        section {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            border: 1px solid #f1f5f9;
+        }
+
+        .note-card {
+            background: #f0f9ff;
+            border-left: 4px solid #3b82f6;
+            padding: 1rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body class="text-slate-800">
+
+    <!-- Encabezado -->
+    <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-8 shadow-lg">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Diagrama de Estados — JAAR Digital</h1>
+                <p class="mt-2 text-blue-100 text-lg opacity-90">Sistema de gestión comunitaria de agua potable para la
+                    Junta de Acueducto Rural y Riego (JAAR) de Caballero.</p>
+            </div>
+            <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/20">
+                <p class="text-sm">Vista Interactiva Generada a partir de Markdown</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row mt-8 px-4 gap-8">
+
+        <!-- Menú de Navegación Lateral -->
+        <aside class="w-full md:w-1/4 shrink-0 hidden md:block">
+            <div class="sticky top-8 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h3 class="text-lg font-semibold mb-4 text-slate-800 border-b pb-2">Índice de Dominios</h3>
+                <nav class="space-y-1 text-sm font-medium">
+                    <a href="#sec1"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">1.
+                        Cuenta de Usuario</a>
+                    <a href="#sec2"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">2.
+                        Flujo de Sesión</a>
+                    <a href="#sec3"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">3.
+                        Estado de Pago de Vecino</a>
+                    <a href="#sec4"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">4.
+                        Ciclo de Cobro (Offline)</a>
+                    <a href="#sec5"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">5.
+                        Conectividad de Red</a>
+                    <a href="#sec6a"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">6a.
+                        Jornal (Por Cobrador)</a>
+                    <a href="#sec6b"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">6b.
+                        Jornal (Por Cliente)</a>
+                    <a href="#sec7"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">7.
+                        Panel Administración</a>
+                    <a href="#sec8a"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">8a.
+                        Navegación Cobrador</a>
+                    <a href="#sec8b"
+                        class="block py-2 px-3 rounded hover:bg-blue-50 text-slate-600 hover:text-blue-700 transition">8b.
+                        Navegación Cliente</a>
+                    <a href="#sec9"
+                        class="block py-2 px-3 rounded bg-slate-100 text-slate-800 hover:bg-slate-200 transition mt-2">9.
+                        Resumen Global</a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Contenido Principal -->
+        <main class="w-full md:w-3/4 pb-20">
+
+            <!-- Sección 1 -->
+            <section id="sec1">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">1</span>
+                    Estado de Cuenta de Usuario (Registro & Auth)
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction LR
+                    [*] --> FormularioRegistro : Visitante abre registro.html
+
+                    FormularioRegistro --> ValidandoDatos : Click "Registrar"
+                    ValidandoDatos --> FormularioRegistro : ❌ Campos vacíos o\nusuario duplicado
+                    ValidandoDatos --> Pendiente : ✅ Datos válidos\n(guardado en localStorage)
+
+                    Pendiente --> Activo : Admin aprueba ✅
+                    Pendiente --> Rechazado : Admin rechaza ❌
+
+                    Activo --> Suspendido : Admin suspende ⏸
+                    Suspendido --> Activo : Admin re-aprueba ✅
+                    Rechazado --> Activo : Admin re-aprueba ✅
+
+                    Activo --> [*] : Login exitoso →\nredirige según rol
+                    Pendiente --> [*] : Intento de login\n→ bloqueado
+                    Rechazado --> [*] : Intento de login\n→ bloqueado
+                    Suspendido --> [*] : Intento de login\n→ bloqueado
+                </div>
+            </section>
+
+            <!-- Sección 2 -->
+            <section id="sec2">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">2</span>
+                    Flujo de Sesión (Login / Guard)
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction TB
+                    [*] --> PáginaLogin : Cualquier URL sin sesión
+
+                    PáginaLogin --> ValidandoCredenciales : Ingresa usuario + clave
+                    ValidandoCredenciales --> PáginaLogin : ❌ Usuario/clave incorrectos\n(animación shake)
+                    ValidandoCredenciales --> EstadoCuenta : Credenciales OK
+
+                    EstadoCuenta --> PáginaLogin : Estado ≠ activo\n(pendiente / rechazado / suspendido)
+                    EstadoCuenta --> RedirecciónRol : Estado = activo
+
+                    RedirecciónRol --> PanelAdmin : rol = admin → admin.html
+                    RedirecciónRol --> PanelCobrador : rol = cobrador → index.html
+                    RedirecciónRol --> PanelMINSA : rol = minsa → reporte.html
+                    RedirecciónRol --> PanelCliente : rol = cliente → historial.html
+
+                    PanelAdmin --> PáginaLogin : Logout 🚪
+                    PanelCobrador --> PáginaLogin : Logout 🚪
+                    PanelMINSA --> PáginaLogin : Logout 🚪
+                    PanelCliente --> PáginaLogin : Logout 🚪
+                </div>
+                <div class="note-card">
+                    <strong>Nota:</strong> Auth.guard() verifica también que cada rol solo acceda a sus páginas
+                    permitidas. Cualquier acceso no autorizado redirige al destino correcto.
+                </div>
+            </section>
+
+            <!-- Sección 3 -->
+            <section id="sec3">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">3</span>
+                    Estado de Pago de Vecino (Ciclo de Deuda)
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction LR
+                    [*] --> AlDía : Vecino registrado /\nMes pagado correctamente
+
+                    AlDía --> Moroso : Pasa 1 mes sin pagar\n(mesesSinPagar ≥ 1)
+                    Moroso --> Moroso : Pasa otro mes sin pagar\n(mesesSinPagar ≥ 2)
+                    Moroso --> Corte : 3 o más meses sin pagar\n(mesesSinPagar ≥ 3)
+                    Corte --> AlDía : Cobrador registra cobro ✅\n(pagadoEsteMes = true,\nmesesSinPagar = 0)
+                    Moroso --> AlDía : Cobrador registra cobro ✅
+                    AlDía --> AlDía : Nuevo período,\nya pagó este mes
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                        <strong class="text-red-700 block">🔴 Corte</strong>
+                        Botón "Cobrar $3.00" visible.<br>Al pagar: estado → AlDía
+                    </div>
+                    <div class="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+                        <strong class="text-yellow-700 block">⚠️ Moroso</strong>
+                        Botón "Cobrar $3.00" visible.
+                    </div>
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                        <strong class="text-green-700 block">✅ Al Día</strong>
+                        Botón "Pagado" (deshabilitado)
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 4 -->
+            <section id="sec4">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">4</span>
+                    Ciclo de Vida de un Cobro (Offline-First)
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction LR
+                    [*] --> PendienteLocal : Cobrador registra cobro\n(registrarCobro)\n→ guardado en localStorage
+
+                    PendienteLocal --> EnSincronización : Click "Sincronizar ☁️"\ny hay conexión a internet
+
+                    EnSincronización --> Sincronizado : Simulación exitosa\n(2 seg de espera)\n→ cola vaciada
+                    EnSincronización --> PendienteLocal : Sin conexión\n→ permanece pendiente
+
+                    Sincronizado --> [*] : Registro confirmado\nen nube (Supabase)
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 mt-4">
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex-1">
+                        <strong>PendienteLocal:</strong> Guardado en <code>jaar_pending_payments</code> y
+                        <code>jaar_pagos</code>. Contador visible en UI.
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex-1">
+                        <strong>EnSincronización:</strong> syncBtn muestra "⏳ Conectando..." con clase CSS: loading.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 5 -->
+            <section id="sec5">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">5</span>
+                    Estado de Conectividad de Red
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction LR
+                    [*] --> DetectandoRed : App carga
+
+                    DetectandoRed --> Online : navigator.onLine = true
+                    DetectandoRed --> Offline : navigator.onLine = false
+
+                    Online --> Offline : Evento 'offline'\n(se pierde conexión)
+                    Offline --> Online : Evento 'online'\n(regresa conexión)
+
+                    Online --> Online : Sincronización\ndisponible ✅
+                    Offline --> Offline : Solo operación\nlocal ⚡
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 mt-4">
+                    <div class="bg-green-50 p-4 rounded-lg border border-green-200 flex-1">
+                        <strong>Conectado 🟢</strong><br> Permite invocar <code>forceSync()</code>.
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200 flex-1">
+                        <strong>Sin Conexión 🔴</strong><br> Cobros guardados localmente. Sync bloqueado.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 6a -->
+            <section id="sec6a">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">6a</span>
+                    Jornal Comunitario — Registro por Cobrador
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction TB
+                    [*] --> FormJornal : Cobrador abre jornales.html
+
+                    FormJornal --> SeleccionaAsistencia : Elige vecino + tarea
+
+                    SeleccionaAsistencia --> PanelAsistió : Asistencia = "Sí"
+                    SeleccionaAsistencia --> PanelNoAsistió : Asistencia = "No"
+
+                    PanelAsistió --> TipoAsistente : Indica horas
+                    TipoAsistente --> JornalPersonal : Quién = "Personal"
+                    TipoAsistente --> JornalSustituto : Quién = "Sustituto"\n→ requiere nombre
+
+                    JornalPersonal --> JornalGuardado : Click "Guardar" ✅
+                    JornalSustituto --> JornalGuardado : Click "Guardar" ✅
+
+                    PanelNoAsistió --> MultaAplicada : Indica monto multa
+                    MultaAplicada --> JornalGuardado : Click "Guardar" ✅
+
+                    JornalGuardado --> [*] : Registro en localStorage\n(jaar_jornales)\nToast de confirmación
+                </div>
+                <div class="flex flex-col md:flex-row gap-4 mt-4">
+                    <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 flex-1">
+                        <strong>JornalSustituto:</strong> Estado especial: se muestra campo extra para nombre del
+                        sustituto.
+                    </div>
+                    <div class="bg-red-50 p-4 rounded-lg border border-red-200 flex-1">
+                        <strong>MultaAplicada:</strong> Badge: 🔴 Faltó (-$multa). Visible en historial.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 6b -->
+            <section id="sec6b">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">6b</span>
+                    Jornal Comunitario — Confirmación por Cliente (RF-11)
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction TB
+                    [*] --> VistaJornalesCliente : Cliente abre historial.html\n(sección jornales programados)
+
+                    VistaJornalesCliente --> JornalPendienteRespuesta : Jornal programado\nsin respuesta del vecino
+
+                    JornalPendienteRespuesta --> ConfirmandoAsistencia : Cliente selecciona respuesta
+
+                    ConfirmandoAsistencia --> AceptaPersonal : "Asistiré personalmente"
+                    ConfirmandoAsistencia --> AceptaSustituto : "Mando un sustituto"\n→ requiere nombre
+                    ConfirmandoAsistencia --> Rechaza : "No asistiré"
+
+                    AceptaPersonal --> RespuestaGuardada : Confirma ✅\nfecha + hora registradas
+                    AceptaSustituto --> RespuestaGuardada : Confirma ✅\nnombre sustituto + fecha + hora
+                    Rechaza --> RespuestaGuardada : Confirma ❌\nfecha + hora registradas
+
+                    RespuestaGuardada --> [*] : Guardado en localStorage\n(jaar_jornales_respuestas)\nCobrador puede ver
+                    la respuesta
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <strong>JornalPendienteRespuesta:</strong> Estado inicial visible al cliente. Cobrador lo crea
+                        desde 6a.
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <strong>AceptaSustituto:</strong> Campo adicional: nombre del sustituto. Similar al flujo del
+                        Cobrador.
+                    </div>
+                    <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+                        <strong>RespuestaGuardada:</strong> Registra: respuesta, fecha, hora y nombre de sustituto si
+                        aplica (RF-11.3).
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 7 -->
+            <section id="sec7">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">7</span>
+                    Panel de Administración — Estado de Usuarios
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction LR
+                    [*] --> SecciónPendientes : Admin abre admin.html
+
+                    SecciónPendientes --> AprobandoUsuario : Admin click "✅ Aprobar"
+                    SecciónPendientes --> RechazandoUsuario : Admin click "❌ Rechazar"\n(+ confirmación)
+
+                    AprobandoUsuario --> SecciónActivos : estado → 'activo'
+                    RechazandoUsuario --> SecciónInactivos : estado → 'rechazado'
+
+                    SecciónActivos --> SuspendidoAdmin : Admin click "⏸ Suspender"
+                    SecciónActivos --> ResetearClave : Admin click "🔑 Reset Clave"\n(prompt nueva clave)
+
+                    SuspendidoAdmin --> SecciónInactivos : estado → 'suspendido'
+                    ResetearClave --> SecciónActivos : Clave actualizada en localStorage
+
+                    SecciónInactivos --> AprobandoUsuario : Admin click "✅ Aprobar"\n(re-activar cuenta)
+                    AprobandoUsuario --> SecciónActivos : estado → 'activo'
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200">
+                        <strong>SecciónActivos:</strong> Muestra botones suspender + reset clave.
+                    </div>
+                    <div class="bg-amber-50 p-4 rounded-lg border border-amber-200">
+                        <strong>SecciónPendientes:</strong> Muestra botones aprobar + rechazar.
+                    </div>
+                    <div class="bg-neutral-100 p-4 rounded-lg border border-neutral-300">
+                        <strong>SecciónInactivos:</strong> Muestra solo botón "re-aprobar".
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 8a -->
+            <section id="sec8a">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">8a</span>
+                    Navegación por Módulos — Rol Cobrador
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction TB
+                    [*] --> index_html : Login exitoso (rol = cobrador)
+
+                    index_html --> jornales_html : Nav → ⛏️ Jornales
+                    index_html --> gastos_html : Nav → 🧾 Gastos
+                    index_html --> foro_html : Nav → 💬 Foro\n(puede publicar avisos ✍️)
+                    index_html --> reporte_html : Nav → 📊 MINSA
+
+                    jornales_html --> index_html : Nav → 💧 Cobros
+                    jornales_html --> gastos_html : Nav → 🧾 Gastos
+                    jornales_html --> foro_html : Nav → 💬 Foro
+                    jornales_html --> reporte_html : Nav → 📊 MINSA
+
+                    gastos_html --> index_html : Nav → 💧 Cobros
+                    foro_html --> index_html : Nav → 💧 Cobros
+                    reporte_html --> index_html : Nav → 💧 Cobros
+
+                    index_html --> login_html : 🚪 Logout
+                    jornales_html --> login_html : 🚪 Logout
+                    gastos_html --> login_html : 🚪 Logout
+                    foro_html --> login_html : 🚪 Logout
+                    reporte_html --> login_html : 🚪 Logout
+                </div>
+            </section>
+
+            <!-- Sección 8b -->
+            <section id="sec8b">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">8b</span>
+                    Navegación por Módulos — Rol Cliente
+                </h2>
+                <div class="mermaid">
+                    stateDiagram-v2
+                    direction TB
+                    [*] --> historial_html : Login exitoso (rol = cliente)
+
+                    historial_html --> foro_html : Nav → 💬 Avisos\n(solo lectura)
+                    historial_html --> jornales_html : Sección jornales programados\n(confirmar asistencia RF-11)
+
+                    foro_html --> historial_html : Nav → 👤 Mi Cuenta
+                    jornales_html --> historial_html : Vuelve a Mi Cuenta
+
+                    historial_html --> login_html : 🚪 Logout
+                    foro_html --> login_html : 🚪 Logout
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">
+                    <div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                        <strong>historial_html:</strong> Muestra estado de pagos del vecino, horas trabajadas (RF-06) y
+                        acceso a jornales programados.
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                        <strong>foro_html:</strong> Solo lectura. No puede publicar avisos. Solo Cobrador puede hacerlo.
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                        <strong>jornales_html:</strong> Vista restringida al cliente: solo ve jornales programados y
+                        puede confirmar su respuesta. No accede al formulario del Cobrador.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección 9 -->
+            <section id="sec9" class="border-2 border-blue-100">
+                <h2 class="text-2xl font-bold text-slate-800 mb-4 border-b pb-2 flex items-center gap-2">
+                    <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm">9</span>
+                    Resumen de Estados Globales del Sistema
+                </h2>
+
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse mt-4">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="p-3 border-b-2 font-semibold">Dominio</th>
+                                <th class="p-3 border-b-2 font-semibold">Estados posibles</th>
+                                <th class="p-3 border-b-2 font-semibold">Quién actúa</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b hover:bg-slate-50 transition">
+                                <td class="p-3 font-medium text-slate-800">Cuenta de usuario</td>
+                                <td class="p-3"><code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">pendiente</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">activo</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">rechazado</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">suspendido</code>
+                                </td>
+                                <td class="p-3">Admin</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition bg-slate-50/50">
+                                <td class="p-3 font-medium text-slate-800">Sesión</td>
+                                <td class="p-3">Sin sesión → Autenticado (por rol) → Cerrada</td>
+                                <td class="p-3">Todos</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition">
+                                <td class="p-3 font-medium text-slate-800">Vecino / Pago</td>
+                                <td class="p-3"><code
+                                        class="bg-green-100 px-1 rounded text-green-700 font-mono text-xs">Al Día</code>
+                                    → <code
+                                        class="bg-yellow-100 px-1 rounded text-yellow-700 font-mono text-xs">Moroso</code>
+                                    → <code class="bg-red-100 px-1 rounded text-red-700 font-mono text-xs">Corte</code>
+                                    → <code
+                                        class="bg-green-100 px-1 rounded text-green-700 font-mono text-xs">Al Día</code>
+                                </td>
+                                <td class="p-3">Cobrador</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition bg-slate-50/50">
+                                <td class="p-3 font-medium text-slate-800">Cobro offline</td>
+                                <td class="p-3"><code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">registrado local</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">en sincronización</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">sincronizado</code>
+                                </td>
+                                <td class="p-3">Cobrador</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition">
+                                <td class="p-3 font-medium text-slate-800">Red</td>
+                                <td class="p-3"><code
+                                        class="bg-green-100 px-1 rounded text-green-700 font-mono text-xs">online</code>
+                                    ↔ <code
+                                        class="bg-red-100 px-1 rounded text-red-700 font-mono text-xs">offline</code>
+                                </td>
+                                <td class="p-3">Sistema (automático)</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition bg-slate-50/50">
+                                <td class="p-3 font-medium text-slate-800">Jornal (registro)</td>
+                                <td class="p-3"><code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">asistió (personal/sustituto)</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">no asistió (multa)</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">guardado</code>
+                                </td>
+                                <td class="p-3">Cobrador</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition">
+                                <td class="p-3 font-medium text-slate-800">Jornal (confirmación)</td>
+                                <td class="p-3"><code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">pendiente respuesta</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">acepta</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">sustituto</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">rechaza</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">guardado</code>
+                                </td>
+                                <td class="p-3">Cliente</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition bg-slate-50/50">
+                                <td class="p-3 font-medium text-slate-800">Foro / Aviso</td>
+                                <td class="p-3"><code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">redactado</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">publicado</code>
+                                    (solo lectura para clientes y MINSA)</td>
+                                <td class="p-3">Solo Cobrador</td>
+                            </tr>
+                            <tr class="border-b hover:bg-slate-50 transition">
+                                <td class="p-3 font-medium text-slate-800">Gasto</td>
+                                <td class="p-3"><code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">registrado</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">guardado en localStorage</code>
+                                    → <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">visible en reporte</code>
+                                </td>
+                                <td class="p-3">Cobrador</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition bg-slate-50/50">
+                                <td class="p-3 font-medium text-slate-800">Rol de acceso</td>
+                                <td class="p-3"><code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">admin</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">cobrador</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">minsa</code>
+                                    / <code
+                                        class="bg-slate-100 px-1 rounded text-slate-600 font-mono text-xs">cliente</code>
+                                </td>
+                                <td class="p-3">Sistema</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="mt-8 bg-blue-50/50 border border-blue-200 p-6 rounded-xl">
+                    <h4 class="font-bold text-blue-900 mb-3 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Notas de implementación:
+                    </h4>
+                    <ul class="text-sm space-y-2 text-slate-700 list-disc list-inside ml-2">
+                        <li>Toda la persistencia es en <strong>localStorage</strong> (Offline-First).</li>
+                        <li>La sincronización con Supabase está simulada (2 seg de delay mock).</li>
+                        <li>El guard de rutas (<code>Auth.guard()</code>) protege cada página según rol activo.</li>
+                        <li>Los "estados" de vecinos se calculan dinámicamente (<code>calcularEstado()</code> en
+                            app.js), no se almacenan explícitamente.</li>
+                        <li><strong>RF-05</strong>: Solo el Cobrador puede publicar en el Foro. Admin no tiene acceso a
+                            <code>foro.html</code>.</li>
+                        <li><strong>RF-06</strong>: El historial del cliente debe mostrar horas trabajadas además del
+                            estado de pagos.</li>
+                        <li><strong>RF-11</strong>: El cliente puede confirmar asistencia, informar sustituto o rechazar
+                            un jornal programado (diagrama 6b).</li>
+                    </ul>
+                </div>
+            </section>
+
+        </main>
+    </div>
+</body>
+
+</html>

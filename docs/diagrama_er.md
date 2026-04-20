@@ -31,12 +31,12 @@ A partir de los RF originales, se derivan las siguientes funcionalidades especí
 
 ### RF-05: Foro de Avisos
 - **RF-05.1**: El sistema debe permitir publicar avisos con título, contenido y fecha.
-- **RF-05.2**: Solo Cobrador y Administrador pueden crear avisos.
+- **RF-05.2**: Solo Cobrador puede crear avisos.
 - **RF-05.3**: Todos los usuarios autenticados pueden leer los avisos.
 
 ### RF-06: Historial del Cliente
 - **RF-06.1**: El sistema debe mostrar al cliente su historial personal de pagos.
-- **RF-06.2**: El sistema debe mostrar las horas donadas/trabajadas por el cliente.
+- **RF-06.2**: El sistema debe mostrar las horas trabajadas por el cliente.
 - **RF-06.3**: El cliente no debe poder ver información de otros vecinos.
 
 ### RF-07: Reportes MINSA
@@ -62,7 +62,7 @@ A partir de los RF originales, se derivan las siguientes funcionalidades especí
 
 ### RF-11: Confirmación de Jornal
 - **RF-11.1**: El sistema debe mostrar los jornales programados a los clientes.
-- **RF-11.2**: El cliente debe poder confirmar o denegar asistencia a un jornal.
+- **RF-11.2**: El cliente debe poder aceptar o rechazar asistencia o informar de un sustituto para un jornal.
 - **RF-11.3**: El sistema debe registrar la respuesta del cliente con fecha y hora.
 
 ---
