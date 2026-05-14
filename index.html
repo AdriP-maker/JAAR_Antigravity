@@ -10,45 +10,127 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/ai-styles.css">
     <style>
         .filtros-bar {
-            display: flex;
-            gap: 0.5rem;
-            padding: 0.75rem 0;
-            flex-wrap: wrap;
+            display: flex; gap: 0.5rem; padding: 0.75rem 0; flex-wrap: wrap;
         }
         .filtros-bar select {
-            flex: 1;
-            min-width: 130px;
-            padding: 0.5rem 0.6rem;
-            border: 1px solid #e2e8f0;
-            border-radius: var(--radius-md);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            background: white;
-            color: var(--text-main);
-            outline: none;
+            flex: 1; min-width: 130px; padding: 0.5rem 0.6rem;
+            border: 1px solid #e2e8f0; border-radius: var(--radius-md);
+            font-family: 'Inter', sans-serif; font-size: 0.85rem;
+            background: white; color: var(--text-main); outline: none;
         }
         .filtros-bar select:focus { border-color: var(--primary); }
 
-        /* Estado badges en tarjetas */
         .estado-badge {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.15rem 0.55rem;
-            border-radius: 99px;
-            margin-left: 0.35rem;
-            vertical-align: middle;
+            display: inline-block; font-size: 0.7rem; font-weight: 700;
+            padding: 0.15rem 0.55rem; border-radius: 99px;
+            margin-left: 0.35rem; vertical-align: middle;
         }
-        .estado-activo    { background: #dcfce7; color: #166534; }
-        .estado-moroso    { background: #fef9c3; color: #92400e; }
-        .estado-corte     { background: #fee2e2; color: #991b1b; }
+        .estado-activo  { background: #dcfce7; color: #166534; }
+        .estado-parcial { background: #fef3c7; color: #92400e; }
+        .estado-moroso  { background: #fef9c3; color: #92400e; }
+        .estado-corte   { background: #fee2e2; color: #991b1b; }
+
+        .riesgo-badge {
+            display: inline-block; font-size: 0.65rem; font-weight: 700;
+            padding: 0.1rem 0.45rem; border-radius: 99px;
+            margin-left: 0.25rem; vertical-align: middle;
+        }
+        .riesgo-bajo    { background: #dcfce7; color: #166534; }
+        .riesgo-medio   { background: #fef9c3; color: #92400e; }
+        .riesgo-alto    { background: #fed7aa; color: #9a3412; }
+        .riesgo-critico { background: #fee2e2; color: #991b1b; }
+
+        .deuda-info { display: block; font-size: 0.78rem; color: var(--danger); margin-top: 0.2rem; }
+        .adelanto-info { display: block; font-size: 0.78rem; color: var(--success); margin-top: 0.2rem; }
+        .puntos-badge-sm { font-size: 0.72rem; color: #b45309; font-weight: 600; margin-left: 0.3rem; }
+
+        .sector-header {
+            padding: 0.6rem 0.8rem; margin-top: 0.5rem;
+            background: #f0fdfa; border-radius: var(--radius-md);
+            font-size: 0.85rem; color: var(--primary-dark);
+        }
+
+        .btn-ruta {
+            padding: 0.45rem 0.8rem; border: 1px solid var(--primary);
+            border-radius: var(--radius-md); background: white;
+            color: var(--primary); font-size: 0.82rem; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-ruta.active { background: var(--primary); color: white; }
+
+        /* Modal de Cobro */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0;
+            background: rgba(0,0,0,0.5); z-index: 1000;
+            align-items: flex-end; justify-content: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal-box {
+            background: white; width: 100%; max-width: 500px;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            padding: 1.5rem; max-height: 85vh; overflow-y: auto;
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .modal-header h2 { font-size: 1.1rem; color: var(--primary-dark); }
+        .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--text-muted); }
+
+        .tipo-pago-tabs { display: flex; gap: 0.3rem; flex-wrap: wrap; margin-bottom: 1rem; }
+        .tipo-pago-btn {
+            flex: 1; min-width: 70px; padding: 0.5rem 0.3rem;
+            border: 1px solid #e2e8f0; border-radius: var(--radius-md);
+            background: white; font-size: 0.75rem; font-weight: 600;
+            cursor: pointer; text-align: center; transition: all 0.2s;
+        }
+        .tipo-pago-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        .tipo-pago-panel { display: none; padding: 0.75rem 0; }
+        .tipo-pago-panel label { display: block; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+        .tipo-pago-panel input[type="number"],
+        .tipo-pago-panel input[type="text"] {
+            width: 100%; padding: 0.6rem; border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md); font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .calc-label { font-size: 0.8rem; color: var(--primary); margin-top: 0.3rem; font-weight: 600; }
+
+        .modal-total {
+            background: #f0fdfa; padding: 1rem; border-radius: var(--radius-md);
+            text-align: center; margin: 1rem 0;
+        }
+        .modal-total .monto-final { font-size: 1.6rem; font-weight: 700; color: var(--primary-dark); }
+        .modal-total .descuento-label { font-size: 0.8rem; color: #b45309; }
+
+        .modal-puntos-row {
+            display: flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 0; font-size: 0.85rem;
+        }
+        .modal-puntos-row input[type="checkbox"] { width: 18px; height: 18px; }
+
+        .btn-confirmar-cobro {
+            width: 100%; padding: 0.9rem; border: none;
+            border-radius: var(--radius-md); background: var(--primary);
+            color: white; font-size: 1rem; font-weight: 700;
+            cursor: pointer; margin-top: 0.5rem;
+        }
+        .btn-confirmar-cobro:active { transform: scale(0.98); opacity: 0.9; }
+
+        .ai-kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; margin-bottom: 0.75rem; }
+        .ai-kpi-card {
+            background: white; padding: 0.6rem; border-radius: var(--radius-md);
+            text-align: center; box-shadow: var(--shadow-sm);
+        }
+        .ai-kpi-value { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); }
+        .ai-kpi-label { font-size: 0.7rem; color: var(--text-muted); }
     </style>
 </head>
 <body>
     <div class="app-container">
-        <!-- Encabezado Fijo -->
         <header class="top-nav glass">
             <div class="nav-content">
                 <div class="brand">
@@ -60,49 +142,42 @@
                     <span class="sync-text">Sincronizar</span>
                 </button>
             </div>
-            
             <div class="status-bar" id="statusBar">
                 <span id="connectionBadge" class="badge online">Buscando red...</span>
                 <span class="pendings">Cobros sin subir: <strong id="pendingCount">0</strong></span>
             </div>
         </header>
 
-        <!-- Contenido Deslizable -->
         <main class="content">
+            <!-- Panel IA Quick Stats -->
+            <div id="aiQuickStats"></div>
+
             <section class="action-section">
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Buscar vecino o sector..." autocomplete="off">
                 </div>
 
-                <!-- Filtros -->
                 <div class="filtros-bar">
                     <select id="filtroMes">
                         <option value="">📅 Todos los meses</option>
-                        <option value="1">Enero</option>
-                        <option value="2">Febrero</option>
-                        <option value="3">Marzo</option>
-                        <option value="4">Abril</option>
-                        <option value="5">Mayo</option>
-                        <option value="6">Junio</option>
-                        <option value="7">Julio</option>
-                        <option value="8">Agosto</option>
-                        <option value="9">Septiembre</option>
-                        <option value="10">Octubre</option>
-                        <option value="11">Noviembre</option>
-                        <option value="12">Diciembre</option>
+                        <option value="1">Enero</option><option value="2">Febrero</option>
+                        <option value="3">Marzo</option><option value="4">Abril</option>
+                        <option value="5">Mayo</option><option value="6">Junio</option>
+                        <option value="7">Julio</option><option value="8">Agosto</option>
+                        <option value="9">Septiembre</option><option value="10">Octubre</option>
+                        <option value="11">Noviembre</option><option value="12">Diciembre</option>
                     </select>
                     <select id="filtroEstado">
-                        <option value="">🟢 Todos los estados</option>
-                        <option value="activo">✅ Activo / Al Día</option>
+                        <option value="">🟢 Todos</option>
+                        <option value="activo">✅ Al Día</option>
+                        <option value="parcial">🟡 Parcial</option>
                         <option value="moroso">⚠️ Moroso</option>
-                        <option value="corte">🔴 Para Corte</option>
+                        <option value="corte">🔴 Corte</option>
                     </select>
+                    <button id="btnRutaInteligente" class="btn-ruta">🧠 Ruta Inteligente</button>
                 </div>
 
-                <!-- Notificación animada -->
-                <div id="toastNotification" class="toast hidden">
-                    Mensaje del sistema
-                </div>
+                <div id="toastNotification" class="toast hidden">Mensaje del sistema</div>
             </section>
 
             <section class="list-section">
@@ -110,19 +185,97 @@
                     <h2>Comunidad (Cobro Offline)</h2>
                     <button class="btn-icon" id="addDemoUserBtn" aria-label="Crear Demo">+</button>
                 </div>
-                
                 <div id="usersList" class="cards-grid">
                     <div class="empty-state">Cargando datos locales...</div>
                 </div>
             </section>
         </main>
 
-        <!-- Se dibuja via auth.js según el Rol -->
         <nav class="bottom-nav"></nav>
+    </div>
+
+    <!-- Modal de Cobro -->
+    <div id="modalCobro" class="modal-overlay" onclick="if(event.target===this) cerrarModalCobro()">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>💰 Registrar Cobro</h2>
+                <button class="modal-close" onclick="cerrarModalCobro()">&times;</button>
+            </div>
+
+            <input type="hidden" id="modalUserId" value="">
+            <input type="hidden" id="modalTipoPago" value="mensual">
+            <input type="hidden" id="modalMontoBase" value="3.00">
+
+            <div style="margin-bottom:1rem;">
+                <strong id="modalUserName">—</strong>
+                <span style="color:var(--text-muted); font-size:0.85rem;" id="modalUserSector"></span>
+                <div id="modalDeudaStatus" style="font-size:0.85rem; margin-top:0.3rem;"></div>
+            </div>
+
+            <!-- Tipo de pago tabs -->
+            <div class="tipo-pago-tabs">
+                <button class="tipo-pago-btn active" data-tipo="mensual" onclick="seleccionarTipoPago('mensual')">Mensual<br>B/.3.00</button>
+                <button class="tipo-pago-btn" data-tipo="diario" onclick="seleccionarTipoPago('diario')">Diario<br>B/.0.10</button>
+                <button class="tipo-pago-btn" data-tipo="multi_mes" onclick="seleccionarTipoPago('multi_mes')">Varios<br>Meses</button>
+                <button class="tipo-pago-btn" data-tipo="parcial" onclick="seleccionarTipoPago('parcial')">Pago<br>Parcial</button>
+                <button class="tipo-pago-btn" data-tipo="puesta_al_dia" onclick="seleccionarTipoPago('puesta_al_dia')">Poner<br>al Día</button>
+            </div>
+
+            <!-- Paneles por tipo -->
+            <div id="panel_mensual" class="tipo-pago-panel" style="display:block;">
+                <p style="font-size:0.85rem; color:var(--text-muted);">Cuota mensual estándar</p>
+            </div>
+
+            <div id="panel_diario" class="tipo-pago-panel">
+                <label>¿Cuántos días paga?</label>
+                <input type="number" id="inputDias" min="1" max="30" value="1" oninput="recalcularMontoModal()">
+                <div class="calc-label" id="labelDiasCalc">1 día × B/.0.10 = B/.0.10</div>
+            </div>
+
+            <div id="panel_multi_mes" class="tipo-pago-panel">
+                <label>¿Cuántos meses?</label>
+                <input type="number" id="inputMeses" min="2" max="12" value="2" oninput="recalcularMontoModal()">
+                <div class="calc-label" id="labelMesesCalc">2 meses × B/.3.00 = B/.6.00</div>
+            </div>
+
+            <div id="panel_parcial" class="tipo-pago-panel">
+                <label>Monto parcial (B/.)</label>
+                <input type="number" id="inputParcial" min="0.10" max="3.00" step="0.10" value="1.50" oninput="recalcularMontoModal()">
+            </div>
+
+            <div id="panel_puesta_al_dia" class="tipo-pago-panel">
+                <div class="calc-label" id="labelDeudaTotal">Calculando deuda...</div>
+            </div>
+
+            <!-- Puntos -->
+            <div class="modal-puntos-row">
+                <input type="checkbox" id="chkUsarPuntos">
+                <label for="chkUsarPuntos" id="modalPuntosInfo">⭐ Sin puntos acumulados</label>
+            </div>
+
+            <!-- Total -->
+            <div class="modal-total">
+                <div class="monto-final" id="modalMontoFinal">B/.3.00</div>
+                <div class="descuento-label" id="modalDescuento"></div>
+            </div>
+
+            <!-- Nota -->
+            <div style="margin-bottom:0.5rem;">
+                <input type="text" id="inputNota" placeholder="Nota opcional..." style="width:100%; padding:0.5rem; border:1px solid #e2e8f0; border-radius:var(--radius-md); font-size:0.85rem;">
+            </div>
+
+            <button class="btn-confirmar-cobro" onclick="confirmarCobro()">
+                Confirmar Cobro
+            </button>
+        </div>
     </div>
 
     <script src="js/store.js"></script>
     <script src="js/auth.js"></script>
+    <script src="js/pagos.js"></script>
+    <script src="js/comisiones.js"></script>
+    <script src="js/puntos.js"></script>
+    <script src="js/ai-engine.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

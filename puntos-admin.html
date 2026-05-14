@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0d9488">
+    <title>Configuración de Incentivos - JAAR</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .config-section {
+            background: white;
+            padding: 1.25rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            margin-bottom: 1.25rem;
+        }
+        .config-section h3 {
+            color: var(--primary-dark);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 0.5rem;
+        }
+
+        .config-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f8fafc;
+        }
+        .config-row:last-child { border-bottom: none; }
+        .config-row label {
+            font-size: 0.85rem;
+            color: var(--text-main);
+            flex: 1;
+            min-width: 0;
+        }
+        .config-row input[type="number"] {
+            width: 90px;
+            padding: 0.5rem;
+            border: 1px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            font-size: 0.9rem;
+            font-family: 'Inter', sans-serif;
+            text-align: right;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .config-row input[type="number"]:focus { border-color: var(--primary); }
+
+        .config-hint {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .apartados-info {
+            background: #f0fdfa;
+            border-radius: var(--radius-md);
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            font-size: 0.82rem;
+            color: var(--primary-dark);
+        }
+        .apartados-info strong { display: block; margin-bottom: 0.3rem; }
+
+        .auto-calc {
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-weight: 600;
+            padding: 0.5rem;
+            background: #f0fdfa;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .puntos-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0;
+        }
+
+        .resumen-global {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+        }
+        .resumen-card {
+            background: #f0fdfa;
+            padding: 1rem 0.75rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+        .resumen-card .val {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-family: 'Outfit', sans-serif;
+        }
+        .resumen-card .lbl {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 0.15rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <header class="top-nav glass">
+            <div class="nav-content">
+                <div class="brand">
+                    <div class="logo-icon">⚙️</div>
+                    <h1>Configuración de Incentivos</h1>
+                </div>
+            </div>
+            <div id="toastNotification" class="toast hidden">Guardado</div>
+        </header>
+
+        <main class="content">
+            <!-- Comisiones -->
+            <div class="config-section">
+                <h3>💰 Comisiones</h3>
+
+                <div class="config-row">
+                    <label>Comisión por pago (B/.)</label>
+                    <input type="number" id="cfgComisionPago" value="1.00" step="0.10" min="0">
+                </div>
+                <div class="config-row">
+                    <label>% Desarrolladores</label>
+                    <input type="number" id="cfgPctDevs" value="60" min="0" max="100" step="5" oninput="recalcCobrador()">
+                </div>
+                <div class="config-row">
+                    <label>% Cobrador</label>
+                    <div class="auto-calc" id="cfgPctCobrador">40%</div>
+                </div>
+
+                <div class="apartados-info">
+                    <strong>Apartados con comisión activa:</strong>
+                    Agua (mensual) · Tanque (diario) · Porqueriza (mensual)
+                </div>
+            </div>
+
+            <!-- Puntos -->
+            <div class="config-section">
+                <h3>⭐ Reglas de Puntos</h3>
+
+                <div class="puntos-grid">
+                    <div class="config-row">
+                        <label>Pago básico</label>
+                        <input type="number" id="ptPagoBasico" value="2" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Pago puntual (antes del 10)</label>
+                        <input type="number" id="ptPagoPuntual" value="5" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Pago consolidado (varios meses)</label>
+                        <input type="number" id="ptPagoConsolidado" value="10" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Jornal personal</label>
+                        <input type="number" id="ptJornalPersonal" value="8" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Jornal sustituto</label>
+                        <input type="number" id="ptJornalSustituto" value="3" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Jornal confirmación</label>
+                        <input type="number" id="ptJornalConfirmacion" value="2" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Trimestre limpio</label>
+                        <input type="number" id="ptTrimestreLimpio" value="15" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Año completo</label>
+                        <input type="number" id="ptAnioCompleto" value="30" min="0">
+                    </div>
+                </div>
+
+                <div style="margin-top: 0.75rem; border-top: 2px solid #f1f5f9; padding-top: 0.75rem;">
+                    <div class="config-row">
+                        <label>Tasa de canje (1 pt = B/.)</label>
+                        <input type="number" id="cfgTasaCanje" value="0.10" step="0.01" min="0">
+                    </div>
+                    <div class="config-row">
+                        <label>Mínimo canjeable (pts)</label>
+                        <input type="number" id="cfgMinCanjeable" value="10" min="1">
+                    </div>
+                    <div class="config-row">
+                        <label>Máximo descuento/mes (B/.)</label>
+                        <input type="number" id="cfgMaxDescuento" value="1.50" step="0.10" min="0">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen Global -->
+            <div class="config-section">
+                <h3>📊 Resumen Global</h3>
+                <div class="resumen-global">
+                    <div class="resumen-card">
+                        <div class="val" id="resComisiones">B/.0.00</div>
+                        <div class="lbl">Comisiones Generadas</div>
+                    </div>
+                    <div class="resumen-card">
+                        <div class="val" id="resPuntos">0</div>
+                        <div class="lbl">Puntos en Circulación</div>
+                    </div>
+                    <div class="resumen-card">
+                        <div class="val" id="resDescuentos">B/.0.00</div>
+                        <div class="lbl">Descuentos Aplicados</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Guardar -->
+            <button class="btn-primary" id="btnGuardarConfig">Guardar Configuración</button>
+
+            <div style="height: 2rem;"></div>
+        </main>
+
+        <nav class="bottom-nav"></nav>
+    </div>
+
+    <script src="js/store.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/comisiones.js"></script>
+    <script src="js/puntos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const session = Auth.getSession();
+            if (!session || session.role !== 'admin') {
+                window.location.href = 'login.html';
+                return;
+            }
+
+            // --- Cargar configuración de Comisiones ---
+            const configCom = Comisiones.getConfig();
+            if (configCom) {
+                document.getElementById('cfgComisionPago').value = configCom.comisionPorPago ?? 1.00;
+                document.getElementById('cfgPctDevs').value      = configCom.pctDesarrolladores ?? 60;
+                recalcCobrador();
+            }
+
+            // --- Cargar configuración de Puntos ---
+            const configPts = Puntos.getConfigReglas();
+            if (configPts) {
+                document.getElementById('ptPagoBasico').value         = configPts.pago_basico ?? 2;
+                document.getElementById('ptPagoPuntual').value        = configPts.pago_puntual ?? 5;
+                document.getElementById('ptPagoConsolidado').value    = configPts.pago_consolidado ?? 10;
+                document.getElementById('ptJornalPersonal').value     = configPts.jornal_personal ?? 8;
+                document.getElementById('ptJornalSustituto').value    = configPts.jornal_sustituto ?? 3;
+                document.getElementById('ptJornalConfirmacion').value = configPts.jornal_confirmacion ?? 2;
+                document.getElementById('ptTrimestreLimpio').value    = configPts.trimestre_limpio ?? 15;
+                document.getElementById('ptAnioCompleto').value       = configPts.anio_completo ?? 30;
+                document.getElementById('cfgTasaCanje').value         = configPts.tasaCanje ?? 0.10;
+                document.getElementById('cfgMinCanjeable').value      = configPts.minCanjeable ?? 10;
+                document.getElementById('cfgMaxDescuento').value      = configPts.maxDescuentoMes ?? 1.50;
+            }
+
+            // --- Resumen Global ---
+            const resumenCom = Comisiones.getConfig();
+            const historial  = Comisiones.getHistorial ? Comisiones.getHistorial() : [];
+            let totalComisiones = 0;
+            historial.forEach(c => { totalComisiones += (c.comision || 0); });
+            document.getElementById('resComisiones').textContent = 'B/.' + totalComisiones.toFixed(2);
+
+            if (typeof Puntos.getEstadisticasGlobales === 'function') {
+                const statsP = Puntos.getEstadisticasGlobales();
+                document.getElementById('resPuntos').textContent     = statsP.totalPuntos || 0;
+                document.getElementById('resDescuentos').textContent  = 'B/.' + (statsP.totalDescuentos || 0).toFixed(2);
+            }
+
+            // --- Guardar ---
+            document.getElementById('btnGuardarConfig').addEventListener('click', () => {
+                const pctDevs = parseInt(document.getElementById('cfgPctDevs').value) || 60;
+
+                // Guardar config Comisiones
+                Comisiones.saveConfig({
+                    comisionPorPago:     parseFloat(document.getElementById('cfgComisionPago').value) || 1.00,
+                    pctDesarrolladores:  pctDevs,
+                    pctCobrador:         100 - pctDevs
+                });
+
+                // Guardar config Puntos
+                Puntos.saveConfigReglas({
+                    pago_basico:          parseInt(document.getElementById('ptPagoBasico').value) || 2,
+                    pago_puntual:         parseInt(document.getElementById('ptPagoPuntual').value) || 5,
+                    pago_consolidado:     parseInt(document.getElementById('ptPagoConsolidado').value) || 10,
+                    jornal_personal:      parseInt(document.getElementById('ptJornalPersonal').value) || 8,
+                    jornal_sustituto:     parseInt(document.getElementById('ptJornalSustituto').value) || 3,
+                    jornal_confirmacion:  parseInt(document.getElementById('ptJornalConfirmacion').value) || 2,
+                    trimestre_limpio:     parseInt(document.getElementById('ptTrimestreLimpio').value) || 15,
+                    anio_completo:        parseInt(document.getElementById('ptAnioCompleto').value) || 30,
+                    tasaCanje:            parseFloat(document.getElementById('cfgTasaCanje').value) || 0.10,
+                    minCanjeable:         parseInt(document.getElementById('cfgMinCanjeable').value) || 10,
+                    maxDescuentoMes:      parseFloat(document.getElementById('cfgMaxDescuento').value) || 1.50
+                });
+
+                Store.showToast('Configuración guardada');
+            });
+        });
+
+        function recalcCobrador() {
+            const pctDevs = parseInt(document.getElementById('cfgPctDevs').value) || 0;
+            const pctCob  = Math.max(0, 100 - pctDevs);
+            document.getElementById('cfgPctCobrador').textContent = pctCob + '%';
+        }
+    </script>
+</body>
+</html>

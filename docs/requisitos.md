@@ -81,6 +81,37 @@
 
 ---
 
+---
+
+## 3.1 Requisitos Funcionales — Pagos Flexibles (v2.0)
+
+- **RF-12** Pagos Parciales: El sistema debe permitir registrar pagos parciales (monto menor a la cuota mensual). El saldo restante queda pendiente y el estado se muestra como "Parcial" hasta completar la cuota del mes.
+- **RF-13** Pagos Multi-Mes: El cobrador puede registrar pagos que cubran varios meses simultáneamente (ej: 6 meses = B/.18.00). Cada mes se marca como pagado individualmente en el libro mayor de saldos.
+- **RF-14** Pagos Diarios: El sistema permite cobrar por día (cuota mensual ÷ 30). Los pagos diarios se acumulan como pagos parciales del mes correspondiente.
+- **RF-15** Puesta al Día: El sistema calcula automáticamente la deuda total de un vecino moroso y permite cobrarla en un solo pago, actualizando todos los meses pendientes.
+- **RF-16** Pagos Adelantados: Los vecinos pueden pagar meses futuros por anticipado. El sistema registra los meses cubiertos y calcula correctamente el estado de cuenta.
+
+---
+
+## 3.2 Requisitos Funcionales — Comisiones y Recompensas (v2.0)
+
+- **RF-17** Comisiones por Cobro: Cada pago genera una comisión fija configurable (por defecto B/.1.00). Se reparte automáticamente: 60% desarrolladores / 40% cobrador. El split es configurable por el administrador.
+- **RF-18** Dashboard de Ganancias del Cobrador: El cobrador accede a una pantalla donde visualiza su acumulado de comisiones, desglose mensual e historial de cobros realizados.
+- **RF-19** Sistema de Puntos: Los vecinos acumulan puntos por: pago básico (2 pts), pago puntual antes del 15 (5 pts), pago consolidado multi-mes (10 pts/mes extra), asistencia personal a jornal (8 pts), asistencia vía sustituto (3 pts), confirmación anticipada de jornal (2 pts), trimestre sin multas (15 pts), año completo pagado (30 pts).
+- **RF-20** Canje de Puntos: Los vecinos pueden canjear puntos por descuentos en su cuota (1 punto = B/.0.10). Mínimo canjeable: 10 puntos. Máximo descuento por mes: B/.1.50. La comisión se calcula sobre la tarifa completa, no sobre el monto con descuento.
+- **RF-21** Configuración Admin de Incentivos: El administrador puede configurar el porcentaje del split de comisiones, los valores de puntos por acción, la tasa de canje y los apartados de cobro (Agua, Tanque Séptico, Porqueriza/Añadidos).
+
+---
+
+## 3.3 Requisitos Funcionales — Inteligencia Artificial (v2.0)
+
+- **RF-22** Puntaje de Riesgo por Hogar: El sistema calcula un puntaje de riesgo (0-100) para cada hogar basado en: meses sin pagar (35%), regularidad de pago (25%), participación en jornales (20%), riesgo del sector (10%), y tendencia (10%). Niveles: bajo (0-25), medio (26-50), alto (51-75), crítico (76-100).
+- **RF-23** Ruta Inteligente de Cobro: El cobrador puede activar un modo que ordena los hogares por prioridad de visita, combinando puntaje de riesgo, urgencia (próximo a corte) y agrupación geográfica por sector. La IA solo sugiere, el cobrador decide.
+- **RF-24** Predicción de Morosidad: El sistema identifica hogares "activos" con probabilidad de caer en morosidad el próximo mes, basándose en tendencias históricas, factores estacionales y participación comunitaria. Muestra alertas informativas, no ajusta tarifas.
+- **RF-25** Detección de Anomalías: El sistema detecta patrones atípicos en el recaudo (caídas sectoriales, picos de gastos, pagos inusuales) usando análisis estadístico (z-score) y alerta al administrador.
+
+---
+
 ## 4. Requisitos No Funcionales
 
 | Requisito | Descripción |

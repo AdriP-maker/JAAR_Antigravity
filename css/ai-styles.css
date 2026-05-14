@@ -1,0 +1,225 @@
+/**
+ * css/ai-styles.css — Estilos para componentes de IA de JAAR Digital
+ * Utiliza las variables CSS del sistema de diseno existente donde aplique:
+ * --primary: #0d9488, --danger, --success, --text-main, --text-muted
+ * --radius-md, --radius-lg, --shadow-sm
+ */
+
+/* ──────────────────────────────────────
+   Risk Badges
+   ────────────────────────────────────── */
+
+.riesgo-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    min-width: 28px;
+}
+
+.riesgo-bajo {
+    background: #ecfdf5;
+    color: #065f46;
+}
+
+.riesgo-medio {
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+.riesgo-alto {
+    background: #fffbeb;
+    color: #92400e;
+}
+
+.riesgo-critico {
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+/* ──────────────────────────────────────
+   AI Insight Cards
+   ────────────────────────────────────── */
+
+.ai-card {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    margin-bottom: 0.75rem;
+}
+
+.ai-card-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0f766e;
+    margin-bottom: 0.5rem;
+}
+
+.ai-card-body {
+    font-size: 0.85rem;
+    color: #334155;
+    line-height: 1.4;
+}
+
+/* ──────────────────────────────────────
+   AI Alert Bars
+   ────────────────────────────────────── */
+
+.ai-alert {
+    border-left: 3px solid;
+    padding: 0.75rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.ai-alert-alta {
+    border-color: #ef4444;
+    background: #fef2f2;
+}
+
+.ai-alert-media {
+    border-color: #f59e0b;
+    background: #fffbeb;
+}
+
+.ai-alert-baja {
+    border-color: #10b981;
+    background: #ecfdf5;
+}
+
+/* ──────────────────────────────────────
+   AI KPI Grid
+   ────────────────────────────────────── */
+
+.ai-kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.ai-kpi-card {
+    background: white;
+    padding: 0.6rem;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.ai-kpi-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #0f766e;
+}
+
+.ai-kpi-label {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+}
+
+/* Responsive: 2 columns on small screens */
+@media (max-width: 480px) {
+    .ai-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ──────────────────────────────────────
+   Mini Bar Charts (CSS-only)
+   ────────────────────────────────────── */
+
+.mini-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 50px;
+}
+
+.mini-bar {
+    flex: 1;
+    background: #0d9488;
+    border-radius: 3px 3px 0 0;
+    min-width: 12px;
+    transition: height 0.3s ease;
+}
+
+.mini-bar-label {
+    font-size: 0.6rem;
+    color: #94a3b8;
+    text-align: center;
+}
+
+/* ──────────────────────────────────────
+   Sector Heatmap
+   ────────────────────────────────────── */
+
+.sector-heatmap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.sector-box {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.6rem;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* ──────────────────────────────────────
+   Dashboard Sections
+   ────────────────────────────────────── */
+
+.ai-dashboard-section {
+    margin-bottom: 1.5rem;
+}
+
+.ai-dashboard-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f766e;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 0.3rem;
+}
+
+/* ──────────────────────────────────────
+   Client Risk Messages
+   ────────────────────────────────────── */
+
+.risk-message {
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.risk-message-bajo {
+    background: #ecfdf5;
+    color: #065f46;
+}
+
+.risk-message-medio {
+    background: #eff6ff;
+    color: #1e40af;
+}
+
+.risk-message-alto {
+    background: #fffbeb;
+    color: #92400e;
+}
+
+.risk-message-critico {
+    background: #fef2f2;
+    color: #991b1b;
+}

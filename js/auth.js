@@ -69,11 +69,18 @@ const Auth = {
 
         const path = window.location.pathname;
         if(role === 'minsa' && !path.includes('reporte.html')) { window.location.href = 'reporte.html'; return null; }
-        if(role === 'cliente' && (path.includes('index.html') || path.includes('gastos.html') || path.includes('jornales.html') || path.includes('reporte.html') || path.includes('admin.html'))) {
+
+        const clienteBlocked = ['index.html','gastos.html','jornales.html','reporte.html','admin.html','comisiones.html','puntos-admin.html'];
+        if(role === 'cliente' && clienteBlocked.some(p => path.includes(p))) {
             window.location.href = 'historial.html'; return null;
         }
-        if(role !== 'admin' && path.includes('admin.html')) { window.location.href = 'login.html'; return null; }
-        if(role === 'admin' && !path.includes('admin.html')) { window.location.href = 'admin.html'; return null; }
+
+        const adminOnly = ['admin.html','puntos-admin.html'];
+        if(role !== 'admin' && adminOnly.some(p => path.includes(p))) { window.location.href = 'login.html'; return null; }
+
+        if(role === 'cobrador' && path.includes('puntos-admin.html')) { window.location.href = 'index.html'; return null; }
+
+        if(role === 'admin' && !path.includes('admin.html') && !path.includes('puntos-admin.html')) { window.location.href = 'admin.html'; return null; }
 
         return role;
     },
@@ -87,11 +94,11 @@ const Auth = {
 
         if(role === 'cobrador') {
             html = `
-            <a href="index.html"    class="nav-item ${a('index.html')}"><span class="icon">💧</span><span>Cobros</span></a>
-            <a href="jornales.html" class="nav-item ${a('jornales.html')}"><span class="icon">⛏️</span><span>Jornales</span></a>
-            <a href="gastos.html"   class="nav-item ${a('gastos.html')}"><span class="icon">🧾</span><span>Gastos</span></a>
-            <a href="foro.html"     class="nav-item ${a('foro.html')}"><span class="icon">💬</span><span>Foro</span></a>
-            <a href="reporte.html"  class="nav-item ${a('reporte.html')}"><span class="icon">📊</span><span>MINSA</span></a>`;
+            <a href="index.html"       class="nav-item ${a('index.html')}"><span class="icon">💧</span><span>Cobros</span></a>
+            <a href="jornales.html"    class="nav-item ${a('jornales.html')}"><span class="icon">⛏️</span><span>Jornales</span></a>
+            <a href="gastos.html"      class="nav-item ${a('gastos.html')}"><span class="icon">🧾</span><span>Gastos</span></a>
+            <a href="comisiones.html"  class="nav-item ${a('comisiones.html')}"><span class="icon">💰</span><span>Ganancia</span></a>
+            <a href="reporte.html"     class="nav-item ${a('reporte.html')}"><span class="icon">📊</span><span>MINSA</span></a>`;
         } else if(role === 'cliente') {
             html = `
             <a href="historial.html" class="nav-item ${a('historial.html')}"><span class="icon">👤</span><span>Mi Cuenta</span></a>
@@ -99,7 +106,9 @@ const Auth = {
         } else if(role === 'minsa') {
             html = `<a href="reporte.html" class="nav-item active"><span class="icon">📊</span><span>Reportes</span></a>`;
         } else if(role === 'admin') {
-            html = `<a href="admin.html" class="nav-item active"><span class="icon">🛡️</span><span>Usuarios</span></a>`;
+            html = `
+            <a href="admin.html"       class="nav-item ${a('admin.html')}"><span class="icon">🛡️</span><span>Usuarios</span></a>
+            <a href="puntos-admin.html" class="nav-item ${a('puntos-admin.html')}"><span class="icon">⚙️</span><span>Config</span></a>`;
         }
 
         html += `<a href="#" onclick="Auth.logout()" class="nav-item"><span class="icon">🚪</span><span>Salir</span></a>`;

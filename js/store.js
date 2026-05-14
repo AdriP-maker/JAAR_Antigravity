@@ -47,6 +47,37 @@ const Store = {
     saveJornales: (data) => localStorage.setItem('jaar_jornales', JSON.stringify(data)),
     saveGastos: (data) => localStorage.setItem('jaar_gastos', JSON.stringify(data)),
 
+    // Pagos Flexibles
+    getSaldos: () => JSON.parse(localStorage.getItem('jaar_saldos') || '{}'),
+    saveSaldos: (data) => localStorage.setItem('jaar_saldos', JSON.stringify(data)),
+    getConfig: () => JSON.parse(localStorage.getItem('jaar_config') || '{}'),
+    saveConfig: (data) => localStorage.setItem('jaar_config', JSON.stringify(data)),
+
+    // Comisiones
+    getComisiones: () => JSON.parse(localStorage.getItem('jaar_comisiones') || '[]'),
+    saveComisiones: (data) => localStorage.setItem('jaar_comisiones', JSON.stringify(data)),
+    getConfigComisiones: () => JSON.parse(localStorage.getItem('jaar_config_comisiones') || '{}'),
+    saveConfigComisiones: (data) => localStorage.setItem('jaar_config_comisiones', JSON.stringify(data)),
+    getCobradorBalance: () => JSON.parse(localStorage.getItem('jaar_cobrador_balance') || '{}'),
+    saveCobradorBalance: (data) => localStorage.setItem('jaar_cobrador_balance', JSON.stringify(data)),
+
+    // Puntos
+    getPuntos: () => JSON.parse(localStorage.getItem('jaar_puntos') || '[]'),
+    savePuntos: (data) => localStorage.setItem('jaar_puntos', JSON.stringify(data)),
+    getCanjes: () => JSON.parse(localStorage.getItem('jaar_canjes') || '[]'),
+    saveCanjes: (data) => localStorage.setItem('jaar_canjes', JSON.stringify(data)),
+    getSaldosPuntos: () => JSON.parse(localStorage.getItem('jaar_saldos_puntos') || '{}'),
+    saveSaldosPuntos: (data) => localStorage.setItem('jaar_saldos_puntos', JSON.stringify(data)),
+    getConfigPuntos: () => JSON.parse(localStorage.getItem('jaar_config_puntos') || '{}'),
+    saveConfigPuntos: (data) => localStorage.setItem('jaar_config_puntos', JSON.stringify(data)),
+
+    // IA
+    getAICache: () => JSON.parse(localStorage.getItem('jaar_ai_cache') || 'null'),
+    saveAICache: (data) => localStorage.setItem('jaar_ai_cache', JSON.stringify(data)),
+    clearAICache: () => localStorage.removeItem('jaar_ai_cache'),
+    getAIConfig: () => JSON.parse(localStorage.getItem('jaar_ai_config') || '{}'),
+    saveAIConfig: (data) => localStorage.setItem('jaar_ai_config', JSON.stringify(data)),
+
     updateNetwork() {
         const badge = document.getElementById('connectionBadge');
         if(!badge) return;

@@ -107,7 +107,14 @@ document.addEventListener('DOMContentLoaded', () => {
             fecha: new Date().toLocaleDateString()
         });
         Store.saveJornales(jornales);
-        
+
+        // Otorgar puntos por asistencia a jornal
+        const nuevoJornal = jornales[jornales.length - 1];
+        if (typeof Puntos !== 'undefined' && asiste === 'si') {
+            const tipoPuntos = quien === 'sustituto' ? 'jornal_sustituto' : 'jornal_personal';
+            Puntos.otorgarPuntos(selectEl.value, tipoPuntos, nuevoJornal.id);
+        }
+
         document.getElementById('jornalTarea').value = '';
         document.getElementById('jornalHoras').value = '';
         document.getElementById('jornalNombreSustituto').value = '';
