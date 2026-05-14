@@ -243,35 +243,50 @@ const AIEngine = {
      */
     predecirMorosidad(userId) {
         var riesgo = this.calcularRiesgo(userId);
-        var probabilidad = Math.round((riesgo.score / 100) * 100) / 100;
+        var historial = this._getUserPaymentHistory(userId, 12);
+
+        // Tasa base: proporcion de meses no pagados en el ultimo año (0–1)
+        var mesesNoPagados = historial.filter(function(h) { return h.estado !== 'pagado'; }).length;
+        var tasaBase = mesesNoPagados / 12;
+
+        // Factor estacional: mayo-julio son meses de mayor morosidad en comunidades rurales de Panama
+        var mesActual = new Date().getMonth() + 1; // 1–12
+        var factorEstacional = [5, 6, 7].includes(mesActual) ? 1.20 : [1, 2].includes(mesActual) ? 1.10 : 0.90;
+
+        // Factor tendencia: basado en el score de tendencia calculado por calcularRiesgo()
+        var factorTendencia = riesgo.factors.trend >= 70 ? 1.30 : riesgo.factors.trend >= 40 ? 1.00 : 0.70;
+
+        // Factor sector: mayor riesgo del sector → mayor probabilidad de morosidad (rango 1.0–1.5)
+        var factorSector = 1.0 + (riesgo.factors.sectorRisk / 200);
+
+        // Factor jornales: menor participacion → mayor riesgo de morosidad (rango 1.0–1.33)
+        var factorJornales = 1.0 + (riesgo.factors.jornalParticipation / 300);
+
+        // Probabilidad compuesta: tasa_base × factor_estacional × factor_tendencia × factor_sector × factor_jornales
+        var probabilidad = tasaBase * factorEstacional * factorTendencia * factorSector * factorJornales;
+        probabilidad = Math.min(1, Math.max(0, Math.round(probabilidad * 100) / 100));
+
         var factores = [];
-
-        if (riesgo.factors.mesesSinPagar >= 50) {
-            factores.push('Acumula meses sin pagar');
-        }
-        if (riesgo.factors.paymentRegularity >= 60) {
-            factores.push('Historial de pagos irregular');
-        }
-        if (riesgo.factors.jornalParticipation >= 60) {
-            factores.push('Baja participacion en jornales');
-        }
-        if (riesgo.factors.sectorRisk >= 60) {
-            factores.push('Sector con alta morosidad');
-        }
-        if (riesgo.factors.trend >= 60) {
-            factores.push('Tendencia de pago en deterioro');
-        }
-
-        if (factores.length === 0 && probabilidad > 0.25) {
-            factores.push('Riesgo moderado acumulado');
-        }
+        if (mesesNoPagados >= 4) factores.push('Acumula ' + mesesNoPagados + ' meses sin pagar en el año');
+        if (factorEstacional > 1) factores.push('Período estacional de mayor morosidad');
+        if (riesgo.factors.trend >= 70) factores.push('Tendencia de pago en deterioro');
+        if (riesgo.factors.sectorRisk >= 60) factores.push('Sector con alta morosidad histórica');
+        if (riesgo.factors.jornalParticipation >= 60) factores.push('Baja participación en jornales comunitarios');
+        if (factores.length === 0) factores.push('Perfil de riesgo bajo — sin alertas activas');
 
         return {
             userId: userId,
             probabilidad: probabilidad,
             factores: factores,
             nivel: riesgo.nivel,
-            recomendacion: this._getRecomendacion(riesgo.nivel)
+            recomendacion: this._getRecomendacion(riesgo.nivel),
+            detalleFactores: {
+                tasaBase: Math.round(tasaBase * 100) / 100,
+                estacional: factorEstacional,
+                tendencia: factorTendencia,
+                sector: Math.round(factorSector * 100) / 100,
+                jornales: Math.round(factorJornales * 100) / 100
+            }
         };
     },
 

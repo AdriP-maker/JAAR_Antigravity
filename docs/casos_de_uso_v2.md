@@ -7,6 +7,125 @@
 
 ---
 
+## 0. Funcionalidades Base
+
+---
+
+### CU-01: Inicio de Sesión
+
+| Campo | Detalle |
+|-------|---------|
+| **Actor Principal** | Admin / Cobrador / Cliente / MINSA |
+| **Precondiciones** | El usuario tiene una cuenta aprobada en el sistema. El dispositivo tiene el navegador abierto en la pantalla de login. |
+| **Postcondiciones** | El usuario accede a su vista correspondiente según su rol. La sesión queda activa en `localStorage` (`jaar_role`, `jaar_user`). |
+
+**Flujo Principal:**
+1. El usuario abre la aplicación y ve la pantalla de Login.
+2. Ingresa su nombre de usuario y contraseña.
+3. Presiona "Ingresar".
+4. El sistema valida las credenciales contra `jaar_usuarios`.
+5. El sistema guarda el rol y el usuario en `localStorage`.
+6. El sistema redirige al usuario a su pantalla principal según el rol: `index.html` (cobrador), `admin.html` (admin), `historial.html` (cliente), `reporte.html` (minsa).
+
+**Flujos Alternos:**
+- FA-1: Si las credenciales son incorrectas, el sistema muestra "Usuario o contraseña incorrectos" y no redirige.
+- FA-2: Si la cuenta está en estado "pendiente", el sistema muestra "Tu cuenta aún está pendiente de aprobación por el administrador."
+- FA-3: Si la cuenta está "suspendida", el sistema muestra "Tu cuenta ha sido suspendida. Contacta al administrador."
+
+---
+
+### CU-02: Registro de Nuevo Vecino
+
+| Campo | Detalle |
+|-------|---------|
+| **Actor Principal** | Vecino (futuro cliente) |
+| **Precondiciones** | El vecino tiene acceso a la URL de la aplicación. La pantalla de registro (`registro.html`) está disponible. |
+| **Postcondiciones** | Se crea una solicitud de cuenta con estado "pendiente". El administrador recibe la solicitud visible en `admin.html`. |
+
+**Flujo Principal:**
+1. El vecino abre la pantalla de registro.
+2. Ingresa sus datos: nombre completo, número de casa, sector, contraseña.
+3. Presiona "Solicitar Acceso".
+4. El sistema valida que el número de casa no esté duplicado.
+5. El sistema crea el registro en `jaar_usuarios` con estado `pendiente` y rol `cliente`.
+6. El sistema muestra: "Tu solicitud fue enviada. El administrador te dará acceso pronto."
+
+**Flujos Alternos:**
+- FA-1: Si el número de casa ya existe en el padrón, el sistema muestra "Ya existe una cuenta para esa casa. Contacta al administrador si tienes problemas para acceder."
+- FA-2: Si algún campo está vacío, el sistema muestra la validación correspondiente sin enviar la solicitud.
+
+---
+
+### CU-03: Aprobación / Rechazo de Vecino por Admin
+
+| Campo | Detalle |
+|-------|---------|
+| **Actor Principal** | Admin |
+| **Precondiciones** | El admin ha iniciado sesión. Existe al menos una solicitud en estado "pendiente" en `admin.html`. |
+| **Postcondiciones** | La cuenta del vecino cambia a "activo" (aprobado) o "rechazado". Si es aprobado, el vecino puede iniciar sesión. |
+
+**Flujo Principal:**
+1. El admin accede a `admin.html` y ve la lista de solicitudes pendientes.
+2. Revisa el nombre, casa y sector del solicitante.
+3. Presiona "✅ Aprobar".
+4. El sistema cambia el estado del usuario a `activo` en `jaar_usuarios`.
+5. El sistema mueve al usuario de la lista "Pendientes" a "Activos".
+6. El vecino ya puede iniciar sesión con sus credenciales.
+
+**Flujos Alternos:**
+- FA-1: El admin presiona "❌ Rechazar" → el estado cambia a `rechazado` y el vecino no puede iniciar sesión.
+- FA-2: El admin presiona "🚫 Suspender" sobre un usuario activo → el estado cambia a `suspendido` y se bloquea el acceso inmediatamente.
+- FA-3: El admin resetea la contraseña de un usuario activo → el sistema asigna la contraseña por defecto `1234` y notifica al cobrador para que informe al vecino.
+
+---
+
+### CU-04: Registro de Jornal Comunitario
+
+| Campo | Detalle |
+|-------|---------|
+| **Actor Principal** | Cobrador |
+| **Precondiciones** | El cobrador ha iniciado sesión. Se ha realizado un jornal comunitario. Los vecinos participantes están registrados en el padrón. |
+| **Postcondiciones** | Se registra la asistencia o inasistencia de cada vecino. Si asistió, se acumulan horas y se otorgan puntos. Si no asistió, se registra la multa correspondiente. |
+
+**Flujo Principal:**
+1. El cobrador accede a `jornales.html`.
+2. Selecciona el vecino participante del padrón.
+3. Indica la tarea realizada y la fecha del jornal.
+4. Indica si el vecino asistió o no.
+5. Si asistió, ingresa las horas trabajadas (y opcionalmente si fue mediante sustituto).
+6. Si no asistió, el sistema aplica la multa configurada.
+7. El sistema guarda el registro en `jaar_jornales`.
+8. El sistema otorga los puntos correspondientes: 8 pts (asistencia personal), 3 pts (sustituto), 0 pts (inasistencia).
+9. El sistema muestra confirmación: "Jornal registrado para [vecino]."
+
+**Flujos Alternos:**
+- FA-1: Si el vecino ya tiene un jornal registrado para esa fecha, el sistema muestra aviso y solicita confirmación antes de duplicar.
+- FA-2: Si la conexión se pierde al guardar, el registro se almacena en caché local y se sincroniza al recuperar la red.
+
+---
+
+### CU-05: Registro de Gasto / Egreso
+
+| Campo | Detalle |
+|-------|---------|
+| **Actor Principal** | Cobrador |
+| **Precondiciones** | El cobrador ha iniciado sesión. Existe un gasto o compra que registrar para la JAAR. |
+| **Postcondiciones** | El gasto queda registrado en `jaar_gastos` con fecha, descripción y monto. Aparece en los reportes de egresos. |
+
+**Flujo Principal:**
+1. El cobrador accede a `gastos.html`.
+2. Ingresa el monto del gasto, la descripción y la fecha.
+3. Presiona "Registrar Gasto".
+4. El sistema valida que el monto sea mayor a cero y que la descripción no esté vacía.
+5. El sistema guarda el registro en `jaar_gastos`.
+6. El sistema muestra la confirmación: "Gasto guardado offline."
+
+**Flujos Alternos:**
+- FA-1: Si el monto es cero o negativo, el sistema muestra "El monto debe ser mayor a B/.0.00."
+- FA-2: Si el dispositivo está sin conexión, el registro se guarda localmente. Al recuperar la red se sincroniza con el servidor.
+
+---
+
 ## 1. Pagos Flexibles
 
 ---
