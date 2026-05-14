@@ -30,6 +30,10 @@
         .btn-si  { background:#dcfce7; color:#166534; }
         .btn-no  { background:#fee2e2; color:#991b1b; }
         .btn-confirm:active { transform: scale(0.97); }
+        .pago-row { display:flex; justify-content:space-between; align-items:center; padding:0.5rem 0; border-bottom:1px solid #f8fafc; font-size:0.875rem; }
+        .pago-row:last-child { border-bottom:none; }
+        .pts-tip summary { cursor:pointer; color:var(--primary); font-weight:600; font-size:0.85rem; }
+        .pts-tip ul { margin-top:0.5rem; padding-left:1.25rem; line-height:1.9; color:var(--text-muted); font-size:0.82rem; }
     </style>
 </head>
 <body>
@@ -41,7 +45,6 @@
                     <h1>Mi Historial</h1>
                 </div>
             </div>
-            <div id="toastNotification" class="toast hidden">Guardado</div>
         </header>
 
         <main class="content">
@@ -86,6 +89,42 @@
                 </div>
             </div>
 
+            <!-- Mis Puntos JAAR -->
+            <div class="section-box">
+                <h3>⭐ Mis Puntos JAAR</h3>
+                <div class="data-row">
+                    <span>Puntos acumulados</span>
+                    <span id="ptosSaldo" style="font-weight:600; color:#d97706;">0 pts</span>
+                </div>
+                <div class="data-row">
+                    <span>Equivale en descuento</span>
+                    <span id="ptosEquivalente" style="font-weight:600; color:var(--success);">B/.0.00</span>
+                </div>
+                <div id="ptosHistorial" style="margin-top:0.75rem;"></div>
+                <details class="pts-tip" style="margin-top:0.75rem;">
+                    <summary>💡 ¿Cómo gano más puntos?</summary>
+                    <ul>
+                        <li>Pagar antes del día 15 → <strong>+5 pts</strong></li>
+                        <li>Pagar varios meses a la vez → <strong>+10 pts por mes extra</strong></li>
+                        <li>Asistir al jornal comunitario → <strong>+8 pts</strong></li>
+                        <li>Trimestre sin multas → <strong>+15 pts</strong></li>
+                        <li>Año completo pagado → <strong>+30 pts</strong></li>
+                    </ul>
+                </details>
+            </div>
+
+            <!-- Historial de Pagos Detallado -->
+            <div class="section-box">
+                <h3>💳 Historial de Pagos</h3>
+                <div id="historialPagos"><div class="empty-state">Sin pagos registrados.</div></div>
+            </div>
+
+            <!-- Estado de Riesgo del Hogar -->
+            <div class="section-box">
+                <h3>🏡 Estado de tu Hogar</h3>
+                <div id="mensajeRiesgo"></div>
+            </div>
+
             <div style="text-align:center; padding: 0.5rem 1rem 2rem;">
                 <p style="font-size:0.8rem; color:var(--text-muted);">
                     Para realizar pagos o disputar multas, acérquese a la directiva de la JAAR en los días laborables indicados en la pestaña de Avisos.
@@ -97,6 +136,10 @@
     </div>
     <script src="js/store.js"></script>
     <script src="js/auth.js"></script>
+    <script src="js/pagos.js"></script>
+    <script src="js/puntos.js"></script>
+    <script src="js/ai-engine.js"></script>
+    <script src="js/ai-insights.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const miembros = Store.getMiembros();
@@ -191,5 +234,55 @@
             renderPendientes();
         });
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const miembros = Store.getMiembros();
+            const yo = miembros.length > 0 ? miembros[0] : null;
+            if (!yo) return;
+            const userId = yo.id?.toString();
+
+            // ── Puntos ──
+            if (typeof Puntos !== 'undefined') {
+                const saldo = Puntos.getSaldo(userId);
+                document.getElementById('ptosSaldo').textContent = `${saldo.saldo} pts`;
+                document.getElementById('ptosEquivalente').textContent = `B/.${(saldo.saldo * 0.10).toFixed(2)}`;
+                const hist = Puntos.getHistorial(userId);
+                const ptosEl = document.getElementById('ptosHistorial');
+                if (!hist || hist.length === 0) {
+                    ptosEl.innerHTML = `<p style="font-size:0.82rem; color:var(--text-muted);">Sin movimientos aún. ¡Haz tu primer pago para ganar puntos!</p>`;
+                } else {
+                    ptosEl.innerHTML = hist.slice(0, 6).map(h => `
+                        <div class="pago-row">
+                            <span>${h.descripcion || h.tipo || 'Movimiento'}</span>
+                            <span style="color:${(h.puntos||0)>0?'#d97706':'var(--danger)'}; font-weight:600;">${(h.puntos||0)>0?'+':''}${h.puntos||0} pts</span>
+                        </div>`).join('');
+                }
+            }
+
+            // ── Historial de Pagos ──
+            const pagos = (typeof Store.getPagos === 'function') ? Store.getPagos() : [];
+            const misPagos = pagos.filter(p => p.usuarioId?.toString() === userId).slice(-10).reverse();
+            const histEl = document.getElementById('historialPagos');
+            if (misPagos.length > 0) {
+                const tl = { mensual:'Cuota Mensual', diario:'Pago Diario', multi_mes:'Multi-Mes', parcial:'Parcial', adelanto:'Adelanto', puesta_al_dia:'Puesta al Día' };
+                histEl.innerHTML = misPagos.map(p => `
+                    <div class="pago-row">
+                        <div>
+                            <span style="font-weight:600;">${tl[p.tipo] || 'Pago'}</span>
+                            <span style="font-size:0.78rem; color:var(--text-muted); display:block;">${p.fecha || '-'}${p.mesTarget ? ' · ' + p.mesTarget : ''}</span>
+                        </div>
+                        <span style="color:var(--success); font-weight:600;">B/.${parseFloat(p.monto||0).toFixed(2)}</span>
+                    </div>`).join('');
+            }
+
+            // ── Riesgo del Hogar ──
+            if (typeof AIInsights !== 'undefined') {
+                AIInsights.renderClientRiskMessage(document.getElementById('mensajeRiesgo'), userId);
+            } else {
+                document.getElementById('mensajeRiesgo').innerHTML = `<p style="font-size:0.875rem; color:var(--text-muted);">Mantente al día con tus pagos y jornales para mantener un buen estado en la comunidad.</p>`;
+            }
+        });
+    </script>
+    <div id="toastNotification" class="toast">Guardado</div>
 </body>
 </html>
