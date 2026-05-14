@@ -60,16 +60,16 @@ document.addEventListener('DOMContentLoaded', () => {
         // ── INGRESOS ──
         let totalIn = 0;
         const ingresos = [];
-
-        const pagados = usuarios.filter(u => u.pagadoEsteMes);
-        if(pagados.length > 0) {
-            const sum = pagados.length * 3.00; // Ajustado al Piloto Caballero ($1.00 Agua + $1.00 Tanque + $1.00 Puerco)
-            totalIn += sum;
-            ingresos.push({ desc:`Cuotas Vecinales (${pagados.length} casas)`, fecha:'Período actual', monto:sum });
-        }
+        const tipoLabel = {
+            mensual:'Cuota Mensual', diario:'Pago Diario', multi_mes:'Pago Multi-Mes',
+            parcial:'Pago Parcial', adelanto:'Pago Adelantado', puesta_al_dia:'Puesta al Día'
+        };
         pagos.filter(p => enRango(p.fecha, desde, hasta)).forEach(p => {
-            totalIn += parseFloat(p.monto||0);
-            ingresos.push({ desc:`Recaudo Offline`, fecha:p.fecha||'-', monto:parseFloat(p.monto||0) });
+            const monto = parseFloat(p.monto || 0);
+            const miembro = usuarios.find(u => u.id?.toString() === p.usuarioId?.toString());
+            const nombre = miembro ? miembro.nombre : 'Vecino';
+            totalIn += monto;
+            ingresos.push({ desc:`${tipoLabel[p.tipo] || 'Cuota'} — ${nombre}`, fecha:p.fecha||'-', monto });
         });
         cache.ingresos = ingresos;
         cache.totalIn = totalIn;
@@ -173,6 +173,60 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         const wsRes = XLSX.utils.aoa_to_sheet(resRows);
         XLSX.utils.book_append_sheet(wb, wsRes, 'Resumen');
+
+        const desde = document.getElementById('filtroDesde').value;
+        const hasta = document.getElementById('filtroHasta').value;
+        const miembros = Store.getMiembros();
+        const tipos = { mensual:'Cuota Mensual', diario:'Pago Diario', multi_mes:'Pago Multi-Mes', parcial:'Pago Parcial', adelanto:'Pago Adelantado', puesta_al_dia:'Puesta al Día' };
+
+        // Hoja 5: Detalle Cobros
+        const allPagos = Store.getPagos();
+        const detRows = [['Vecino','Tipo','Fecha','Monto (B/.)','Mes Target','Nota']];
+        allPagos.filter(p => enRango(p.fecha, desde, hasta)).forEach(p => {
+            const m = miembros.find(u => u.id?.toString() === p.usuarioId?.toString());
+            detRows.push([m ? m.nombre : '-', tipos[p.tipo] || p.tipo || '-', p.fecha||'-', parseFloat(p.monto||0), p.mesTarget||'-', p.nota||'']);
+        });
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(detRows), 'Detalle Cobros');
+
+        // Hoja 6: Estado de Cuentas
+        const estRows = [['Vecino','Sector','Estado','Meses Deuda','Deuda (B/.)']];
+        miembros.forEach(m => {
+            let estado = m.pagadoEsteMes ? 'Al día' : 'Pendiente', mesesD = 0, montoD = 0;
+            if (typeof PagosEngine !== 'undefined') {
+                montoD = PagosEngine.getDeudaTotal(m.id?.toString()) || 0;
+                const ms = PagosEngine.getMesesDeuda(m.id?.toString());
+                mesesD = Array.isArray(ms) ? ms.length : 0;
+                estado = PagosEngine.calcularEstado(m.id?.toString()) || estado;
+            }
+            estRows.push([m.nombre, m.sector||'-', estado, mesesD, montoD]);
+        });
+        XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(estRows), 'Estado Cuentas');
+
+        // Hoja 7: Comisiones (condicional)
+        if (document.getElementById('chkComisiones')?.checked !== false) {
+            const comisiones = (typeof Store.getComisiones === 'function') ? Store.getComisiones() : [];
+            const comRows = [['Cobrador','Vecino','Fecha','Total Cobro','Comisión','Devs 60%','Cobrador 40%','Liquidado']];
+            comisiones.filter(c => enRango(c.fecha, desde, hasta)).forEach(c => {
+                const m = miembros.find(u => u.id?.toString() === c.usuarioId?.toString());
+                comRows.push([c.cobradorUser||'-', m?m.nombre:'-', c.fecha||'-', parseFloat(c.montoTotal||0), parseFloat(c.comisionTotal||0), parseFloat(c.parteDevs||0), parseFloat(c.parteCobrador||0), c.liquidado?'Sí':'No']);
+            });
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(comRows), 'Comisiones');
+        }
+
+        // Hoja 8: Análisis IA (condicional)
+        if (document.getElementById('chkAnalisisIA')?.checked !== false) {
+            const aiRows = [['Vecino','Sector','Nivel Riesgo','Puntaje (0-100)','Meses sin Pagar']];
+            if (typeof AIEngine !== 'undefined') {
+                try {
+                    const result = AIEngine.analyze();
+                    (result?.riesgos || []).forEach(r => {
+                        const m = miembros.find(u => u.id?.toString() === r.userId?.toString());
+                        aiRows.push([m?m.nombre:r.userId||'-', m?m.sector||'-':'-', r.nivel||'-', r.score||0, r.mesesSinPagar||0]);
+                    });
+                } catch(e) { /* AIEngine no disponible */ }
+            }
+            XLSX.utils.book_append_sheet(wb, XLSX.utils.aoa_to_sheet(aiRows), 'Análisis IA');
+        }
 
         XLSX.writeFile(wb, `Reporte_JAAR_${new Date().toISOString().slice(0,10)}.xlsx`);
     };

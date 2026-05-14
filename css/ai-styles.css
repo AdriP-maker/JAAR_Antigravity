@@ -223,3 +223,169 @@
     background: #fef2f2;
     color: #991b1b;
 }
+
+/* ──────────────────────────────────────
+   Puntos Badges (dorado / ámbar)
+   ────────────────────────────────────── */
+
+.pts-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.pts-badge-gold {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fde68a;
+}
+
+.pts-badge-amber {
+    background: #fffbeb;
+    color: #b45309;
+    border: 1px solid #fcd34d;
+}
+
+.pts-badge-earned {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #6ee7b7;
+}
+
+.pts-badge-spent {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+/* ──────────────────────────────────────
+   Modal de Canje de Puntos
+   ────────────────────────────────────── */
+
+.modal-canje {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    max-width: 360px;
+    width: 100%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.modal-canje-header {
+    text-align: center;
+    margin-bottom: 1.25rem;
+}
+
+.modal-canje-header h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 0.25rem;
+}
+
+.modal-canje-header p {
+    font-size: 0.82rem;
+    color: #64748b;
+}
+
+.canje-saldo-display {
+    background: linear-gradient(135deg, #fef3c7, #fffbeb);
+    border: 1px solid #fde68a;
+    border-radius: 12px;
+    padding: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.canje-saldo-pts {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #92400e;
+    line-height: 1;
+}
+
+.canje-saldo-label {
+    font-size: 0.78rem;
+    color: #b45309;
+    margin-top: 0.25rem;
+}
+
+.canje-saldo-equiv {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #065f46;
+    margin-top: 0.5rem;
+}
+
+.canje-input-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.canje-input-row input {
+    flex: 1;
+    padding: 0.6rem 0.75rem;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-align: center;
+    outline: none;
+}
+
+.canje-input-row input:focus {
+    border-color: #0d9488;
+}
+
+.canje-descuento-preview {
+    background: #ecfdf5;
+    border-radius: 8px;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #065f46;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.btn-canje-confirm {
+    width: 100%;
+    padding: 0.75rem;
+    background: #d97706;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    transition: background 0.2s;
+}
+
+.btn-canje-confirm:hover { background: #b45309; }
+.btn-canje-confirm:disabled { background: #d1d5db; cursor: not-allowed; }
+
+.btn-canje-cancel {
+    width: 100%;
+    padding: 0.6rem;
+    background: transparent;
+    color: #64748b;
+    border: none;
+    font-size: 0.85rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.canje-nota {
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-align: center;
+    margin-top: 0.5rem;
+}
