@@ -139,12 +139,19 @@ function renderUsers(filterText = '', mes = '', estado = '') {
 
     // Ruta Inteligente: ordenar por prioridad IA
     if (appState.modoRutaInteligente && typeof AIEngine !== 'undefined') {
-        const cola = AIEngine.generarColaCobranza();
+        const colaResult = AIEngine.generarColaCobranza();
+        const lista = colaResult.lista || [];          // generarColaCobranza() devuelve { total, lista, porSector }
         const prioMap = {};
-        cola.forEach((item, i) => { prioMap[item.userId] = { idx: i, razon: item.razon, score: item.score }; });
+        lista.forEach((item, i) => {
+            prioMap[String(item.userId)] = {
+                idx: i,
+                razon: item.recomendacion || '',
+                score: item.riesgoScore || 0
+            };
+        });
         filtered.sort((a, b) => {
-            const pa = prioMap[a.id] || { idx: 999 };
-            const pb = prioMap[b.id] || { idx: 999 };
+            const pa = prioMap[String(a.id)] || { idx: 999 };
+            const pb = prioMap[String(b.id)] || { idx: 999 };
             return pa.idx - pb.idx;
         });
     }
