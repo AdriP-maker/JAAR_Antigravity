@@ -49,7 +49,7 @@ Puedes acceder al sistema utilizando los siguientes roles y contraseñas por def
 | Rol | Usuario (Login) | Contraseña | Descripción |
 | :--- | :--- | :--- | :--- |
 | **Administrador Global** | `admin` | `admin123` | Control total del sistema, auditoría y finanzas. |
-| **Cobrador en Campo** | `cobrador1` | `admin123` | Permite registrar cobros offline y ver sugerencias de IA. |
+| **Cobrador en Campo** | `cobrador` | `admin123` | Permite registrar cobros offline y ver sugerencias de IA. |
 | **Auditor MINSA** | `minsa` | `admin123` | Solo lectura para emitir y descargar reportes oficiales. |
 | **Soporte Técnico (Dev)** | `dev` | `admin123` | Solo lectura del log de auditoría del sistema, sin acceso a datos sensibles. |
 | **Cliente / Vecino** | `cliente` | `1234` | Usuario de prueba. Ve su historial, pagos, puntos y avisos. |
