@@ -52,7 +52,7 @@ Puedes acceder al sistema utilizando los siguientes roles y contraseñas por def
 | **Cobrador en Campo** | `cobrador1` | `admin123` | Permite registrar cobros offline y ver sugerencias de IA. |
 | **Auditor MINSA** | `minsa` | `admin123` | Solo lectura para emitir y descargar reportes oficiales. |
 | **Soporte Técnico (Dev)** | `dev` | `admin123` | Solo lectura del log de auditoría del sistema, sin acceso a datos sensibles. |
-| **Cliente / Vecino** | `12345` | `12345` | Usuario de prueba. Ve su historial, pagos, puntos y avisos. |
+| **Cliente / Vecino** | `cliente` | `1234` | Usuario de prueba. Ve su historial, pagos, puntos y avisos. |
 
 ## 🏗 Estructura del Proyecto
 
