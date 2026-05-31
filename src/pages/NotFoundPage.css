@@ -1,0 +1,43 @@
+/* NotFoundPage Styles */
+
+.not-found-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-primary);
+  padding: var(--space-4);
+}
+
+.not-found-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.not-found-icon {
+  font-size: 4rem;
+  margin-bottom: var(--space-2);
+  filter: grayscale(0.5);
+  opacity: 0.8;
+}
+
+.not-found-title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+  margin-bottom: var(--space-2);
+}
+
+.not-found-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.not-found-text {
+  color: var(--text-secondary);
+  margin-bottom: var(--space-6);
+  line-height: 1.6;
+}

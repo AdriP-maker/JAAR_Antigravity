@@ -1,0 +1,76 @@
+/* ConfigPage Styles */
+
+.config-page {
+  padding-top: var(--space-2);
+}
+
+.config-header {
+  margin-bottom: var(--space-4);
+}
+
+.config-header h2 {
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.2rem;
+}
+
+[data-theme="dark"] .config-header h2 {
+  color: var(--primary-light);
+}
+
+.config-header p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.config-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+@media (min-width: 600px) {
+  .config-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.config-section {
+  padding: var(--space-4);
+}
+
+.config-section h3 {
+  font-size: 1.05rem;
+  color: var(--primary);
+  margin-bottom: var(--space-3);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: var(--space-2);
+}
+
+.span-full {
+  grid-column: 1 / -1;
+}
+
+.config-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+@media (min-width: 600px) {
+  .config-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.config-actions {
+  position: sticky;
+  bottom: var(--space-4);
+  background: var(--surface);
+  padding: var(--space-3);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border-light);
+  z-index: 10;
+}

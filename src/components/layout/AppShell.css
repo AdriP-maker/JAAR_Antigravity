@@ -1,0 +1,24 @@
+/* AppShell Component Styles */
+
+.app-shell {
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.app-content {
+  flex: 1;
+  padding: var(--space-4);
+  padding-bottom: 5.5rem;
+}
+
+@media (min-width: 640px) {
+  .app-shell {
+    border-left: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-light);
+  }
+}

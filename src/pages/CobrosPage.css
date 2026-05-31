@@ -1,0 +1,63 @@
+/* CobrosPage Styles */
+
+.cobros-page {
+  padding-top: var(--space-2);
+}
+
+.cobros-list-section {
+  margin-top: var(--space-2);
+}
+
+.cobros-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3);
+}
+
+.cobros-list-header h2 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.cobros-count {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  background: var(--bg-secondary);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  font-weight: 500;
+}
+
+.cobros-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.ai-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.ai-modal-content {
+  background: var(--surface);
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  width: 90%;
+  max-width: 400px;
+}
+.ai-box {
+  background: var(--bg-secondary);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  margin: var(--space-3) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+}
+

@@ -1,0 +1,128 @@
+/* AdminPage Styles */
+
+.admin-page {
+  padding-top: var(--space-2);
+}
+
+.admin-header {
+  margin-bottom: var(--space-4);
+}
+
+.admin-header h2 {
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+}
+
+[data-theme="dark"] .admin-header h2 {
+  color: var(--primary-light);
+}
+
+.admin-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: var(--space-2);
+}
+
+.admin-tab {
+  background: transparent;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0.5rem 0.25rem;
+  position: relative;
+  transition: color var(--transition-fast);
+}
+
+.admin-tab:hover {
+  color: var(--primary);
+}
+
+.admin-tab.active {
+  color: var(--primary);
+}
+
+.admin-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.admin-search {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  background: var(--surface);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.admin-search:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--primary-glow);
+}
+
+.admin-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.admin-user-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+}
+
+.admin-user-title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: 0.25rem;
+}
+
+.admin-user-title h4 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.admin-user-sub {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.1rem;
+}
+
+.admin-user-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.admin-user-actions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .admin-user-actions-grid {
+    width: auto;
+    display: flex;
+  }
+}

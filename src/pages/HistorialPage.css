@@ -1,0 +1,140 @@
+/* HistorialPage Styles */
+
+.historial-page {
+  padding-top: var(--space-2);
+}
+
+.hist-section {
+  margin-bottom: var(--space-4);
+}
+
+.hist-title {
+  font-size: 1.05rem;
+  color: var(--primary-dark);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 2px solid var(--border-light);
+}
+
+[data-theme="dark"] .hist-title {
+  color: var(--primary-light);
+}
+
+.hist-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.9rem;
+}
+
+.hist-row:last-child {
+  border-bottom: none;
+}
+
+.hist-status.good {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.hist-status.bad {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.hist-danger {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.hist-good {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.hist-points {
+  color: #d97706;
+  font-weight: 600;
+}
+
+[data-theme="dark"] .hist-points {
+  color: #fbbf24;
+}
+
+/* Tips */
+.hist-tips {
+  margin-top: var(--space-3);
+}
+
+.hist-tips summary {
+  cursor: pointer;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: var(--space-2) 0;
+}
+
+.hist-tips ul {
+  margin-top: var(--space-2);
+  padding-left: 1.25rem;
+  line-height: 2;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
+/* Payment history */
+.hist-pagos-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.hist-pago-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.875rem;
+}
+
+.hist-pago-row:last-child {
+  border-bottom: none;
+}
+
+.hist-pago-tipo {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.hist-pago-fecha {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+.hist-pago-monto {
+  color: var(--success);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Risk message */
+.hist-risk-message {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Footer */
+.hist-footer {
+  text-align: center;
+  padding: var(--space-4);
+}
+
+.hist-footer p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
