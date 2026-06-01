@@ -79,7 +79,7 @@ export default function App() {
     <ThemeProvider>
       <ToastProvider>
         <AuthProvider>
-          <BrowserRouter basename="/JAAR_Antigravity/">
+          <BrowserRouter basename="/JAAR_Antigravity">
             <Routes>
               {/* Public Routes */}
               <Route path="/login" element={<LoginPage />} />
