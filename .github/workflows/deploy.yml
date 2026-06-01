@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - actualizacion_jaar
   pull_request:
     branches:
       - main
+      - actualizacion_jaar
 
 jobs:
   build_and_deploy:
@@ -38,7 +40,7 @@ jobs:
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/actualizacion_jaar'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
