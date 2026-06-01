@@ -1,0 +1,18 @@
+{
+  "name": "JAAR Digital",
+  "short_name": "JAAR",
+  "description": "Sistema de Gestión para Juntas Administradoras de Acueductos Rurales de Panamá.",
+  "start_url": "/JAAR_Antigravity/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0d9488",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3248/3248161.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
