@@ -4,7 +4,7 @@
  */
 
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { ToastProvider } from './context/ToastContext';
@@ -79,7 +79,7 @@ export default function App() {
     <ThemeProvider>
       <ToastProvider>
         <AuthProvider>
-          <BrowserRouter basename="/JAAR_Antigravity">
+          <HashRouter>
             <Routes>
               {/* Public Routes */}
               <Route path="/login" element={<LoginPage />} />
@@ -108,7 +108,7 @@ export default function App() {
               {/* 404 */}
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
-          </BrowserRouter>
+          </HashRouter>
           <ToastContainer />
         </AuthProvider>
       </ToastProvider>
