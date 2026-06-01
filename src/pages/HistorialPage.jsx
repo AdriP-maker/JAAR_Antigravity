@@ -108,9 +108,12 @@ export default function HistorialPage() {
         ) : (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             {avisos.map(aviso => (
-              <div key={aviso.id} style={{ padding: '0.5rem', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)' }}>
-                <strong style={{ display: 'block', marginBottom: '0.2rem' }}>{aviso.titulo}</strong>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{formatFecha(aviso.fecha)}</span>
+              <div key={aviso.id} style={{ padding: '0.65rem 0.75rem', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', borderLeft: '3px solid var(--primary)' }}>
+                <strong style={{ display: 'block', marginBottom: '0.3rem' }}>{aviso.titulo}</strong>
+                {aviso.contenido && (
+                  <p style={{ margin: '0 0 0.35rem 0', fontSize: '0.88rem', color: 'var(--text-primary)', lineHeight: '1.45' }}>{aviso.contenido}</p>
+                )}
+                <span style={{ fontSize: '0.78rem', color: 'var(--text-muted)' }}>{formatFecha(aviso.fecha)}</span>
               </div>
             ))}
           </div>

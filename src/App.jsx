@@ -28,6 +28,8 @@ import ComisionesPage from './pages/ComisionesPage';
 import ReportePage from './pages/ReportePage';
 import ForoPage from './pages/ForoPage';
 import ConfigPage from './pages/ConfigPage';
+import ChatPage from './pages/ChatPage';
+import MapaPage from './pages/MapaPage';
 
 // Initialize DB outside React lifecycle to prevent multiple calls on hot reload
 let dbInitialized = false;
@@ -100,6 +102,10 @@ export default function App() {
                 <Route path="/reporte" element={<ReportePage />} />
                 <Route path="/foro" element={<ForoPage />} />
                 <Route path="/puntos-admin" element={<ConfigPage />} />
+
+                {/* Phase 4 Modules */}
+                <Route path="/chat" element={<ChatPage />} />
+                <Route path="/mapa" element={<MapaPage />} />
               </Route>
 
               {/* Redirect root to appropriate page */}

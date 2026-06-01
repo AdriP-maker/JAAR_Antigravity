@@ -101,9 +101,9 @@ export function getHomeRoute(role) {
 export function isRouteAllowed(role, path) {
   const rules = {
     admin: ['/admin', '/puntos-admin'],
-    cobrador: ['/cobros', '/jornales', '/gastos', '/comisiones', '/reporte', '/foro'],
+    cobrador: ['/cobros', '/jornales', '/gastos', '/comisiones', '/reporte', '/foro', '/chat', '/mapa'],
     minsa: ['/reporte'],
-    cliente: ['/historial', '/foro'],
+    cliente: ['/historial', '/foro', '/chat'],
     dev: ['/admin'], // Solo auditoría y monitoreo
   };
 

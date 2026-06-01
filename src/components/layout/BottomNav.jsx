@@ -17,7 +17,8 @@ const NAV_ITEMS = {
   ],
   cliente: [
     { path: '/historial', icon: '👤', label: 'Mi Cuenta' },
-    { path: '/foro', icon: '💬', label: 'Avisos' },
+    { path: '/foro', icon: '📢', label: 'Avisos' },
+    { path: '/chat', icon: '💬', label: 'Mensajes' },
   ],
   minsa: [
     { path: '/reporte', icon: '📊', label: 'Reportes' },

@@ -37,6 +37,10 @@ db.version(5).stores({
   notificaciones: '++id, usuarioId, fecha, leido',
 });
 
+db.version(6).stores({
+  mensajes: '++id, conversacionId, de, para, fecha, leido',
+});
+
 /**
  * Inicializa la base de datos con datos de prueba si está vacía.
  * También ejecuta la migración desde localStorage si existen datos antiguos.

@@ -1,0 +1,252 @@
+/* MapaPage.css — JAAR Digital */
+
+.mapa-page {
+  padding: 0 0 1.5rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Header ── */
+.mapa-header {
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.mapa-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.mapa-header p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.2rem 0 0;
+}
+
+/* ── KPI Grid ── */
+.mapa-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  padding: 0.75rem 1.25rem;
+}
+
+.mapa-kpi-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.kpi-primary { border-left: 4px solid var(--primary); }
+.kpi-success { border-left: 4px solid #22c55e; }
+.kpi-danger  { border-left: 4px solid #ef4444; }
+.kpi-neutral { border-left: 4px solid #94a3b8; }
+
+.kpi-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.kpi-value {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.kpi-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+/* ── Leyenda ── */
+.mapa-leyenda {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.25rem 1.25rem 0.75rem;
+}
+
+.leyenda-item {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.65rem;
+  border-radius: 50px;
+  font-weight: 500;
+}
+
+.leyenda-item.verde    { background: rgba(34, 197, 94, 0.15); color: #16a34a; border: 1px solid rgba(34, 197, 94, 0.3); }
+.leyenda-item.amarillo { background: rgba(234, 179, 8, 0.15); color: #a16207; border: 1px solid rgba(234, 179, 8, 0.3); }
+.leyenda-item.rojo     { background: rgba(239, 68, 68, 0.15); color: #dc2626; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+/* ── Lista de Sectores ── */
+.mapa-sectores-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 1.25rem;
+}
+
+.mapa-loading {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ── Sector Card ── */
+.sector-card {
+  border-radius: 18px;
+  border: 1.5px solid var(--border-color);
+  background: var(--bg-secondary);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.sector-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Color accent strip */
+.sector-verde    { border-left: 5px solid #22c55e; }
+.sector-amarillo { border-left: 5px solid #eab308; }
+.sector-rojo     { border-left: 5px solid #ef4444; }
+
+.sector-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--text-primary);
+  transition: background 0.15s;
+}
+
+.sector-card-header:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+.sector-card-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sector-emoji {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.sector-nombre {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.sector-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0.1rem 0 0;
+}
+
+.sector-card-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Progress Ring ── */
+.sector-progress-ring {
+  position: relative;
+  width: 44px;
+  height: 44px;
+}
+
+.ring-svg {
+  width: 44px;
+  height: 44px;
+}
+
+.ring-bg {
+  stroke: var(--border-color);
+}
+
+.sector-verde    .ring-fill { stroke: #22c55e; }
+.sector-amarillo .ring-fill { stroke: #eab308; }
+.sector-rojo     .ring-fill { stroke: #ef4444; }
+
+.ring-fill {
+  transition: stroke-dasharray 0.6s ease;
+}
+
+.ring-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sector-toggle-icon {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-left: 0.25rem;
+}
+
+/* ── Lista de Vecinos expandida ── */
+.sector-vecinos-list {
+  border-top: 1px solid var(--border-color);
+  padding: 0.5rem 1rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.sector-vecino-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.25rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sector-vecino-item:last-child {
+  border-bottom: none;
+}
+
+.sector-vecino-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.sector-vecino-nombre {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.sector-vecino-deuda {
+  font-size: 0.75rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  .sector-card-header:hover {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}

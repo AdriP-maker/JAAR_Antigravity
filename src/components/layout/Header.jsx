@@ -6,11 +6,15 @@
 import { useState, useEffect } from 'react';
 import Badge from '../ui/Badge';
 import ThemeToggle from './ThemeToggle';
+import SideMenu from './SideMenu';
 import { useOnline } from '../../hooks/useOnline';
 import { useToast } from '../../context/ToastContext';
 import { useAuth } from '../../context/AuthContext';
 import { getPendingSyncCount, clearPendingSync } from '../../services/pagosService';
 import './Header.css';
+
+// Roles that have secondary items in the side menu
+const ROLES_WITH_SIDEMENU = ['cobrador'];
 
 export default function Header({ title = 'Piloto Caballero (Ant贸n)', icon = '馃挧' }) {
   const isOnline = useOnline();
@@ -18,6 +22,9 @@ export default function Header({ title = 'Piloto Caballero (Ant贸n)', icon = '馃
   const { user } = useAuth();
   const [syncing, setSyncing] = useState(false);
   const [pendingCount, setPendingCount] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const hasSideMenu = ROLES_WITH_SIDEMENU.includes(user?.rol);
 
   const showSync = user?.rol === 'admin' || user?.rol === 'cobrador';
 
@@ -51,12 +58,23 @@ export default function Header({ title = 'Piloto Caballero (Ant贸n)', icon = '馃
   };
 
   return (
-    <header className="header-nav">
-      <div className="header-content">
-        <div className="header-brand">
-          <span className="header-logo">{icon}</span>
-          <h1 className="header-title">{title}</h1>
-        </div>
+    <>
+      <SideMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      <header className="header-nav">
+        <div className="header-content">
+          <div className="header-brand">
+            {hasSideMenu && (
+              <button
+                className="header-hamburger"
+                onClick={() => setMenuOpen(true)}
+                aria-label="Abrir men煤"
+              >
+                <span /><span /><span />
+              </button>
+            )}
+            <span className="header-logo">{icon}</span>
+            <h1 className="header-title">{title}</h1>
+          </div>
         <div className="header-actions">
           <ThemeToggle />
           {showSync && (
@@ -81,7 +99,8 @@ export default function Header({ title = 'Piloto Caballero (Ant贸n)', icon = '馃
             Cobros sin subir: <strong className={pendingCount > 0 ? 'pending-alert' : ''}>{pendingCount}</strong>
           </span>
         )}
-      </div>
-    </header>
+        </div>
+      </header>
+    </>
   );
 }
