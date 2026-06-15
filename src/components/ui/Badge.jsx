@@ -1,5 +1,5 @@
 /**
- * Badge Component — JAAR Digital
+ * Badge Component — SIMAP Digital
  * Status badges with semantic color variants
  */
 

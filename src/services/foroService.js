@@ -1,5 +1,5 @@
 /**
- * foroService.js — JAAR Digital
+ * foroService.js — SIMAP Digital
  * Service layer for the community announcements wall
  */
 

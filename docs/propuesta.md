@@ -7,7 +7,7 @@
 
 ## 1. El Problema en Números — Porque Lo Que No Se Ve, No Se Puede Arreglar
 
-Más de **677,000 personas** en zonas rurales de Panamá dependen del agua que administran las Juntas Administradoras de Acueductos Rurales (JAAR). Estas organizaciones hacen un trabajo enorme con muy pocos recursos — y casi siempre **a mano**.
+Más de **677,000 personas** en zonas rurales de Panamá dependen del agua que administran las Sistema Integrado de Moradores y Agua Potable (SIMAP). Estas organizaciones hacen un trabajo enorme con muy pocos recursos — y casi siempre **a mano**.
 
 La realidad cotidiana de muchas Juntas hoy:
 
@@ -26,7 +26,7 @@ La realidad cotidiana de muchas Juntas hoy:
 
 ## 2. La Solución Propuesta — PWA: Simple, Accesible y Segura
 
-Desarrollamos una **Plataforma Web (PWA)** diseñada específicamente para las JAAR. Funciona directamente desde el navegador web de cualquier teléfono o computadora, **sin requerir descargas, instalación en el dispositivo, ni internet constante**.
+Desarrollamos una **Plataforma Web (PWA)** diseñada específicamente para las SIMAP. Funciona directamente desde el navegador web de cualquier teléfono o computadora, **sin requerir descargas, instalación en el dispositivo, ni internet constante**.
 
 **¿Cómo funciona en la práctica?**
 
@@ -52,14 +52,14 @@ Desarrollamos una **Plataforma Web (PWA)** diseñada específicamente para las J
 - **Cumplimiento del Decreto Ejecutivo N° 1839** — Registros contables reales y verificables.
 - **Reducción de conflictos comunitarios** — Datos claros reducen disputas.
 - **Datos para política hídrica** — Por primera vez, indicadores consolidados por región.
-- **Modelo replicable** — Escalable a las más de 2,000 JAAR registradas en el país.
+- **Modelo replicable** — Escalable a las más de 2,000 SIMAP registradas en el país.
 
 ---
 
 ## 5. Próximos Pasos
 
 > [!IMPORTANT]
-> **Para líderes de la JAAR:** Les pedimos una reunión de presentación — una hora, sin compromisos.
+> **Para líderes de la SIMAP:** Les pedimos una reunión de presentación — una hora, sin compromisos.
 
 > [!IMPORTANT]
 > **Para autoridades del MINSA:** Solicitamos una reunión técnica con los responsables de la División de Saneamiento Rural.

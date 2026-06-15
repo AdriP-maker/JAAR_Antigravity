@@ -1,5 +1,5 @@
 /**
- * EmptyState Component — JAAR Digital
+ * EmptyState Component — SIMAP Digital
  */
 
 import './EmptyState.css';

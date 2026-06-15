@@ -1,5 +1,5 @@
 /**
- * Constants for JAAR Digital
+ * Constants for SIMAP Digital
  */
 
 export const ROLES = {

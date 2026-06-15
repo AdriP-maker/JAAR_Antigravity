@@ -1,5 +1,5 @@
 /**
- * ReportePage — JAAR Digital
+ * ReportePage — SIMAP Digital
  * Analytics dashboard and export tool
  */
 
@@ -58,7 +58,7 @@ export default function ReportePage() {
     ];
     XLSX.utils.book_append_sheet(wb, wsEgresos, "Egresos");
 
-    XLSX.writeFile(wb, `Reporte_JAAR_${new Date().toISOString().split('T')[0]}.xlsx`);
+    XLSX.writeFile(wb, `Reporte_SIMAP_${new Date().toISOString().split('T')[0]}.xlsx`);
   };
 
   const handleExportPDF = () => {
@@ -66,7 +66,7 @@ export default function ReportePage() {
     
     // Header
     doc.setFontSize(18);
-    doc.text("Junta Administradora de Acueducto Rural (JAAR)", 14, 20);
+    doc.text("Junta Administradora de Acueducto Rural (SIMAP)", 14, 20);
     
     doc.setFontSize(12);
     doc.text(`Reporte Financiero Oficial`, 14, 28);
@@ -123,14 +123,14 @@ export default function ReportePage() {
     doc.text("_________________________", 14, finalY + 60);
     doc.text("Firma del Presidente / Tesorero", 14, finalY + 66);
 
-    doc.save(`Reporte_JAAR_${new Date().toISOString().split('T')[0]}.pdf`);
+    doc.save(`Reporte_SIMAP_${new Date().toISOString().split('T')[0]}.pdf`);
   };
 
   return (
     <div className="reporte-page">
       <div className="reporte-header">
         <h2>Reporte General</h2>
-        <p>Métricas financieras de la JAAR</p>
+        <p>Métricas financieras de la SIMAP</p>
       </div>
 
       <div className="metrics-grid">

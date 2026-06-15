@@ -1,5 +1,5 @@
 /**
- * ComisionesPage — JAAR Digital
+ * ComisionesPage — SIMAP Digital
  * Track the split between collectors and the board/devs
  */
 
@@ -22,7 +22,7 @@ export default function ComisionesPage() {
     <div className="comisiones-page">
       <div className="comisiones-header">
         <h2>Distribución de Ganancias</h2>
-        <p>Recaudación total dividida según la configuración de la JAAR</p>
+        <p>Recaudación total dividida según la configuración de la SIMAP</p>
       </div>
 
       <div className="comisiones-grid">
@@ -44,7 +44,7 @@ export default function ComisionesPage() {
 
           <Card className="comisiones-card split-devs animate-fade-in-up" style={{ animationDelay: '100ms' }}>
             <div className="split-header">
-              <h4>Fondo JAAR / Devs</h4>
+              <h4>Fondo SIMAP / Devs</h4>
               <span className="split-badge">{Math.round(data.config.splitDevs * 100)}%</span>
             </div>
             <div className="amount">{formatMonto(data.devShare)}</div>

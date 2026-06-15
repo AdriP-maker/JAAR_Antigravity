@@ -1,5 +1,5 @@
 /**
- * ForoPage — JAAR Digital
+ * ForoPage — SIMAP Digital
  * Community wall for announcements
  */
 

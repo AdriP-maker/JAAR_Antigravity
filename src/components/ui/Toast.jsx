@@ -1,5 +1,5 @@
 /**
- * Toast Component — JAAR Digital
+ * Toast Component — SIMAP Digital
  * Floating notification container rendered from ToastContext
  */
 

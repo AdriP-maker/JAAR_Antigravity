@@ -1,5 +1,5 @@
 /**
- * JornalesPage — JAAR Digital
+ * JornalesPage — SIMAP Digital
  * Register and manage community workday attendance
  */
 

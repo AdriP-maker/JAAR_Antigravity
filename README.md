@@ -1,6 +1,6 @@
-# JAAR Digital · Cuentas Claras 💧
+# SIMAP Digital · Cuentas Claras 💧
 
-Sistema integral de gestión, cobranza y auditoría para las Juntas Administradoras de Acueductos Rurales de Panamá (JAAR). Diseñado con una arquitectura *Offline-First* que permite a los cobradores operar en comunidades sin acceso a internet, sincronizando los datos automáticamente cuando recuperan la conexión.
+Sistema integral de gestión, cobranza y auditoría para las Sistema Integrado de Moradores y Agua Potable de Panamá (SIMAP). Diseñado con una arquitectura *Offline-First* que permite a los cobradores operar en comunidades sin acceso a internet, sincronizando los datos automáticamente cuando recuperan la conexión.
 
 ## 🚀 Características Principales
 

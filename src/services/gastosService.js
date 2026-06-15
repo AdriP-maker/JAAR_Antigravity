@@ -1,5 +1,5 @@
 /**
- * gastosService.js — JAAR Digital
+ * gastosService.js — SIMAP Digital
  * Service layer for managing community expenses
  */
 

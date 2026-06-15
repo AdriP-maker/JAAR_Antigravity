@@ -1,5 +1,5 @@
 /**
- * puntosService.js — JAAR Digital
+ * puntosService.js — SIMAP Digital
  * Motor de Gamificación para recompensar el buen comportamiento
  */
 

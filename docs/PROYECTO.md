@@ -1,12 +1,12 @@
-# Arquitectura y Diseño: JAAR Digital
+# Arquitectura y Diseño: SIMAP Digital
 
-Este documento describe la arquitectura, las decisiones de diseño y el funcionamiento funcional de la plataforma **JAAR Digital**, un sistema de gestión, cobranza, auditoría y gamificación creado específicamente para las Juntas Administradoras de Acueductos Rurales de Panamá.
+Este documento describe la arquitectura, las decisiones de diseño y el funcionamiento funcional de la plataforma **SIMAP Digital**, un sistema de gestión, cobranza, auditoría y gamificación creado específicamente para las Sistema Integrado de Moradores y Agua Potable de Panamá.
 
 ## 1. El Problema a Resolver
 Las Juntas de Acueductos Rurales a menudo gestionan sus cobros y membresías en cuadernos de papel. Cuando un cobrador va de casa en casa para recaudar el pago del agua, usualmente se encuentra en áreas rurales **donde no hay cobertura de internet ni señal celular**. Adicionalmente, el MINSA (Ministerio de Salud) exige reportes de transparencia y es crucial mantener un historial inmutable para evitar irregularidades.
 
 ## 2. La Solución: Arquitectura Offline-First
-JAAR Digital está diseñado bajo el paradigma **Offline-First (Primero sin conexión)**.
+SIMAP Digital está diseñado bajo el paradigma **Offline-First (Primero sin conexión)**.
 Esto significa que la aplicación web funciona exactamente igual tenga o no internet. 
 
 *   **Tecnología Base:** Utilizamos `IndexedDB` a través de la librería `Dexie.js`.

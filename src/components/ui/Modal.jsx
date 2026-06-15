@@ -1,5 +1,5 @@
 /**
- * Modal Component — JAAR Digital
+ * Modal Component — SIMAP Digital
  * Bottom-sheet style modal with slide-up animation and backdrop
  */
 

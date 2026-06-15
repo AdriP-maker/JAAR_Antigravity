@@ -3,7 +3,7 @@
 ## 1. Hoja de Ruta (Roadmap)
 
 ### ✅ Fase 1: Prototipo Web Funcional (COMPLETADA)
-- PWA con todas las pantallas operativas (Login, Cobros, Jornales, Gastos, Foro, Historial, Reporte MINSA).
+- SPA en React 19 + Vite con todas las vistas operativas (Login, Cobros, Jornales, Gastos, Foro, Historial, Reporte MINSA).
 - Sistema de roles (Admin, Cobrador, MINSA, Cliente).
 - Exportación dual PDF + Excel (SheetJS offline).
 - Filtros por fecha y tipo en reportes.
@@ -11,36 +11,36 @@
 
 ### 🔄 Fase 2: Piloto en Comunidad (PRÓXIMA)
 - Despliegue en GitHub Pages para pruebas de acceso remoto.
-- Conexión real con Supabase (reemplazar `localStorage` por SDK de Supabase).
+- Conexión real con Supabase (sincronizar IndexedDB/Dexie con SDK de Supabase).
 - Autenticación real con Supabase Auth.
 - Service Worker completo para caché offline de los archivos de la app.
-- Pruebas reales con la JAAR Los Alonsos (Caballero, Antón).
+- Pruebas reales con la SIMAP Los Alonsos (Caballero, Antón).
 
 ### ⚙️ Fase 2.5: Nuevas Funcionalidades (EN DESARROLLO)
 
 Implementación de tres ejes de evolución sobre la base existente, cubriendo RF-12 a RF-25.
 
-#### Eje 1 — Pagos Flexibles (`js/pagos.js`)
-- Motor `PagosEngine` con soporte a 6 tipos de pago: mensual, diario, multi-mes, parcial, adelanto, puesta al día.
-- Libro mayor de saldos por usuario/mes (`jaar_saldos`).
-- Modal de cobro con 5 tabs de tipo de pago en `index.html`.
-- Migración no destructiva de datos legacy (`PagosEngine.migrarDatosAntiguos()`).
+#### Eje 1 — Pagos Flexibles (`src/services/pagosService.js`)
+- Funciones con soporte a 6 tipos de pago: mensual, diario, multi-mes, parcial, adelanto, puesta al día.
+- Libro mayor de saldos por usuario/mes en IndexedDB.
+- Componente Modal de cobro con tabs en React.
+- Migración de datos legacy.
 - Casos de uso: CU-06 a CU-10.
 
-#### Eje 2 — Comisiones y Puntos (`js/comisiones.js`, `js/puntos.js`)
+#### Eje 2 — Comisiones y Puntos (`src/services/comisionesService.js`, `src/services/puntosService.js`)
 - Split configurable de ingresos: 60% desarrolladores / 40% cobrador.
-- Dashboard de ganancias del cobrador (`comisiones.html`).
+- Dashboard de ganancias del cobrador (`/comisiones`).
 - Sistema de puntos acumulables por pagos puntuales, jornales y bonos trimestrales/anuales.
 - Canje de puntos: 1 pt = B/.0.10 de descuento (mínimo 10 pts, máximo B/.1.50/mes).
-- Configuración admin de splits y reglas de puntos (`puntos-admin.html`).
+- Configuración admin de splits y reglas de puntos (`/puntos-admin`).
 - Casos de uso: CU-11 a CU-17.
 
-#### Eje 3 — Inteligencia Artificial (`js/ai-engine.js`, `js/ai-insights.js`)
+#### Eje 3 — Inteligencia Artificial (`src/services/aiService.js`)
 - Puntaje de riesgo por hogar (0-100) con 5 pesos ponderados.
 - Predicción de morosidad: `tasa_base × factor_estacional × factor_tendencia × factor_sector × factor_jornales`.
 - Cola de prioridad "Ruta Inteligente" ordenada por riesgo + urgencia + sector geográfico.
 - Detección de anomalías con Z-score sobre agregados mensuales.
-- Panel de Inteligencia en `admin.html`, badges de riesgo en `index.html`, mensaje amigable en `historial.html`.
+- Panel de Inteligencia en `/admin`, badges de riesgo en `/cobros`, mensaje amigable en `/historial`.
 - Casos de uso: CU-18 a CU-23.
 
 #### Métricas de éxito de la Fase 2.5
@@ -53,7 +53,7 @@ Implementación de tres ejes de evolución sobre la base existente, cubriendo RF
 - Módulo de notificaciones push (nuevos avisos en el foro).
 - Dashboard de métricas para el administrador.
 - Backup automático a Supabase Storage.
-- Soporte multi-JAAR (varias juntas en la misma instancia).
+- Soporte multi-SIMAP (varias juntas en la misma instancia).
 
 ---
 
@@ -88,12 +88,12 @@ git push origin main
 ```
 
 ### Gestión de Usuarios
-- El administrador (`admin` / `admin123`) tiene control total desde `admin.html`.
+- El administrador (`admin` / `admin123`) tiene control total desde la vista `/admin`.
 - Para resetear contraseñas: Admin → tabla de Activos → botón "🔑 Reset Clave".
 - **En producción con Supabase:** Las contraseñas se resetean por email automático.
 
 ### Respaldo de Datos
-- **Fase piloto:** Los datos están en el `localStorage` de cada dispositivo (Navegador).
+- **Fase piloto:** Los datos están en `IndexedDB` (via Dexie) de cada dispositivo (Navegador).
 - **Con Supabase:** Backups diarios automáticos en la nube.
 
 ---
@@ -101,8 +101,8 @@ git push origin main
 ## 4. Convenciones de Código
 
 ### Nomenclatura de Archivos
-- HTML: nombre descriptivo en minúsculas (`jornales.html`, `reporte.html`)
-- JS: un archivo por módulo en `js/` (`foro.js`, `gastos.js`)
+- Componentes React: PascalCase (`JornalesPage.jsx`, `ReportePage.jsx`)
+- Servicios JS: camelCase (`foroService.js`, `gastosService.js`)
 - Documentación: en `docs/` en formato Markdown (`.md`)
 
 ### Commits (Git)

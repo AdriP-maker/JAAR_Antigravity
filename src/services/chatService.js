@@ -1,5 +1,5 @@
 /**
- * chatService.js — JAAR Digital
+ * chatService.js — SIMAP Digital
  * Servicio de mensajería directa Cobrador ↔ Vecino (offline-first con IndexedDB)
  */
 

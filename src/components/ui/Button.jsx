@@ -1,5 +1,5 @@
 /**
- * Button Component — JAAR Digital
+ * Button Component — SIMAP Digital
  * Premium button with multiple variants and micro-interactions
  */
 

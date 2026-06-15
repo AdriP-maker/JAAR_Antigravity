@@ -1,5 +1,5 @@
 /**
- * Header Component — JAAR Digital
+ * Header Component — SIMAP Digital
  * Sticky top navigation with glassmorphism, sync button, and connectivity status
  */
 

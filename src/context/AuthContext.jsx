@@ -1,5 +1,5 @@
 /**
- * Contexto de Autenticación — JAAR Digital
+ * Contexto de Autenticación — SIMAP Digital
  * Provee el estado de la sesión, los datos del usuario y métodos de login/logout a toda la aplicación
  */
 

@@ -1,5 +1,5 @@
 /**
- * CobroModal — JAAR Digital
+ * CobroModal — SIMAP Digital
  * Payment modal with tabs for different payment types
  */
 
@@ -209,7 +209,7 @@ export default function CobroModal({ isOpen, onClose, user, onPagoComplete }) {
       {puntos > 0 && (
         <div style={{ padding: '0.75rem', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', marginBottom: '1rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div>
-            <strong style={{color: 'var(--primary-color)'}}>🌟 Tienes {puntos} Puntos JAAR</strong><br/>
+            <strong style={{color: 'var(--primary-color)'}}>🌟 Tienes {puntos} Puntos SIMAP</strong><br/>
             <small>Equivale a {formatMonto(calcularDescuentoBalboas(puntos))} de descuento.</small>
           </div>
           <label style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}>

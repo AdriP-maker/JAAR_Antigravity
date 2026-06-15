@@ -1,12 +1,12 @@
 /**
- * Servicio de Autenticación — JAAR Digital
+ * Servicio de Autenticación — SIMAP Digital
  * Maneja el inicio de sesión, cierre de sesión, persistencia de sesión y acceso basado en roles.
  */
 
 import { SYSTEM_USERS, ROLE_HOME } from '../utils/constants';
 import db from './db';
 
-const SESSION_KEY = 'jaar_session';
+const SESSION_KEY = 'simap_session';
 
 /**
  * Intenta iniciar sesión con credenciales provistas.

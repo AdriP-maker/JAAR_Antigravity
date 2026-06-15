@@ -1,5 +1,5 @@
 /**
- * KPIGrid — JAAR Digital
+ * KPIGrid — SIMAP Digital
  * Quick stats KPI cards
  */
 

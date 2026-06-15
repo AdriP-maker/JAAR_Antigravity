@@ -1,5 +1,5 @@
 /**
- * SideMenu — JAAR Digital
+ * SideMenu — SIMAP Digital
  * Menú lateral deslizable para ítems de navegación secundarios
  */
 
@@ -65,7 +65,7 @@ export default function SideMenu({ isOpen, onClose }) {
         {/* Logo */}
         <div className="sidemenu-brand">
           <span className="sidemenu-brand-icon">💧</span>
-          <span className="sidemenu-brand-name">JAAR Digital</span>
+          <span className="sidemenu-brand-name">SIMAP Digital</span>
         </div>
 
         <div className="sidemenu-divider" />

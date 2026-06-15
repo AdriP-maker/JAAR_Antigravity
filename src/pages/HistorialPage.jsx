@@ -1,5 +1,5 @@
 /**
- * HistorialPage — JAAR Digital
+ * HistorialPage — SIMAP Digital
  * Client-facing history page with account status, jornales, points, and payment history
  */
 
@@ -151,7 +151,7 @@ export default function HistorialPage() {
 
       {/* Points */}
       <Card delay={160} className="hist-section">
-        <h3 className="hist-title">⭐ Mis Puntos JAAR</h3>
+        <h3 className="hist-title">⭐ Mis Puntos SIMAP</h3>
         <div className="hist-row">
           <span>Puntos acumulados</span>
           <span className="hist-points">{puntos} pts</span>
@@ -207,7 +207,7 @@ export default function HistorialPage() {
       </Card>
 
       <div className="hist-footer">
-        <p>Para realizar pagos o disputar multas, acérquese a la directiva de la JAAR en los días laborables indicados en la pestaña de Avisos.</p>
+        <p>Para realizar pagos o disputar multas, acérquese a la directiva de la SIMAP en los días laborables indicados en la pestaña de Avisos.</p>
       </div>
     </div>
   );

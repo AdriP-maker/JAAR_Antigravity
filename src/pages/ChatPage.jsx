@@ -1,5 +1,5 @@
 /**
- * ChatPage — JAAR Digital
+ * ChatPage — SIMAP Digital
  * Mensajería directa bidireccional entre cobrador y vecinos
  */
 
@@ -262,7 +262,7 @@ export default function ChatPage() {
 
   // VISTA CLIENTE: Ve directamente su conversación con el cobrador
   if (!esCobrador) {
-    const cobradorContacto = { user: COBRADOR_ID, nombre: 'Cobrador JAAR', sector: '' };
+    const cobradorContacto = { user: COBRADOR_ID, nombre: 'Cobrador SIMAP', sector: '' };
     return (
       <div className="chat-page">
         <ConversacionView

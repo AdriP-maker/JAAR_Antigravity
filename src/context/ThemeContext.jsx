@@ -1,5 +1,5 @@
 /**
- * Contexto de Tema — JAAR Digital
+ * Contexto de Tema — SIMAP Digital
  * Gestiona el modo Claro/Oscuro, persistencia en localStorage y detección de preferencia del sistema.
  */
 
@@ -9,7 +9,7 @@ const ThemeContext = createContext(null);
 
 function getInitialTheme() {
   // Comprueba localStorage primero
-  const saved = localStorage.getItem('jaar_theme');
+  const saved = localStorage.getItem('simap_theme');
   if (saved === 'dark' || saved === 'light') return saved;
 
   // Si no hay preferencia guardada, usa la preferencia del sistema operativo
@@ -28,14 +28,14 @@ export function ThemeProvider({ children }) {
       'content',
       theme === 'dark' ? '#0c1222' : '#0d9488'
     );
-    localStorage.setItem('jaar_theme', theme);
+    localStorage.setItem('simap_theme', theme);
   }, [theme]);
 
   // Escucha los cambios de tema del sistema operativo en tiempo real
   useEffect(() => {
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
     const handler = (e) => {
-      const saved = localStorage.getItem('jaar_theme');
+      const saved = localStorage.getItem('simap_theme');
       if (!saved) {
         setTheme(e.matches ? 'dark' : 'light');
       }

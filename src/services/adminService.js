@@ -1,5 +1,5 @@
 /**
- * adminService.js — JAAR Digital
+ * adminService.js — SIMAP Digital
  * Service layer for managing application users (neighbors, collectors, admins)
  */
 

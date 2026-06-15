@@ -1,5 +1,5 @@
 /**
- * GastosPage — JAAR Digital
+ * GastosPage — SIMAP Digital
  * Tracker for community expenses and repairs
  */
 

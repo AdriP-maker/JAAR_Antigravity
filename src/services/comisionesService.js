@@ -1,5 +1,5 @@
 /**
- * comisionesService.js — JAAR Digital
+ * comisionesService.js — SIMAP Digital
  * Calculate earnings distributions based on settings and payments
  */
 

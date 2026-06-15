@@ -1,5 +1,5 @@
 /**
- * Servicio de Pagos y Cobros — JAAR Digital
+ * Servicio de Pagos y Cobros — SIMAP Digital
  * Motor completo de pagos que maneja cálculos de cuotas, saldos, morosidades.
  * Soporta cobros: mensual, diario, multi_mes, parcial, adelanto, puesta_al_dia
  */
@@ -69,8 +69,8 @@ async function actualizarSaldo(userId, mes, montoPagado, pagoId) {
 export async function registrarPago(userId, opciones) {
   const { tipo, monto, mesesTarget, nota } = opciones;
   const cfg = await getConfig();
-  const cobradorId = sessionStorage.getItem('jaar_session')
-    ? JSON.parse(sessionStorage.getItem('jaar_session')).user
+  const cobradorId = sessionStorage.getItem('simap_session')
+    ? JSON.parse(sessionStorage.getItem('simap_session')).user
     : 'cobrador';
   const ahora = new Date();
   const resultados = [];

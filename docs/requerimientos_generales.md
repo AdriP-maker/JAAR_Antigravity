@@ -1,19 +1,19 @@
 # Documento de Requerimientos Generales
 
-**Proyecto:** JAAR Digital · Cuentas Claras — Sistema de Gestión para Juntas Administradoras de Acueductos Rurales  
+**Proyecto:** SIMAP Digital · Cuentas Claras — Sistema de Gestión para Sistema Integrado de Moradores y Agua Potable  
 **Fecha:** 13 / 05 / 2026  
 **Versión:** 2.0  
-**Ingenieros de Requisitos:** Equipo de Desarrollo JAAR  
+**Ingenieros de Requisitos:** Equipo de Desarrollo SIMAP  
 
 ---
 
 ## 1. Introducción
 
-El presente documento describe los requerimientos funcionales y no funcionales del sistema **JAAR Digital · Cuentas Claras**, una Aplicación Web Progresiva (PWA) con enfoque **offline-first** diseñada para la gestión integral de las Juntas Administradoras de Acueductos Rurales (JAAR) en Panamá.
+El presente documento describe los requerimientos funcionales y no funcionales del sistema **SIMAP Digital · Cuentas Claras**, una Aplicación Web Progresiva (PWA) con enfoque **offline-first** diseñada para la gestión integral de las Sistema Integrado de Moradores y Agua Potable (SIMAP) en Panamá.
 
 El sistema atiende las necesidades operativas de las juntas comunitarias encargadas de administrar los acueductos rurales del país, en cumplimiento con las disposiciones establecidas en el **Decreto Ejecutivo N° 1839 del Ministerio de Salud (MINSA)**, que regula la organización, funcionamiento y supervisión de estos entes comunitarios.
 
-JAAR Digital permite a los administradores, cobradores y clientes de cada acueducto rural llevar un control transparente de cobros, pagos, gastos, jornales comunitarios y comunicaciones, incluso en zonas con conectividad limitada o inexistente. Al funcionar como PWA offline-first, toda la información se almacena localmente en el dispositivo y se sincroniza con la nube cuando hay conexión disponible, garantizando la continuidad operativa en las áreas rurales de Panamá.
+SIMAP Digital permite a los administradores, cobradores y clientes de cada acueducto rural llevar un control transparente de cobros, pagos, gastos, jornales comunitarios y comunicaciones, incluso en zonas con conectividad limitada o inexistente. Al funcionar como PWA offline-first, toda la información se almacena localmente en el dispositivo y se sincroniza con la nube cuando hay conexión disponible, garantizando la continuidad operativa en las áreas rurales de Panamá.
 
 ---
 
@@ -105,7 +105,7 @@ El sistema abarca los siguientes módulos y procesos:
 
 | ID | Tipo | Nombre del Requisito | Descripción | Prioridad |
 |----|------|----------------------|-------------|-----------|
-| RF-008 | RF | Sincronización offline/online | El sistema debe funcionar completamente sin conexión a internet (offline-first), almacenando todos los datos en localStorage del navegador. Cuando se detecte conexión, el sistema debe sincronizar automáticamente los datos con el servidor en la nube, resolviendo conflictos de datos. | Obligatorio |
+| RF-008 | RF | Sincronización offline/online | El sistema debe funcionar completamente sin conexión a internet (offline-first), almacenando todos los datos en IndexedDB del navegador. Cuando se detecte conexión, el sistema debe sincronizar automáticamente los datos con el servidor en la nube, resolviendo conflictos de datos. | Obligatorio |
 
 ---
 
@@ -144,7 +144,7 @@ El sistema abarca los siguientes módulos y procesos:
 
 | ID | Tipo | Nombre del Requisito | Descripción | Prioridad |
 |----|------|----------------------|-------------|-----------|
-| RNF-001 | RNF | Offline-First | El sistema debe funcionar completamente sin conexión a internet. Todas las operaciones CRUD, generación de reportes y consultas deben operar con datos locales (localStorage). La sincronización con la nube es secundaria y ocurre cuando hay conectividad disponible. | Obligatorio |
+| RNF-001 | RNF | Offline-First | El sistema debe funcionar completamente sin conexión a internet. Todas las operaciones CRUD, generación de reportes y consultas deben operar con datos locales (IndexedDB). La sincronización con la nube es secundaria y ocurre cuando hay conectividad disponible. | Obligatorio |
 | RNF-002 | RNF | Portabilidad | El sistema debe funcionar en cualquier navegador web moderno (Chrome, Firefox, Safari, Edge) y en cualquier dispositivo (celular, tableta, computadora) sin necesidad de instalación nativa. Como PWA, debe ser instalable desde el navegador. | Obligatorio |
 | RNF-003 | RNF | Seguridad (RBAC) | El sistema debe implementar Control de Acceso Basado en Roles (RBAC) robusto, asegurando que cada usuario solo pueda acceder a las funcionalidades y datos correspondientes a su rol asignado. Las contraseñas deben almacenarse con hash seguro. | Obligatorio |
 | RNF-004 | RNF | Privacidad de datos | El sistema debe proteger la información personal de los clientes y las transacciones financieras. Los datos almacenados localmente deben estar protegidos y no ser accesibles por aplicaciones de terceros. | Obligatorio |
@@ -155,24 +155,24 @@ El sistema abarca los siguientes módulos y procesos:
 
 ---
 
-## 5. Modelo de Datos (localStorage)
+## 5. Modelo de Datos (IndexedDB)
 
-El sistema utiliza `localStorage` del navegador como almacenamiento principal, siguiendo el enfoque offline-first. Las siguientes claves definen el modelo de datos:
+El sistema utiliza `IndexedDB` a través de Dexie como almacenamiento principal, siguiendo el enfoque offline-first. Las siguientes tablas definen el modelo de datos:
 
-| Clave localStorage | Descripción | Estructura |
+| Tabla IndexedDB | Descripción | Estructura |
 |---------------------|-------------|------------|
-| `jaar_users` | Registro de todos los usuarios del sistema | Array de objetos: `{ id, nombre, cedula, rol, passwordHash, estado, fechaRegistro }` |
-| `jaar_pagos` | Registro de todos los pagos y cobros realizados | Array de objetos: `{ id, clienteId, monto, mes, anio, fecha, tipo, cobradorId, parcial, saldoPendiente }` |
-| `jaar_saldos` | Saldos y estados de cuenta de cada cliente | Array de objetos: `{ clienteId, saldoPendiente, mesesPendientes, estado, ultimoPago }` |
-| `jaar_comisiones` | Registro de comisiones generadas | Array de objetos: `{ id, pagoId, cobradorId, montoTotal, montoCobrador, montoDevs, fecha }` |
-| `jaar_puntos` | Puntos acumulados por cada cliente | Array de objetos: `{ clienteId, puntosActuales, historial: [{ accion, puntos, fecha }] }` |
-| `jaar_gastos` | Registro de gastos operativos de la junta | Array de objetos: `{ id, descripcion, monto, categoria, fecha, registradoPor }` |
-| `jaar_jornales` | Registro de jornales comunitarios | Array de objetos: `{ id, fecha, descripcion, participantes: [{ clienteId, confirmado }] }` |
-| `jaar_avisos` | Avisos del foro comunitario | Array de objetos: `{ id, titulo, contenido, autorId, fecha, tipo }` |
-| `jaar_config` | Configuración general del sistema | Objeto: `{ tarifaMensual, porcentajeDevs, porcentajeCobrador, nombreJunta, comunidad }` |
-| `jaar_sync` | Control de sincronización offline/online | Objeto: `{ ultimaSync, pendientes: [], conflictos: [] }` |
-| `jaar_recompensas` | Catálogo de recompensas canjeables | Array de objetos: `{ id, nombre, descripcion, costoPuntos, disponible }` |
-| `jaar_ia_cache` | Caché de análisis de inteligencia artificial | Objeto: `{ predicciones, insights, recomendaciones, ultimoAnalisis }` |
+| `simap_users` | Registro de todos los usuarios del sistema | Array de objetos: `{ id, nombre, cedula, rol, passwordHash, estado, fechaRegistro }` |
+| `simap_pagos` | Registro de todos los pagos y cobros realizados | Array de objetos: `{ id, clienteId, monto, mes, anio, fecha, tipo, cobradorId, parcial, saldoPendiente }` |
+| `simap_saldos` | Saldos y estados de cuenta de cada cliente | Array de objetos: `{ clienteId, saldoPendiente, mesesPendientes, estado, ultimoPago }` |
+| `simap_comisiones` | Registro de comisiones generadas | Array de objetos: `{ id, pagoId, cobradorId, montoTotal, montoCobrador, montoDevs, fecha }` |
+| `simap_puntos` | Puntos acumulados por cada cliente | Array de objetos: `{ clienteId, puntosActuales, historial: [{ accion, puntos, fecha }] }` |
+| `simap_gastos` | Registro de gastos operativos de la junta | Array de objetos: `{ id, descripcion, monto, categoria, fecha, registradoPor }` |
+| `simap_jornales` | Registro de jornales comunitarios | Array de objetos: `{ id, fecha, descripcion, participantes: [{ clienteId, confirmado }] }` |
+| `simap_avisos` | Avisos del foro comunitario | Array de objetos: `{ id, titulo, contenido, autorId, fecha, tipo }` |
+| `simap_config` | Configuración general del sistema | Objeto: `{ tarifaMensual, porcentajeDevs, porcentajeCobrador, nombreJunta, comunidad }` |
+| `simap_sync` | Control de sincronización offline/online | Objeto: `{ ultimaSync, pendientes: [], conflictos: [] }` |
+| `simap_recompensas` | Catálogo de recompensas canjeables | Array de objetos: `{ id, nombre, descripcion, costoPuntos, disponible }` |
+| `simap_ia_cache` | Caché de análisis de inteligencia artificial | Objeto: `{ predicciones, insights, recomendaciones, ultimoAnalisis }` |
 
 ---
 
@@ -228,5 +228,5 @@ El sistema maneja cuatro roles con permisos diferenciados:
 ---
 
 *Documento elaborado bajo metodología de Ingeniería de Requisitos*  
-*Sistema: JAAR Digital · Cuentas Claras — Versión 2.0*  
+*Sistema: SIMAP Digital · Cuentas Claras — Versión 2.0*  
 *Conforme al Decreto Ejecutivo N° 1839 del MINSA, República de Panamá*

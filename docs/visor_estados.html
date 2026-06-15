@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualizador de Estados — JAAR Digital</title>
+    <title>Visualizador de Estados — SIMAP Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
@@ -57,9 +57,9 @@
     <header class="bg-gradient-to-r from-blue-700 to-indigo-800 text-white p-8 shadow-lg">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-                <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Diagrama de Estados — JAAR Digital</h1>
+                <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Diagrama de Estados — SIMAP Digital</h1>
                 <p class="mt-2 text-blue-100 text-lg opacity-90">Sistema de gestión comunitaria de agua potable para la
-                    Junta de Acueducto Rural y Riego (JAAR) de Caballero.</p>
+                    Junta de Acueducto Rural y Riego (SIMAP) de Caballero.</p>
             </div>
             <div class="bg-white/10 px-4 py-2 rounded-lg backdrop-blur-sm border border-white/20">
                 <p class="text-sm">Vista Interactiva Generada a partir de Markdown</p>
@@ -231,8 +231,8 @@
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 mt-4">
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex-1">
-                        <strong>PendienteLocal:</strong> Guardado en <code>jaar_pending_payments</code> y
-                        <code>jaar_pagos</code>. Contador visible en UI.
+                        <strong>PendienteLocal:</strong> Guardado en <code>simap_pending_payments</code> y
+                        <code>simap_pagos</code>. Contador visible en UI.
                     </div>
                     <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 flex-1">
                         <strong>EnSincronización:</strong> syncBtn muestra "⏳ Conectando..." con clase CSS: loading.
@@ -296,7 +296,7 @@
                     PanelNoAsistió --> MultaAplicada : Indica monto multa
                     MultaAplicada --> JornalGuardado : Click "Guardar" ✅
 
-                    JornalGuardado --> [*] : Registro en localStorage\n(jaar_jornales)\nToast de confirmación
+                    JornalGuardado --> [*] : Registro en localStorage\n(simap_jornales)\nToast de confirmación
                 </div>
                 <div class="flex flex-col md:flex-row gap-4 mt-4">
                     <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 flex-1">
@@ -332,7 +332,7 @@
                     AceptaSustituto --> RespuestaGuardada : Confirma ✅\nnombre sustituto + fecha + hora
                     Rechaza --> RespuestaGuardada : Confirma ❌\nfecha + hora registradas
 
-                    RespuestaGuardada --> [*] : Guardado en localStorage\n(jaar_jornales_respuestas)\nCobrador puede ver
+                    RespuestaGuardada --> [*] : Guardado en localStorage\n(simap_jornales_respuestas)\nCobrador puede ver
                     la respuesta
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 text-sm">

@@ -1,5 +1,5 @@
 /**
- * Formatting utilities for JAAR Digital
+ * Formatting utilities for SIMAP Digital
  */
 
 import { MESES_CORTOS } from './constants';

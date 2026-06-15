@@ -1,5 +1,5 @@
 /**
- * Card Component — JAAR Digital
+ * Card Component — SIMAP Digital
  * Animated card with fade-in-up entrance
  */
 

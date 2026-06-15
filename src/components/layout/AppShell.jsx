@@ -1,5 +1,5 @@
 /**
- * AppShell Component — JAAR Digital
+ * AppShell Component — SIMAP Digital
  * Main layout wrapper with header, content area, and bottom navigation
  */
 

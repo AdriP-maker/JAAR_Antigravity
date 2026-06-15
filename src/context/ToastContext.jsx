@@ -1,5 +1,5 @@
 /**
- * Toast Context — JAAR Digital
+ * Toast Context — SIMAP Digital
  * Global notification system with auto-dismiss
  */
 

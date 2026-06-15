@@ -1,5 +1,5 @@
 /**
- * aiService.js — JAAR Digital
+ * aiService.js — SIMAP Digital
  * Integración con Inteligencia Artificial para el Cobrador
  */
 
@@ -27,7 +27,7 @@ export async function getSugerenciaCobrador(usuarioTarget) {
     const resumen = await getResumenUsuario(usuarioTarget.id);
 
     const promptText = `
-      Actúa como asistente cordial de cobros para una Junta de Agua (JAAR).
+      Actúa como asistente cordial de cobros para una Junta de Agua (SIMAP).
       Cliente: ${usuarioTarget.nombre} (${usuarioTarget.sector})
       Deuda actual: B/. ${resumen.deuda.toFixed(2)} (${resumen.mesesDeuda} meses)
       Perfil: ${perfil}

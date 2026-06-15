@@ -1,5 +1,5 @@
 /**
- * LoginPage — JAAR Digital
+ * LoginPage — SIMAP Digital
  * Premium login page with gradient background, glassmorphism card, and dark mode
  */
 
@@ -78,7 +78,7 @@ export default function LoginPage() {
       <div className={`login-card animate-fade-in-up ${shaking ? 'login-shake' : ''}`}>
         <div className="login-logo">💧</div>
         <h2 className="login-title">Piloto Caballero (Antón)</h2>
-        <p className="login-subtitle">Sistema de Gestión JAAR · Panamá</p>
+        <p className="login-subtitle">Sistema de Gestión SIMAP · Panamá</p>
 
         <form onSubmit={handleLogin} className="login-form">
           <Input

@@ -1,5 +1,5 @@
 /**
- * Input Component — JAAR Digital
+ * Input Component — SIMAP Digital
  * Styled input with label and optional icon
  */
 

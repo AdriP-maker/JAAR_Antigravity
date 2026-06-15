@@ -1,12 +1,12 @@
 /**
  * Configuración de la Base de Datos IndexedDB con Dexie.js
- * JAAR Digital — Capa de almacenamiento Offline-First
+ * SIMAP Digital — Capa de almacenamiento Offline-First
  */
 
 import Dexie from 'dexie';
 import { DEMO_USERS, DEMO_GASTOS, DEFAULT_CONFIG } from '../utils/constants';
 
-export const db = new Dexie('JAARDigital');
+export const db = new Dexie('SIMAPDigital');
 
 db.version(1).stores({
   usuarios: '++id, nombre, sector',
@@ -77,7 +77,7 @@ async function migrateFromLocalStorage() {
 
   try {
     // Migrate users
-    const lsUsers = localStorage.getItem('jaar_users');
+    const lsUsers = localStorage.getItem('simap_users');
     if (lsUsers) {
       const users = JSON.parse(lsUsers);
       if (users.length > 0) {
@@ -87,7 +87,7 @@ async function migrateFromLocalStorage() {
     }
 
     // Migrate pagos
-    const lsPagos = localStorage.getItem('jaar_pagos');
+    const lsPagos = localStorage.getItem('simap_pagos');
     if (lsPagos) {
       const pagos = JSON.parse(lsPagos);
       if (pagos.length > 0) {
@@ -101,7 +101,7 @@ async function migrateFromLocalStorage() {
     }
 
     // Migrate gastos
-    const lsGastos = localStorage.getItem('jaar_gastos');
+    const lsGastos = localStorage.getItem('simap_gastos');
     if (lsGastos) {
       const gastos = JSON.parse(lsGastos);
       if (gastos.length > 0) {
@@ -111,7 +111,7 @@ async function migrateFromLocalStorage() {
     }
 
     // Migrate registered users
-    const lsRegistered = localStorage.getItem('jaar_usuarios');
+    const lsRegistered = localStorage.getItem('simap_usuarios');
     if (lsRegistered) {
       const registered = JSON.parse(lsRegistered);
       if (registered.length > 0) {
@@ -126,9 +126,9 @@ async function migrateFromLocalStorage() {
 
     // Mark as migrated
     await db.config.put({ key: 'ls_migrated', value: true });
-    console.log('[JAAR] localStorage → IndexedDB migration complete');
+    console.log('[SIMAP] localStorage → IndexedDB migration complete');
   } catch (err) {
-    console.warn('[JAAR] Migration error:', err);
+    console.warn('[SIMAP] Migration error:', err);
   }
 }
 

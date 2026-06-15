@@ -1,5 +1,5 @@
 /**
- * FilterBar — JAAR Digital
+ * FilterBar — SIMAP Digital
  * Search + filter bar for the cobros page
  */
 

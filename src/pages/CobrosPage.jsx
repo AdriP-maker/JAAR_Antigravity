@@ -1,5 +1,5 @@
 /**
- * CobrosPage — JAAR Digital
+ * CobrosPage — SIMAP Digital
  * Main collection view for cobradores with user list, filters, KPIs, and payment modal
  */
 

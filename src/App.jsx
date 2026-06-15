@@ -1,5 +1,5 @@
 /**
- * App.jsx — JAAR Digital
+ * App.jsx — SIMAP Digital
  * Main application router and providers configuration
  */
 

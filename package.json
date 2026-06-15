@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://adrip-maker.github.io/JAAR_Antigravity/",
+  "homepage": "https://adrip-maker.github.io/SIMAP_Antigravity/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

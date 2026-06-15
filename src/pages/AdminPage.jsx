@@ -1,5 +1,5 @@
 /**
- * AdminPage — JAAR Digital
+ * AdminPage — SIMAP Digital
  * Dashboard for admins to manage users, approvals, and roles
  */
 

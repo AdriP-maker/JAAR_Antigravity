@@ -1,5 +1,5 @@
 /**
- * ConfigPage — JAAR Digital
+ * ConfigPage — SIMAP Digital
  * Admin settings for base values and point rules
  */
 
@@ -86,7 +86,7 @@ export default function ConfigPage() {
           <Card className="config-section">
             <h3>Reparto de Ganancias</h3>
             <Input 
-              label="% Fondo Devs/JAAR (ej. 0.60 para 60%)" 
+              label="% Fondo Devs/SIMAP (ej. 0.60 para 60%)" 
               type="number" step="0.05" min="0" max="1"
               value={formData.splitDevs}
               onChange={e => handleChange('splitDevs', e.target.value)}

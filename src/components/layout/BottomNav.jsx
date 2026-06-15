@@ -1,5 +1,5 @@
 /**
- * BottomNav Component — JAAR Digital
+ * BottomNav Component — SIMAP Digital
  * Role-based bottom navigation bar with glassmorphism
  */
 

@@ -1,5 +1,5 @@
 /**
- * crypto.js — JAAR Digital
+ * crypto.js — SIMAP Digital
  * Web Crypto API wrappers for local encryption and hashing
  */
 

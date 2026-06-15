@@ -1,5 +1,5 @@
 /**
- * ThemeToggle Component — JAAR Digital
+ * ThemeToggle Component — SIMAP Digital
  * Animated sun/moon toggle for dark/light mode
  */
 

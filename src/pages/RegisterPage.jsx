@@ -1,5 +1,5 @@
 /**
- * RegisterPage — JAAR Digital
+ * RegisterPage — SIMAP Digital
  * Page for new neighbors to request access to the system
  */
 
@@ -74,7 +74,7 @@ export default function RegisterPage() {
 
       <div className="register-card animate-scale-in">
         <h2 className="register-title">Solicitar Acceso</h2>
-        <p className="register-subtitle">Únete a la plataforma JAAR Digital</p>
+        <p className="register-subtitle">Únete a la plataforma SIMAP Digital</p>
 
         <div className="register-tabs">
           <button 
@@ -104,7 +104,7 @@ export default function RegisterPage() {
             </>
           ) : (
             <>
-              <Input id="nombre_junta" label="Nombre de la Junta *" placeholder="Ej: JAAR Santa Mónica" value={formData.nombre_junta} onChange={handleChange} />
+              <Input id="nombre_junta" label="Nombre de la Junta *" placeholder="Ej: SIMAP Santa Mónica" value={formData.nombre_junta} onChange={handleChange} />
               <div className="register-grid">
                 <Input id="ruc" label="RUC / Tomo" placeholder="Opcional" value={formData.ruc} onChange={handleChange} />
                 <Input id="email" label="Correo de contacto" type="email" placeholder="junta@ejemplo.com" value={formData.email} onChange={handleChange} />

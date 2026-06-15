@@ -1,5 +1,5 @@
 /**
- * MapaPage — JAAR Digital
+ * MapaPage — SIMAP Digital
  * Vista de sectores de la comunidad coloreados por estado de pago
  * Solo accesible para el cobrador
  */

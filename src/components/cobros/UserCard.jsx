@@ -1,5 +1,5 @@
 /**
- * UserCard — JAAR Digital
+ * UserCard — SIMAP Digital
  * Vecino card with avatar, status badge, debt info, and payment button
  */
 

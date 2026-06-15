@@ -1,5 +1,5 @@
 /**
- * NotFoundPage — JAAR Digital
+ * NotFoundPage — SIMAP Digital
  * 404 error page for unmatched routes
  */
 

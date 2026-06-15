@@ -1,5 +1,5 @@
 /**
- * jornalesService.js — JAAR Digital
+ * jornalesService.js — SIMAP Digital
  * Service layer for managing community workdays (jornales)
  */
 
