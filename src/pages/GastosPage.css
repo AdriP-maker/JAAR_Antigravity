@@ -1,0 +1,103 @@
+/* GastosPage Styles */
+
+.gastos-page {
+  padding-top: var(--space-2);
+}
+
+.gastos-header {
+  margin-bottom: var(--space-3);
+}
+
+.gastos-header h2 {
+  font-size: 1.2rem;
+  color: var(--primary-dark);
+}
+
+[data-theme="dark"] .gastos-header h2 {
+  color: var(--primary-light);
+}
+
+.gastos-summary-card {
+  text-align: center;
+  background: var(--danger-bg);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  margin-bottom: var(--space-4);
+  padding: var(--space-4);
+}
+
+.gastos-summary-label {
+  font-size: 0.85rem;
+  color: var(--danger);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.gastos-summary-total {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--danger);
+  font-family: 'Outfit', sans-serif;
+  margin-top: var(--space-1);
+}
+
+.gastos-form-card {
+  margin-bottom: var(--space-5);
+}
+
+.gastos-form-card h3 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.gastos-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.gastos-history h3 {
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  margin-bottom: var(--space-3);
+}
+
+.gastos-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+.gasto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.gasto-item:last-child {
+  border-bottom: none;
+}
+
+.gasto-info h4 {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.gasto-info span {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.gasto-amount {
+  font-weight: 700;
+  color: var(--danger);
+  font-family: 'Outfit', sans-serif;
+}

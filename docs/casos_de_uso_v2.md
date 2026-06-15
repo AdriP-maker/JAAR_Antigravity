@@ -1,8 +1,8 @@
-# Casos de Uso — JAAR Digital · Cuentas Claras v2.0
+# Casos de Uso — SIMAP Digital · Cuentas Claras v2.0
 
 **Escenarios de uso para las nuevas funcionalidades: Pagos Flexibles, Comisiones y Puntos, e Inteligencia Artificial**
 
-> Documento de especificacion de casos de uso para el sistema de gestion de acueducto rural JAAR Digital.
+> Documento de especificacion de casos de uso para el sistema de gestion de acueducto rural SIMAP Digital.
 > Cada caso de uso describe un escenario concreto de interaccion entre actores y el sistema.
 
 ---
@@ -17,15 +17,15 @@
 |-------|---------|
 | **Actor Principal** | Admin / Cobrador / Cliente / MINSA |
 | **Precondiciones** | El usuario tiene una cuenta aprobada en el sistema. El dispositivo tiene el navegador abierto en la pantalla de login. |
-| **Postcondiciones** | El usuario accede a su vista correspondiente según su rol. La sesión queda activa en `localStorage` (`jaar_role`, `jaar_user`). |
+| **Postcondiciones** | El usuario accede a su vista correspondiente según su rol. La sesión queda activa en `localStorage` (`simap_role`, `simap_user`). |
 
 **Flujo Principal:**
 1. El usuario abre la aplicación y ve la pantalla de Login.
 2. Ingresa su nombre de usuario y contraseña.
 3. Presiona "Ingresar".
-4. El sistema valida las credenciales contra `jaar_usuarios`.
+4. El sistema valida las credenciales contra `simap_usuarios`.
 5. El sistema guarda el rol y el usuario en `localStorage`.
-6. El sistema redirige al usuario a su pantalla principal según el rol: `index.html` (cobrador), `admin.html` (admin), `historial.html` (cliente), `reporte.html` (minsa).
+6. El sistema redirige al usuario a su pantalla principal según el rol: `/` (cobrador), `/admin` (admin), `/historial` (cliente), `/reporte` (minsa).
 
 **Flujos Alternos:**
 - FA-1: Si las credenciales son incorrectas, el sistema muestra "Usuario o contraseña incorrectos" y no redirige.
@@ -39,7 +39,7 @@
 | Campo | Detalle |
 |-------|---------|
 | **Actor Principal** | Vecino (futuro cliente) |
-| **Precondiciones** | El vecino tiene acceso a la URL de la aplicación. La pantalla de registro (`registro.html`) está disponible. |
+| **Precondiciones** | El vecino tiene acceso a la URL de la aplicación. La pantalla de registro (`/registro`) está disponible. |
 | **Postcondiciones** | Se crea una solicitud de cuenta con estado "pendiente". El administrador recibe la solicitud visible en `admin.html`. |
 
 **Flujo Principal:**
@@ -47,7 +47,7 @@
 2. Ingresa sus datos: nombre completo, número de casa, sector, contraseña.
 3. Presiona "Solicitar Acceso".
 4. El sistema valida que el número de casa no esté duplicado.
-5. El sistema crea el registro en `jaar_usuarios` con estado `pendiente` y rol `cliente`.
+5. El sistema crea el registro en `simap_usuarios` con estado `pendiente` y rol `cliente`.
 6. El sistema muestra: "Tu solicitud fue enviada. El administrador te dará acceso pronto."
 
 **Flujos Alternos:**
@@ -61,14 +61,14 @@
 | Campo | Detalle |
 |-------|---------|
 | **Actor Principal** | Admin |
-| **Precondiciones** | El admin ha iniciado sesión. Existe al menos una solicitud en estado "pendiente" en `admin.html`. |
+| **Precondiciones** | El admin ha iniciado sesión. Existe al menos una solicitud en estado "pendiente" en `/admin`. |
 | **Postcondiciones** | La cuenta del vecino cambia a "activo" (aprobado) o "rechazado". Si es aprobado, el vecino puede iniciar sesión. |
 
 **Flujo Principal:**
-1. El admin accede a `admin.html` y ve la lista de solicitudes pendientes.
+1. El admin accede a `/admin` y ve la lista de solicitudes pendientes.
 2. Revisa el nombre, casa y sector del solicitante.
 3. Presiona "✅ Aprobar".
-4. El sistema cambia el estado del usuario a `activo` en `jaar_usuarios`.
+4. El sistema cambia el estado del usuario a `activo` en `simap_usuarios`.
 5. El sistema mueve al usuario de la lista "Pendientes" a "Activos".
 6. El vecino ya puede iniciar sesión con sus credenciales.
 
@@ -88,13 +88,13 @@
 | **Postcondiciones** | Se registra la asistencia o inasistencia de cada vecino. Si asistió, se acumulan horas y se otorgan puntos. Si no asistió, se registra la multa correspondiente. |
 
 **Flujo Principal:**
-1. El cobrador accede a `jornales.html`.
+1. El cobrador accede a `/jornales`.
 2. Selecciona el vecino participante del padrón.
 3. Indica la tarea realizada y la fecha del jornal.
 4. Indica si el vecino asistió o no.
 5. Si asistió, ingresa las horas trabajadas (y opcionalmente si fue mediante sustituto).
 6. Si no asistió, el sistema aplica la multa configurada.
-7. El sistema guarda el registro en `jaar_jornales`.
+7. El sistema guarda el registro en `simap_jornales`.
 8. El sistema otorga los puntos correspondientes: 8 pts (asistencia personal), 3 pts (sustituto), 0 pts (inasistencia).
 9. El sistema muestra confirmación: "Jornal registrado para [vecino]."
 
@@ -109,15 +109,15 @@
 | Campo | Detalle |
 |-------|---------|
 | **Actor Principal** | Cobrador |
-| **Precondiciones** | El cobrador ha iniciado sesión. Existe un gasto o compra que registrar para la JAAR. |
-| **Postcondiciones** | El gasto queda registrado en `jaar_gastos` con fecha, descripción y monto. Aparece en los reportes de egresos. |
+| **Precondiciones** | El cobrador ha iniciado sesión. Existe un gasto o compra que registrar para la SIMAP. |
+| **Postcondiciones** | El gasto queda registrado en `simap_gastos` con fecha, descripción y monto. Aparece en los reportes de egresos. |
 
 **Flujo Principal:**
-1. El cobrador accede a `gastos.html`.
+1. El cobrador accede a `/gastos`.
 2. Ingresa el monto del gasto, la descripción y la fecha.
 3. Presiona "Registrar Gasto".
 4. El sistema valida que el monto sea mayor a cero y que la descripción no esté vacía.
-5. El sistema guarda el registro en `jaar_gastos`.
+5. El sistema guarda el registro en `simap_gastos`.
 6. El sistema muestra la confirmación: "Gasto guardado offline."
 
 **Flujos Alternos:**
@@ -292,7 +292,7 @@
 | **Postcondiciones** | El cobrador visualiza un resumen completo de sus ganancias. No se modifican datos. |
 
 **Flujo Principal:**
-1. El cobrador abre la pagina "comisiones.html" desde el menu principal.
+1. El cobrador abre la pagina "/comisiones" desde el menu principal.
 2. El sistema carga los registros de comisiones del cobrador autenticado.
 3. El sistema muestra un panel resumen con:
    - Total acumulado historico (todas las comisiones ganadas).
@@ -319,7 +319,7 @@
 | **Postcondiciones** | La nueva distribucion de comisiones queda guardada y activa. Se registra un log con la fecha, hora, usuario que realizo el cambio y los valores anteriores y nuevos. Los pagos futuros usan el nuevo split. Los registros historicos no se modifican. |
 
 **Flujo Principal:**
-1. El administrador abre la pagina "puntos-admin.html".
+1. El administrador abre la pagina "/puntos-admin".
 2. El sistema muestra la configuracion actual de comisiones: split 60% desarrolladores / 40% cobrador.
 3. El administrador modifica los porcentajes: 65% desarrolladores / 35% cobrador.
 4. El sistema valida que los porcentajes sumen 100%.
@@ -419,7 +419,7 @@
 | **Postcondiciones** | Los nuevos valores de puntos y tasa de conversion quedan guardados. Se registra un log de auditoria con los valores anteriores y nuevos. Los cambios aplican a transacciones futuras; los registros historicos no se modifican. |
 
 **Flujo Principal:**
-1. El administrador abre la pagina "puntos-admin.html" y navega a la seccion de configuracion de reglas de puntos.
+1. El administrador abre la pagina "/puntos-admin" y navega a la seccion de configuracion de reglas de puntos.
 2. El sistema muestra la configuracion actual:
    - pago_basico: 2 puntos
    - pago_puntual: 5 puntos
@@ -552,7 +552,7 @@
 **Flujos Alternos:**
 - FA-1: Si no hay datos para el periodo seleccionado, el sistema muestra "No hay datos de recaudo para el periodo seleccionado."
 - FA-2: Si existe una anomalia activa (ver CU-22), esta se destaca en rojo en la seccion de alertas con un enlace para ver detalles.
-- FA-3: El administrador puede exportar el tablero como reporte en PDF para presentar ante la junta directiva de la JAAR.
+- FA-3: El administrador puede exportar el tablero como reporte en PDF para presentar ante la junta directiva de la SIMAP.
 
 ---
 
@@ -589,11 +589,11 @@
 | Campo | Detalle |
 |-------|---------|
 | **Actor Principal** | Cliente (vecino/usuario del servicio) |
-| **Precondiciones** | El cliente ha accedido a la pagina "historial.html" con sus credenciales o codigo de hogar. El modulo de IA ha calculado el puntaje de riesgo del hogar. |
+| **Precondiciones** | El cliente ha accedido a la pagina "/historial" con sus credenciales o codigo de hogar. El modulo de IA ha calculado el puntaje de riesgo del hogar. |
 | **Postcondiciones** | El cliente visualiza un mensaje amigable y comprensible sobre el estado de su cuenta. No se muestran valores numericos tecnicos (como el puntaje en bruto). No se modifican datos. |
 
 **Flujo Principal:**
-1. El cliente abre la pagina "historial.html" desde su dispositivo.
+1. El cliente abre la pagina "/historial" desde su dispositivo.
 2. El sistema carga el historial de pagos y el puntaje de riesgo del hogar.
 3. El sistema traduce el puntaje numerico a un mensaje amigable segun el rango:
    - **Riesgo bajo (0-25):** "Tu cuenta esta en buen estado. Gracias por mantenerte al dia con tus pagos."
@@ -638,5 +638,5 @@
 
 ---
 
-> Documento generado para el proyecto JAAR Digital - Cuentas Claras v2.0
+> Documento generado para el proyecto SIMAP Digital - Cuentas Claras v2.0
 > Sistema de gestion de acueducto rural - Piloto Caballero, Anton, Panama

@@ -1,0 +1,50 @@
+/* KPIGrid Styles */
+
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: var(--space-4);
+}
+
+.kpi-card {
+  background: var(--surface);
+  padding: 0.6rem 0.4rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  animation: fadeInUp 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.kpi-icon {
+  font-size: 1rem;
+}
+
+.kpi-value {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  font-family: 'Outfit', sans-serif;
+}
+
+[data-theme="dark"] .kpi-value {
+  color: var(--primary-light);
+}
+
+.kpi-label {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+@media (max-width: 360px) {
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

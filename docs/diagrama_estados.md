@@ -1,6 +1,6 @@
-# Diagrama de Estados — JAAR Digital
+# Diagrama de Estados — SIMAP Digital
 
-Sistema de gestión comunitaria de agua potable para la Junta de Acueducto Rural y Riego (JAAR) de Caballero.
+Sistema de gestión comunitaria de agua potable para la Junta de Acueducto Rural y Riego (SIMAP) de Caballero.
 
 ---
 
@@ -9,7 +9,7 @@ Sistema de gestión comunitaria de agua potable para la Junta de Acueducto Rural
 ```mermaid
 stateDiagram-v2
     direction LR
-    [*] --> FormularioRegistro : Visitante abre registro.html
+    [*] --> FormularioRegistro : Visitante abre /registro
 
     FormularioRegistro --> ValidandoDatos : Click "Registrar"
     ValidandoDatos --> FormularioRegistro : ❌ Campos vacíos o\nusuario duplicado
@@ -44,10 +44,10 @@ stateDiagram-v2
     EstadoCuenta --> PáginaLogin : Estado ≠ activo\n(pendiente / rechazado / suspendido)
     EstadoCuenta --> RedirecciónRol : Estado = activo
 
-    RedirecciónRol --> PanelAdmin    : rol = admin → admin.html
-    RedirecciónRol --> PanelCobrador : rol = cobrador → index.html
-    RedirecciónRol --> PanelMINSA   : rol = minsa → reporte.html
-    RedirecciónRol --> PanelCliente  : rol = cliente → historial.html
+    RedirecciónRol --> PanelAdmin    : rol = admin → /admin
+    RedirecciónRol --> PanelCobrador : rol = cobrador → /
+    RedirecciónRol --> PanelMINSA   : rol = minsa → /reporte
+    RedirecciónRol --> PanelCliente  : rol = cliente → /historial
 
     PanelAdmin    --> PáginaLogin : Logout 🚪
     PanelCobrador --> PáginaLogin : Logout 🚪
@@ -112,8 +112,8 @@ stateDiagram-v2
 
     note left of PendienteLocal
         Guardado en:
-        - jaar_pending_payments
-        - jaar_pagos
+        - simap_pending_payments
+        - simap_pagos
         Contador visible en UI
     end note
     note right of EnSincronización
@@ -158,7 +158,7 @@ stateDiagram-v2
 ```mermaid
 stateDiagram-v2
     direction TB
-    [*] --> FormJornal : Cobrador abre jornales.html
+    [*] --> FormJornal : Cobrador abre /jornales
 
     FormJornal --> SeleccionaAsistencia : Elige vecino + tarea
 
@@ -175,7 +175,7 @@ stateDiagram-v2
     PanelNoAsistió --> MultaAplicada : Indica monto multa
     MultaAplicada  --> JornalGuardado : Click "Guardar" ✅
 
-    JornalGuardado --> [*] : Registro en localStorage\n(jaar_jornales)\nToast de confirmación
+    JornalGuardado --> [*] : Registro en localStorage\n(simap_jornales)\nToast de confirmación
 
     note right of JornalSustituto
         Estado especial:
@@ -195,7 +195,7 @@ stateDiagram-v2
 ```mermaid
 stateDiagram-v2
     direction TB
-    [*] --> VistaJornalesCliente : Cliente abre historial.html\n(sección jornales programados)
+    [*] --> VistaJornalesCliente : Cliente abre /historial\n(sección jornales programados)
 
     VistaJornalesCliente --> JornalPendienteRespuesta : Jornal programado\nsin respuesta del vecino
 
@@ -209,7 +209,7 @@ stateDiagram-v2
     AceptaSustituto --> RespuestaGuardada : Confirma ✅\nnombre sustituto + fecha + hora
     Rechaza         --> RespuestaGuardada : Confirma ❌\nfecha + hora registradas
 
-    RespuestaGuardada --> [*] : Guardado en localStorage\n(jaar_jornales_respuestas)\nCobrador puede ver la respuesta
+    RespuestaGuardada --> [*] : Guardado en localStorage\n(simap_jornales_respuestas)\nCobrador puede ver la respuesta
 
     note right of JornalPendienteRespuesta
         Estado inicial de todo jornal
@@ -235,7 +235,7 @@ stateDiagram-v2
 ```mermaid
 stateDiagram-v2
     direction LR
-    [*] --> SecciónPendientes : Admin abre admin.html
+    [*] --> SecciónPendientes : Admin abre /admin
 
     SecciónPendientes --> AprobandoUsuario  : Admin click "✅ Aprobar"
     SecciónPendientes --> RechazandoUsuario : Admin click "❌ Rechazar"\n(+ confirmación)
@@ -270,27 +270,27 @@ stateDiagram-v2
 ```mermaid
 stateDiagram-v2
     direction TB
-    [*] --> index_html : Login exitoso (rol = cobrador)
+    [*] --> vista_index : Login exitoso (rol = cobrador)
 
-    index_html    --> jornales_html : Nav → ⛏️ Jornales
-    index_html    --> gastos_html   : Nav → 🧾 Gastos
-    index_html    --> foro_html     : Nav → 💬 Foro\n(puede publicar avisos ✍️)
-    index_html    --> reporte_html  : Nav → 📊 MINSA
+    vista_index   --> vista_jornales : Nav → ⛏️ Jornales
+    vista_index   --> vista_gastos   : Nav → 🧾 Gastos
+    vista_index   --> vista_foro     : Nav → 💬 Foro\n(puede publicar avisos ✍️)
+    vista_index   --> vista_reporte  : Nav → 📊 MINSA
 
-    jornales_html --> index_html    : Nav → 💧 Cobros
-    jornales_html --> gastos_html   : Nav → 🧾 Gastos
-    jornales_html --> foro_html     : Nav → 💬 Foro
-    jornales_html --> reporte_html  : Nav → 📊 MINSA
+    vista_jornales --> vista_index   : Nav → 💧 Cobros
+    vista_jornales --> vista_gastos  : Nav → 🧾 Gastos
+    vista_jornales --> vista_foro    : Nav → 💬 Foro
+    vista_jornales --> vista_reporte : Nav → 📊 MINSA
 
-    gastos_html   --> index_html    : Nav → 💧 Cobros
-    foro_html     --> index_html    : Nav → 💧 Cobros
-    reporte_html  --> index_html    : Nav → 💧 Cobros
+    vista_gastos   --> vista_index   : Nav → 💧 Cobros
+    vista_foro     --> vista_index   : Nav → 💧 Cobros
+    vista_reporte  --> vista_index   : Nav → 💧 Cobros
 
-    index_html    --> login_html    : 🚪 Logout
-    jornales_html --> login_html    : 🚪 Logout
-    gastos_html   --> login_html    : 🚪 Logout
-    foro_html     --> login_html    : 🚪 Logout
-    reporte_html  --> login_html    : 🚪 Logout
+    vista_index    --> vista_login   : 🚪 Logout
+    vista_jornales --> vista_login   : 🚪 Logout
+    vista_gastos   --> vista_login   : 🚪 Logout
+    vista_foro     --> vista_login   : 🚪 Logout
+    vista_reporte  --> vista_login   : 🚪 Logout
 ```
 
 ---
@@ -300,29 +300,29 @@ stateDiagram-v2
 ```mermaid
 stateDiagram-v2
     direction TB
-    [*] --> historial_html : Login exitoso (rol = cliente)
+    [*] --> vista_historial : Login exitoso (rol = cliente)
 
-    historial_html --> foro_html      : Nav → 💬 Avisos\n(solo lectura)
-    historial_html --> jornales_html  : Sección jornales programados\n(confirmar asistencia RF-11)
+    vista_historial --> vista_foro     : Nav → 💬 Avisos\n(solo lectura)
+    vista_historial --> vista_jornales : Sección jornales programados\n(confirmar asistencia RF-11)
 
-    foro_html      --> historial_html : Nav → 👤 Mi Cuenta
-    jornales_html  --> historial_html : Vuelve a Mi Cuenta
+    vista_foro      --> vista_historial: Nav → 👤 Mi Cuenta
+    vista_jornales  --> vista_historial: Vuelve a Mi Cuenta
 
-    historial_html --> login_html     : 🚪 Logout
-    foro_html      --> login_html     : 🚪 Logout
+    vista_historial --> vista_login    : 🚪 Logout
+    vista_foro      --> vista_login    : 🚪 Logout
 
-    note right of historial_html
+    note right of vista_historial
         Muestra:
         - Estado de pagos del vecino
         - Horas trabajadas (RF-06)
         - Acceso a jornales programados
     end note
-    note right of foro_html
+    note right of vista_foro
         Solo lectura.
         No puede publicar avisos.
         Solo Cobrador puede hacerlo.
     end note
-    note right of jornales_html
+    note right of vista_jornales
         Vista restringida al cliente:
         solo ve jornales programados
         y puede confirmar su respuesta.
@@ -350,10 +350,10 @@ stateDiagram-v2
 ---
 
 > **Notas de implementación:**
-> - Toda la persistencia es en `localStorage` (Offline-First).
+> - Toda la persistencia es en `IndexedDB` a través de Dexie (Offline-First).
 > - La sincronización con Supabase está simulada (2 seg de delay mock).
 > - El guard de rutas (`Auth.guard()`) protege cada página según rol activo.
 > - Los "estados" de vecinos se calculan dinámicamente (`calcularEstado()` en `app.js`), no se almacenan explícitamente.
-> - **RF-05**: Solo el Cobrador puede publicar en el Foro. Admin no tiene acceso a `foro.html`.
+> - **RF-05**: Solo el Cobrador puede publicar en el Foro. Admin no tiene acceso a `/foro`.
 > - **RF-06**: El historial del cliente debe mostrar horas trabajadas además del estado de pagos.
 > - **RF-11**: El cliente puede confirmar asistencia, informar sustituto o rechazar un jornal programado (diagrama 6b).

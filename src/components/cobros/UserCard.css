@@ -1,0 +1,139 @@
+/* UserCard Component Styles */
+
+.user-card-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.user-card-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.user-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  font-family: 'Outfit', sans-serif;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-name-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.user-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-sector {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.1rem;
+}
+
+.user-points {
+  color: #b45309;
+  font-weight: 600;
+  margin-left: 0.35rem;
+}
+
+[data-theme="dark"] .user-points {
+  color: #fbbf24;
+}
+
+.user-debt {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--danger);
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.user-advance {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--success);
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.user-pay-btn {
+  background: var(--bg-secondary);
+  color: var(--primary-dark);
+  border: 1px solid var(--border-default);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.user-pay-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-50);
+}
+
+.user-pay-btn:active {
+  transform: scale(0.96);
+}
+
+.user-pay-btn-advance {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
+}
+
+.user-pay-btn-advance:hover {
+  background: #059669;
+  border-color: #059669;
+  color: white;
+}
+
+.user-card-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+.user-ai-btn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  padding: 0 0.5rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.user-ai-btn:hover {
+  background: var(--primary-light);
+  color: white;
+}
+

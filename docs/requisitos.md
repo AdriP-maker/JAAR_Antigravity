@@ -4,10 +4,10 @@
 
 | Rol | Descripción | Acceso Principal |
 |---|---|---|
-| **Administrador** | Gestiona cuentas de usuarios, aprueba registros y resetea contraseñas | `admin.html` |
-| **Cobrador / Tesorero** | Registra pagos, gastos y jornales. Opera en modo offline. | `index.html`, `jornales.html`, `gastos.html` |
-| **Inspector MINSA** | Solo lectura. Visualiza y descarga reportes trimestrales. | `reporte.html` |
-| **Cliente / Vecino** | Ve su historial personal de pagos y lee avisos del foro. | `historial.html`, `foro.html` |
+| **Administrador** | Gestiona cuentas de usuarios, aprueba registros y resetea contraseñas | `/admin` |
+| **Cobrador / Tesorero** | Registra pagos, gastos y jornales. Opera en modo offline. | `/`, `/jornales`, `/gastos` |
+| **Inspector MINSA** | Solo lectura. Visualiza y descarga reportes trimestrales. | `/reporte` |
+| **Cliente / Vecino** | Ve su historial personal de pagos y lee avisos del foro. | `/historial`, `/foro` |
 
 ---
 
@@ -33,7 +33,7 @@
 **Contexto:** El cobrador visita el sector sin señal celular. El vecino paga su cuota unificada de $3.00.
 
 1. El cobrador abre el Portal Web en su navegador (funciona sin internet).
-2. Registra el pago → se guarda en `localStorage` con estado `pendiente`.
+2. Registra el pago → se guarda en `IndexedDB` con estado `pendiente`.
 3. La app muestra el indicador **"Sin Red"** en la cabecera.
 4. Al llegar a una zona con señal, presiona **"Sincronizar"** → los datos suben a Supabase.
 
@@ -42,7 +42,7 @@
 ### Escenario 2: Jornal con Sustituto
 **Contexto:** La vecina Ana no puede asistir a la jornada y manda a su hijo Carlos.
 
-1. El cobrador entra a `jornales.html`.
+1. El cobrador entra a `/jornales`.
 2. Selecciona a Ana como miembro, marca **"Sí asiste"** → **"Mandó a un sustituto"**.
 3. Aparece el campo **"Nombre del Sustituto"** → escribe "Carlos García".
 4. Indica las horas trabajadas → guarda.
@@ -63,20 +63,20 @@
 ### Escenario 4: Inspector MINSA descarga Reporte
 **Contexto:** Fin de trimestre, el inspector necesita el informe.
 
-1. Entra con usuario `minsa` → va directamente a `reporte.html`.
+1. Entra con usuario `minsa` → va directamente a `/reporte`.
 2. Configura filtros: **Desde:** enero 2026, **Hasta:** marzo 2026.
 3. Marca solo **Ingresos** y **Egresos** (desactiva Jornales).
 4. Presiona **"Aplicar Filtros"** → la tabla se actualiza en tiempo real.
-5. Presiona **"📥 Exportar Excel"** → descarga `Reporte_JAAR_2026-03-31.xlsx` con 4 hojas.
+5. Presiona **"📥 Exportar Excel"** → descarga `Reporte_SIMAP_2026-03-31.xlsx` con 4 hojas.
 
 ---
 
 ### Escenario 5: Nuevo Vecino Solicita Acceso
 **Contexto:** El nuevo vecino de la Casa-12 quiere acceder al sistema.
 
-1. Abre `registro.html` (público, sin login).
+1. Abre `/registro` (público, sin login).
 2. Llena: Nombre, Número de Casa, Usuario deseado, Contraseña.
-3. El administrador entra a `admin.html` → ve la solicitud en "Pendientes".
+3. El administrador entra a `/admin` → ve la solicitud en "Pendientes".
 4. Presiona ✅ **Aprobar** → el vecino ya puede iniciar sesión.
 
 ---

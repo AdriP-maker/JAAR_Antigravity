@@ -1,0 +1,141 @@
+/* RegisterPage Styles */
+
+.register-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: var(--space-4);
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.register-theme-toggle {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+}
+
+.register-card {
+  background: var(--surface);
+  padding: var(--space-6);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--border-light);
+}
+
+.register-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--primary-dark);
+  margin-bottom: 0.25rem;
+}
+
+[data-theme="dark"] .register-title {
+  color: var(--primary-light);
+}
+
+.register-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: var(--space-6);
+}
+
+.register-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+}
+
+@media (max-width: 480px) {
+  .register-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.register-divider {
+  text-align: center;
+  margin: var(--space-4) 0;
+  position: relative;
+}
+
+.register-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border-default);
+  z-index: 1;
+}
+
+.register-divider span {
+  position: relative;
+  z-index: 2;
+  background: var(--surface);
+  padding: 0 var(--space-3);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.register-error {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  margin-bottom: var(--space-4);
+  text-align: center;
+}
+
+.register-submit {
+  margin-top: var(--space-2);
+}
+
+.register-footer {
+  margin-top: var(--space-4);
+  text-align: center;
+}
+
+.register-link {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.register-link:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.register-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+.reg-tab {
+  flex: 1;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+.reg-tab.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+

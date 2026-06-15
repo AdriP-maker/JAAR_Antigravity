@@ -1,0 +1,150 @@
+/* Header Component Styles */
+
+.header-nav {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  padding: var(--space-3) var(--space-4);
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-light);
+  transition: background var(--transition-slow);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.header-logo {
+  font-size: 1.6rem;
+  filter: drop-shadow(0 2px 4px rgba(13, 148, 136, 0.3));
+}
+
+.header-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: -0.01em;
+}
+
+[data-theme="dark"] .header-title {
+  color: var(--primary-light);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.header-sync-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-primary);
+  transition: all var(--transition-base);
+}
+
+.header-sync-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+  transform: translateY(-1px);
+}
+
+.header-sync-btn:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.header-sync-btn.syncing {
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.header-sync-btn.syncing .sync-icon {
+  animation: spin 1s linear infinite;
+}
+
+.sync-icon {
+  font-size: 0.95rem;
+}
+
+.sync-label {
+  display: none;
+}
+
+@media (min-width: 400px) {
+  .sync-label {
+    display: inline;
+  }
+}
+
+/* Status bar */
+.header-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.header-pending {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pending-alert {
+  color: var(--danger);
+  font-weight: 700;
+}
+
+/* ── Hamburger Button ── */
+.header-hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+
+.header-hamburger:hover {
+  background: var(--bg-secondary, rgba(0,0,0,0.06));
+}
+
+.header-hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--primary-dark, var(--primary));
+  border-radius: 2px;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .header-hamburger span {
+  background: var(--primary-light, var(--primary));
+}
+

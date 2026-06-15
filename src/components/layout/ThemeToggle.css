@@ -1,0 +1,36 @@
+/* ThemeToggle Styles */
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.theme-toggle:hover {
+  background: var(--bg-tertiary);
+  transform: scale(1.08);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+.theme-icon {
+  font-size: 1.1rem;
+  transition: transform var(--transition-base);
+}
+
+.theme-icon-sun {
+  animation: scaleIn 0.3s ease-out;
+}
+
+.theme-icon-moon {
+  animation: scaleIn 0.3s ease-out;
+}

@@ -1,4 +1,4 @@
-# Diagrama Entidad-Relación (E/R) - JAAR Digital
+# Diagrama Entidad-Relación (E/R) - SIMAP Digital
 
 ## 1. Requerimientos Funcionales Derivados
 
@@ -75,8 +75,8 @@ A partir de los RF originales, se derivan las siguientes funcionalidades especí
 - **RNF-01.3**: La aplicación debe almacenar localmente todos los datos generados offline.
 
 ### RNF-02: Portabilidad
-- **RNF-02.1**: La aplicación debe ser compatible con navegadores modernos (Chrome, Firefox, Safari, Edge).
-- **RNF-02.2**: La aplicación debe ser responsive y funcionar en dispositivos móviles y desktop.
+- **RNF-02.1**: La aplicación SPA construida con React 19 debe ser compatible con navegadores modernos (Chrome, Firefox, Safari, Edge).
+- **RNF-02.2**: La aplicación en React debe ser responsive y funcionar en dispositivos móviles y desktop.
 - **RNF-02.3**: No debe requerir instalación de software adicional.
 
 ### RNF-03: Seguridad
@@ -102,7 +102,7 @@ A partir de los RF originales, se derivan las siguientes funcionalidades especí
 
 ### RNF-07: Escalabilidad
 - **RNF-07.1**: El sistema debe soportar hasta 500 vecinos registrados.
-- **RNF-07.2**: El localStorage debe manejar hasta 10,000 registros sin degradación.
+- **RNF-07.2**: La base de datos IndexedDB (vía Dexie) debe manejar hasta 10,000 registros sin degradación.
 
 ### RNF-08: Usabilidad
 - **RNF-08.1**: La interfaz debe ser intuitiva para usuarios con poca experiencia técnica.
@@ -297,8 +297,8 @@ erDiagram
 ```mermaid
 flowchart TD
     A[Usuario realiza acción] --> B{¿Hay conexión?}
-    B -->|Sí| C[Guardar en localStorage + Supabase]
-    B -->|No| D[Guardar en localStorage]
+    B -->|Sí| C[Guardar en IndexedDB + Supabase]
+    B -->|No| D[Guardar en IndexedDB]
     D --> E[Marcar como 'pendiente']
     E --> F[Agregar a SINCRONIZACION_COLA]
     F --> G{¿Se recuperó conexión?}
@@ -337,4 +337,4 @@ flowchart TD
 
 ---
 
-*Documento generado para el proyecto JAAR Digital - Sistema de Gestión de Juntas de Acción Comunal*
+*Documento generado para el proyecto SIMAP Digital - Sistema de Gestión de Juntas de Acción Comunal*

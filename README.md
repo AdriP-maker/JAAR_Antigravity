@@ -1,136 +1,64 @@
-# JAAR Digital · Cuentas Claras 💧
+# SIMAP Digital · Cuentas Claras 💧
 
-> **Sistema de Gestión para Juntas Administradoras de Acueductos Rurales (JAAR) — Panamá**  
-> Portal Web de Gestión (PWA) · Offline-First · HTML + CSS + JavaScript Vainilla
+Sistema integral de gestión, cobranza y auditoría para las Sistema Integrado de Moradores y Agua Potable de Panamá (SIMAP). Diseñado con una arquitectura *Offline-First* que permite a los cobradores operar en comunidades sin acceso a internet, sincronizando los datos automáticamente cuando recuperan la conexión.
 
----
+## 🚀 Características Principales
 
-## 🌐 Demo en Vivo
+*   **Arquitectura Offline-First:** Uso de `IndexedDB` a través de `Dexie.js` para asegurar que todo el sistema (cobros, reportes, creación de usuarios) funcione sin conexión a internet.
+*   **Gestión Multi-Rol:** 5 roles definidos con flujos y accesos independientes (`admin`, `cobrador`, `minsa`, `cliente`, `dev`).
+*   **Motor de Gamificación:** Sistema de puntos automáticos que premia a los vecinos por pagos puntuales, meses adelantados, etc., permitiendo canjear puntos por descuentos.
+*   **Reportes Oficiales:** Generación de reportes de ingresos, egresos y auditoría en formatos oficiales PDF (`jspdf`) y Excel (`xlsx`).
+*   **Inteligencia Artificial (Ruta IA):** Motor de sugerencias para mejorar la relación entre cobrador y vecino, incluyendo un sistema de notificaciones.
 
-**[👉 Abrir la aplicación](https://adrip-maker.github.io/JAAR_Antigravity/login.html)**
+## 🛠 Tecnologías Utilizadas
 
-> Credenciales de demostración:
-> | Usuario | Contraseña | Rol |
-> |---|---|---|
-> | `admin` | `admin123` | Administrador |
-> | `cobrador` | `1234` | Cobrador / Tesorero |
-> | `minsa` | `1234` | Inspector MINSA |
-> | `cliente` | `1234` | Vecino / Cliente |
+*   **Frontend:** React 18, Vite
+*   **Base de Datos Local:** Dexie.js (IndexedDB wrapper)
+*   **Estilos:** Vanilla CSS, CSS Variables (Soporte nativo Dark/Light Mode)
+*   **Exportación de Datos:** jsPDF, jsPDF-AutoTable, SheetJS (xlsx)
 
----
+## 📋 Requisitos Previos
 
-## 📋 Descripción del Proyecto
+*   [Node.js](https://nodejs.org/) (versión 18 o superior recomendada)
+*   NPM o Yarn
 
-**JAAR Digital** es una solución tecnológica diseñada para digitalizar la gestión administrativa de los acueductos rurales comunitarios en Panamá, en cumplimiento del **Decreto Ejecutivo N° 1839** del Ministerio de Salud (MINSA).
+## ⚙️ Instalación y Ejecución
 
-### Problema que Resuelve
-- ❌ Gestión manual en libretas (pérdida de datos, errores)
-- ❌ Falta de transparencia en cobros y gastos
-- ❌ Morosidad sin registro formal
-- ❌ Dificultad para rendir cuentas al MINSA
-- ❌ Zonas rurales **sin internet constante**
-
-### Solución
-Una PWA **Offline-First** que funciona sin internet, guarda datos localmente y los sincroniza cuando hay conexión.
-
----
-
-## 🗂️ Módulos del Sistema
-
-| Módulo | Archivo | Acceso |
-|--------|---------|--------|
-| 🔐 Login y Registro | `login.html` / `registro.html` | Público |
-| 🛡️ Panel Admin | `admin.html` | Admin |
-| 💧 Registro de Cobros | `index.html` | Cobrador |
-| ⛏️ Jornales Comunitarios | `jornales.html` | Cobrador |
-| 🧾 Egresos / Gastos | `gastos.html` | Cobrador |
-| 💬 Foro de Avisos | `foro.html` | Cobrador (escribe) / Cliente (lee) |
-| 👤 Historial del Cliente | `historial.html` | Cliente |
-| 📊 Reporte MINSA | `reporte.html` | Cobrador / MINSA |
-
----
-
-## 🔑 Sistema de Roles (RBAC)
-
-```
-Admin      → Aprobación de cuentas, Reset de contraseñas
-Cobrador   → Cobros, Gastos, Jornales, Foro, Reportes
-MINSA      → Solo vista de Reportes + Exportación PDF/Excel
-Cliente    → Su historial personal + Leer avisos del Foro
-```
-
----
-
-## ⚙️ Tecnología
-
-- **Frontend:** HTML5, CSS3, JavaScript Vainilla (Sin frameworks)
-- **Persistencia:** `localStorage` (Offline-First)
-- **PWA:** `manifest.json` (instalable en pantalla de inicio)
-- **Exportación Excel:** [SheetJS](https://sheetjs.com/) (incluido localmente)
-- **Backend (futuro):** Supabase (PostgreSQL)
-
----
-
-## 📁 Estructura del Proyecto
-
-```
-├── login.html          # Página principal de acceso
-├── registro.html       # Solicitud de nueva cuenta
-├── admin.html          # Panel de administración
-├── index.html          # Módulo de Cobros
-├── jornales.html       # Módulo de Jornales
-├── gastos.html         # Módulo de Egresos
-├── foro.html           # Tablón de Avisos
-├── historial.html      # Historial del Cliente
-├── reporte.html        # Reporte Trimestral MINSA
-├── styles.css          # Hoja de estilos global (Design System)
-├── app.js              # Controlador de la vista Cobros
-├── manifest.json       # Configuración PWA
-└── js/
-    ├── lib/
-    │   └── xlsx.full.min.js  # SheetJS (offline)
-    ├── store.js        # Capa de persistencia localStorage
-    ├── auth.js         # Autenticación y control de roles
-    ├── admin.js        # Lógica del panel admin
-    ├── registro.js     # Lógica del formulario de registro
-    ├── reporte.js      # Generación de reportes + Excel + PDF
-    ├── foro.js         # Lógica del foro de avisos
-    ├── gastos.js       # Lógica de egresos
-    └── jornales.js     # Lógica de jornales comunitarios
-```
-
----
-
-## 🚀 Cómo Usar (Localmente)
-
-1. Descarga o clona el repositorio:
+1. Clona el repositorio o descarga el código fuente:
    ```bash
-   git clone https://github.com/[tu-usuario]/[tu-repositorio].git
+   git clone <url-del-repositorio>
+   cd Pruebas_Antigravity
    ```
-2. Entra en la carpeta del repositorio.
-3. Haz doble clic en `login.html`
-4. ¡Listo! No requiere servidor ni instalación.
 
----
+2. Instala las dependencias necesarias:
+   ```bash
+   npm install
+   ```
 
-## 📄 Documentación
+3. Inicia el servidor de desarrollo local:
+   ```bash
+   npm run dev
+   ```
 
-| Documento | Descripción |
-|-----------|-------------|
-| [📋 Propuesta del Proyecto](docs/propuesta.md) | Documento base de propuesta institucional |
-| [🏗️ Arquitectura del Sistema](docs/arquitectura.md) | Diagrama y descripción técnica |
-| [📌 Requisitos y Escenarios](docs/requisitos.md) | Casos de uso y flujos de trabajo |
-| [📅 Plan de Desarrollo](docs/plan_desarrollo.md) | Hoja de ruta y mantenimiento |
+4. Abre tu navegador en la URL que indique la consola (usualmente `http://localhost:5173`).
 
----
+## 🔐 Credenciales de Prueba (Entorno de Desarrollo)
 
-## 👥 Equipo
+Puedes acceder al sistema utilizando los siguientes roles y contraseñas por defecto (definidas en `src/utils/constants.js`):
 
-Proyecto desarrollado en el marco del plan de digitalización de JAAR para **Panamá**.  
-Para consultas institucionales: contactar al Ministerio de Salud (MINSA) — División de Ingeniería Sanitaria.
+| Rol | Usuario (Login) | Contraseña | Descripción |
+| :--- | :--- | :--- | :--- |
+| **Administrador Global** | `admin` | `admin123` | Control total del sistema, auditoría y finanzas. |
+| **Cobrador en Campo** | `cobrador` | `1234` | Permite registrar cobros offline y ver sugerencias de IA. |
+| **Auditor MINSA** | `minsa` | `1234` | Solo lectura para emitir y descargar reportes oficiales. |
+| **Soporte Técnico (Dev)** | `dev` | `admin123` | Solo lectura del log de auditoría del sistema, sin acceso a datos sensibles. |
+| **Cliente / Vecino** | `cliente` | `1234` | Usuario de prueba. Ve su historial, pagos, puntos y avisos. |
 
----
+## 🏗 Estructura del Proyecto
 
-## 📜 Licencia
-
-Este proyecto es de uso comunitario y gubernamental. Solo se permite su uso en beneficio de las Juntas Administradoras de Acueductos Rurales comunitarios.
+*   `/src/components/`: Componentes modulares y reutilizables.
+*   `/src/context/`: Estados globales (Tema, Autenticación, Tostadas de alerta).
+*   `/src/pages/`: Vistas principales de la aplicación por cada módulo.
+*   `/src/services/`: Capa de lógica de negocio y comunicación con la base de datos Dexie.
+*   `/src/utils/`: Funciones de formateo, criptografía y constantes del sistema.
+*   `/docs/`: Documentación arquitectónica completa del proyecto.
