@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/SIMAP_Antigravity/',
+  base: '/JAAR_Antigravity/',
   build: {
     outDir: 'dist',
     sourcemap: false,
