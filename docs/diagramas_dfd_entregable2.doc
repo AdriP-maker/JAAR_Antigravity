@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta charset="utf-8">
+  <title>UTP - Laboratorio 3 DFD</title>
+  <!--[if gte mso 9]>
+  <xml>
+    <w:WordDocument>
+      <w:View>Print</w:View>
+      <w:Zoom>100</w:Zoom>
+      <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+  </xml>
+  <![endif]-->
+  <style>
+    @page {
+      margin: 2cm 2.5cm 2cm 2.5cm;
+      size: A4;
+    }
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      color: #222222;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: #0f4c81;
+      font-size: 16pt;
+      border-bottom: 2.5px solid #0f4c81;
+      padding-bottom: 4px;
+      margin-top: 18pt;
+      margin-bottom: 10pt;
+      page-break-after: avoid;
+    }
+    h2 {
+      color: #1b6ca8;
+      font-size: 13pt;
+      margin-top: 14pt;
+      margin-bottom: 6pt;
+      border-bottom: 1px solid #cbd5e1;
+      padding-bottom: 3px;
+      page-break-after: avoid;
+    }
+    h3 {
+      color: #003366;
+      font-size: 11.5pt;
+      margin-top: 10pt;
+      margin-bottom: 5pt;
+      page-break-after: avoid;
+    }
+    p {
+      font-size: 11pt;
+      margin-bottom: 7pt;
+      text-align: justify;
+    }
+    li {
+      font-size: 11pt;
+      margin-bottom: 3pt;
+    }
+    ul, ol {
+      margin-bottom: 8pt;
+      padding-left: 18px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 10pt 0;
+      table-layout: fixed;
+    }
+    th {
+      background-color: #0f4c81;
+      color: white;
+      font-weight: bold;
+      padding: 7px 8px;
+      border: 1px solid #8dadc8;
+      text-align: left;
+      font-size: 10pt;
+      word-wrap: break-word;
+    }
+    td {
+      padding: 7px 8px;
+      border: 1px solid #c8d8e8;
+      font-size: 10pt;
+      vertical-align: top;
+      word-wrap: break-word;
+    }
+    tr:nth-child(even) { background-color: #f4f8fc; }
+    tr:nth-child(odd)  { background-color: #ffffff; }
+    code {
+      font-family: 'Consolas', 'Courier New', monospace;
+      background-color: #eef2f8;
+      padding: 1px 4px;
+      font-size: 9pt;
+      color: #0f4c81;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #c8d8e8;
+      margin: 14pt 0;
+    }
+    .cover-page {
+      text-align: center;
+      padding-top: 60pt;
+      padding-bottom: 80pt;
+    }
+    .cover-uni {
+      font-size: 13pt;
+      font-weight: bold;
+      color: #0f4c81;
+      text-transform: uppercase;
+      line-height: 1.4;
+      margin-bottom: 30pt;
+    }
+    .cover-title {
+      font-size: 22pt;
+      font-weight: bold;
+      color: #0f4c81;
+      margin: 30pt 0;
+      line-height: 1.2;
+      border: 2px solid #0f4c81;
+      padding: 20pt 30pt;
+      display: inline-block;
+    }
+    .cover-meta {
+      font-size: 11.5pt;
+      color: #475569;
+      margin-top: 40pt;
+      line-height: 1.8;
+      text-align: left;
+      display: inline-block;
+    }
+    .page-break { page-break-before: always; }
+    .diagram-img {
+      display: block;
+      margin: 12pt auto;
+      width: 100%;
+      max-width: 100%;
+      border: 1px solid #dde6f0;
+      padding: 4px;
+      background: #ffffff;
+    }
+    .mini-table td:first-child {
+      font-weight: bold;
+      background-color: #f0f5fb;
+      width: 28%;
+    }
+  </style>
+</head>
+<body>
+
+<!-- PORTADA -->
+<div class="cover-page">
+  <div class="cover-uni">
+    Universidad Tecnológica de Panamá<br>
+    Facultad de Ingeniería de Sistemas Computacionales<br>
+    Departamento de Simulación y Computación de Sistemas
+  </div>
+  <div class="cover-title">
+    LABORATORIO #3<br>
+    Diagramas de Flujo de Datos (DFD)<br>
+    en Ingeniería de Software
+  </div>
+  <div class="cover-meta">
+    <strong>Asignatura:</strong>&nbsp;&nbsp;Ingeniería de Software II<br>
+    <strong>Facilitador:</strong>&nbsp;&nbsp;Ing. Jorge A. Marín<br>
+    <strong>Proyecto:</strong>&nbsp;&nbsp;&nbsp;SIMAP Digital · Cuentas Claras 💧<br>
+    <strong>Grupo:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Desarrollo de Acueductos Rurales<br>
+    <strong>Fecha:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Junio 2026
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- CUERPO -->
+<h1>LABORATORIO #3: DIAGRAMAS DE FLUJO DE DATOS (DFD)</h1>
+
+<h2>A. TÍTULO DE LA EXPERIENCIA</h2>
+<p><strong>Diagramas de Flujo de Datos (DFD) en Ingeniería de Software</strong></p>
+
+<h2>B. TEMAS</h2>
+<ul>
+  <li>Concepto y propósito de los Diagramas de Flujo de Datos (DFD).</li>
+  <li>Simbología: procesos, flujos, entidades externas y almacenes de datos (Notación Gane-Sarson / Yourdon-Coad).</li>
+  <li>Niveles de descomposición: Diagrama de Contexto (Nivel 0), Nivel 1 y Nivel 2.</li>
+  <li>Reglas de balanceo y consistencia entre niveles.</li>
+  <li>Minispecificaciones (especificación de procesos).</li>
+  <li>Diccionario de datos.</li>
+</ul>
+
+<h2>C. OBJETIVOS</h2>
+<ul>
+  <li>Comprender la notación estándar de los DFD y la función de cada símbolo dentro del modelado de sistemas.</li>
+  <li>Construir diagramas de flujo de datos a partir del análisis de requerimientos del sistema <strong>SIMAP Digital</strong>.</li>
+  <li>Aplicar la descomposición funcional por niveles (Contexto &rarr; Nivel 1 &rarr; Nivel 2).</li>
+  <li>Elaborar minispecificaciones que documenten la lógica interna de cada proceso identificado.</li>
+  <li>Construir el diccionario de datos asociado al modelo DFD.</li>
+</ul>
+
+<h2>D. MARCO TEÓRICO</h2>
+<p>Un <strong>Diagrama de Flujo de Datos (DFD)</strong> es una representación gráfica que muestra cómo los datos se mueven a través de un sistema de información. A diferencia de los diagramas de flujo convencionales, el DFD no describe el flujo de control (decisiones, bucles), sino el <em>flujo de información</em>: de dónde provienen los datos, cómo se transforman y hacia dónde se dirigen.</p>
+
+<h3>Simbología Estándar (Notación Gane-Sarson / Yourdon-Coad)</h3>
+<table>
+  <thead>
+    <tr>
+      <th style="width:28%">Símbolo</th>
+      <th style="width:22%">Nombre</th>
+      <th style="width:50%">Descripción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Círculo / Burbuja (○)</strong></td>
+      <td>Proceso</td>
+      <td>Función del sistema que transforma datos de entrada en datos de salida. Se identifica con un número y nombre verbal.</td>
+    </tr>
+    <tr>
+      <td><strong>Flecha (&rarr;)</strong></td>
+      <td>Flujo de datos</td>
+      <td>Movimiento de datos entre procesos, entidades y almacenes. La punta indica la dirección y se etiqueta con el nombre del dato.</td>
+    </tr>
+    <tr>
+      <td><strong>Rectángulo (□)</strong></td>
+      <td>Entidad externa</td>
+      <td>Actores externos al sistema (personas, organizaciones u otros sistemas) que son origen o destino de los datos.</td>
+    </tr>
+    <tr>
+      <td><strong>Rectángulo abierto (▭)</strong></td>
+      <td>Almacén de datos</td>
+      <td>Depósito donde los datos quedan en reposo (archivos, bases de datos). Se representa con dos líneas paralelas horizontales.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- E. NIVEL 0 -->
+<h2>E. DFD NIVEL 0: DIAGRAMA DE CONTEXTO</h2>
+<p>El Diagrama de Contexto define los límites de la plataforma <strong>SIMAP Digital</strong> y muestra las interacciones generales del sistema completo — representado como un único proceso central — con sus cinco entidades externas principales.</p>
+
+<img class="diagram-img" src="dfd_contexto.png" alt="DFD Nivel 0 - Diagrama de Contexto SIMAP Digital">
+
+<h3>Tabla de Flujos de Contexto (Nivel 0)</h3>
+<table>
+  <thead>
+    <tr>
+      <th style="width:22%">Entidad Externa</th>
+      <th style="width:39%">Flujos de Entrada al Sistema</th>
+      <th style="width:39%">Flujos de Salida del Sistema</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Vecino / Cliente</strong></td>
+      <td>Solicitud de Registro, Credenciales de Acceso, Confirmación de Asistencia a Jornal</td>
+      <td>Historial de Pagos y Puntos, Estado de Riesgo Amigable, Avisos y Notificaciones</td>
+    </tr>
+    <tr>
+      <td><strong>Cobrador en Campo</strong></td>
+      <td>Registro de Cobros (Varios Modos), Asistencias a Jornal, Gastos/Egresos, Credenciales</td>
+      <td>Ruta Inteligente IA, Sugerencias de Diálogo Empático, Comisiones Acumuladas</td>
+    </tr>
+    <tr>
+      <td><strong>Administrador Global</strong></td>
+      <td>Aprobación/Rechazo de Vecinos, Configuración de Reglas, Solicitud de Auditoría</td>
+      <td>Tablero de Recaudo, Alertas de Anomalía, Logs de Finanzas</td>
+    </tr>
+    <tr>
+      <td><strong>Auditor del MINSA</strong></td>
+      <td>Solicitud de Reportes Trimestrales/Anuales</td>
+      <td>Reportes Oficiales en PDF y Excel</td>
+    </tr>
+    <tr>
+      <td><strong>Soporte Técnico / Dev</strong></td>
+      <td>Solicitud de Logs de Sistema</td>
+      <td>Log de Auditoría sin Datos Sensibles</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- F. NIVEL 1 -->
+<h2>F. DFD NIVEL 1: DIAGRAMA GENERAL DE PROCESOS</h2>
+<p>Este nivel desglosa el sistema en sus procesos lógicos fundamentales, especificando la interacción de cada proceso con las entidades externas y con los dos almacenes de datos: <code>D1: IndexedDB</code> (local) y <code>D2: Supabase</code> (nube).</p>
+
+<img class="diagram-img" src="dfd_nivel1.png" alt="DFD Nivel 1 - Procesos Generales SIMAP Digital">
+
+<h3>Tabla de Procesos y Flujos (Nivel 1)</h3>
+<table>
+  <thead>
+    <tr>
+      <th style="width:8%">ID</th>
+      <th style="width:22%">Proceso</th>
+      <th style="width:25%">Flujos de Origen</th>
+      <th style="width:25%">Flujos de Destino</th>
+      <th style="width:20%">Almacenes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.0</td>
+      <td>Autenticación y RBAC</td>
+      <td>Credenciales (todos los roles)</td>
+      <td>Acceso Concedido / Denegado</td>
+      <td>simap_usuarios (D1)</td>
+    </tr>
+    <tr>
+      <td>2.0</td>
+      <td>Gestión de Cobros y Comisiones</td>
+      <td>Registro de Pago (Cobrador)</td>
+      <td>Comisión al Cobrador, Notifica Pago al P5.0</td>
+      <td>simap_pagos, simap_comisiones (D1)</td>
+    </tr>
+    <tr>
+      <td>3.0</td>
+      <td>Control de Caja y Gastos</td>
+      <td>Detalles de Gasto (Cobrador/Admin)</td>
+      <td>Confirmación de Egreso</td>
+      <td>simap_gastos (D1)</td>
+    </tr>
+    <tr>
+      <td>4.0</td>
+      <td>Gestión de Jornales y Asistencia</td>
+      <td>Asistencias/Sustitutos (Cobrador), Confirmación (Vecino)</td>
+      <td>Notifica Asistencia al P5.0</td>
+      <td>simap_jornales (D1)</td>
+    </tr>
+    <tr>
+      <td>5.0</td>
+      <td>Motor de Gamificación</td>
+      <td>Notificaciones de éxito de P2.0 y P4.0</td>
+      <td>Puntos y Descuentos al Vecino</td>
+      <td>simap_puntos (D1)</td>
+    </tr>
+    <tr>
+      <td>6.0</td>
+      <td>Inteligencia Artificial</td>
+      <td>Historial histórico (D1)</td>
+      <td>Ruta Inteligente (Cobrador), Riesgo Amigable (Vecino), Alertas (Admin)</td>
+      <td>simap_ai_cache (D1)</td>
+    </tr>
+    <tr>
+      <td>7.0</td>
+      <td>Reportes y Auditoría</td>
+      <td>Filtros y Fechas (MINSA/Admin/Dev)</td>
+      <td>Reportes PDF/Excel, Logs Técnicos</td>
+      <td>Historial en D1</td>
+    </tr>
+    <tr>
+      <td>8.0</td>
+      <td>Foro de Avisos</td>
+      <td>Publicar Aviso (Admin)</td>
+      <td>Avisos en Foro (Vecino/Cobrador)</td>
+      <td>simap_foros (D1)</td>
+    </tr>
+    <tr>
+      <td>9.0</td>
+      <td>Sincronización Offline-First</td>
+      <td>Cola local 'pendiente' (D1)</td>
+      <td>Escribir en D2, Actualizar D1 a 'sincronizado'</td>
+      <td>cola_sync (D1), Supabase (D2)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- G. NIVEL 2 -->
+<h2>G. DFD NIVEL 2: DETALLE DE PROCESOS CRÍTICOS</h2>
+
+<h3>G.1 — Subproceso 2.0 y 5.0: Cobros, Comisiones y Puntos</h3>
+<img class="diagram-img" src="dfd_nivel2_cobros.png" alt="DFD Nivel 2 - Cobros y Gamificación">
+<ul>
+  <li><strong>2.1 Obtener Saldos:</strong> Consulta en <code>D1</code> las deudas y puntos del vecino seleccionado.</li>
+  <li><strong>2.2 Validar Descuento:</strong> Si el vecino canjea puntos, calcula el descuento (1 pt = B/.0.10) y los deduce de <code>simap_puntos</code>.</li>
+  <li><strong>2.3 Registrar Pago y Split:</strong> Escribe el pago en <code>simap_pagos</code> con hash SHA-256 y crea el registro de comisión en <code>simap_comisiones</code> (40% cobrador / 60% devs) de forma atómica.</li>
+  <li><strong>5.1 Otorgar Puntos:</strong> Valida si el pago fue antes del día 15 y escribe los puntos ganados en <code>simap_puntos</code> (+2 base, +5 puntual, +10 anticipado).</li>
+</ul>
+
+<h3>G.2 — Subproceso 9.0: Sincronización Offline-First</h3>
+<img class="diagram-img" src="dfd_nivel2_sync.png" alt="DFD Nivel 2 - Sincronización Offline-First">
+<ul>
+  <li><strong>9.1 Monitor de Red:</strong> El hook <code>useOnline</code> detecta constantemente si hay conexión a internet.</li>
+  <li><strong>9.2 Consultar Cola FIFO:</strong> Lee de <code>simap_cola_sincronizacion</code> los registros en estado <code>pendiente</code> en orden cronológico estricto.</li>
+  <li><strong>9.3 Escritura Centralizada:</strong> Realiza solicitudes HTTP POST/PUT a la API de Supabase (<code>D2</code>).</li>
+  <li><strong>9.4 Actualización Local:</strong> Al recibir HTTP 200/201, actualiza el campo <code>estado_sincronizacion</code> a <code>sincronizado</code> en <code>D1</code> y elimina la tarea de la cola.</li>
+</ul>
+
+<div class="page-break"></div>
+
+<!-- H. INTERFAZ E INPUTS -->
+<h2>H. DIAGRAMA DE FLUJO DE INTERFACES E INPUTS</h2>
+<p>Esta sección muestra las pantallas de usuario, los campos de entrada, el proceso central del sistema y los eventos derivados según si la entrada es válida (éxito) o inválida (error).</p>
+
+<img class="diagram-img" src="dfd_interfaces_inputs.png" alt="Diagrama de Flujo de Interfaces e Inputs - SIMAP Digital">
+
+<div class="page-break"></div>
+
+<!-- I. MINISPECIFICACIONES -->
+<h2>I. ESPECIFICACIÓN DE PROCESOS (MINISPECIFICACIONES)</h2>
+
+<h3>Miniespecificación 1 — P-2.3: Registrar Pago y Aplicar Split de Comisión</h3>
+<table class="mini-table">
+  <tbody>
+    <tr><td>ID del Proceso</td><td>P-2.3</td></tr>
+    <tr><td>Nombre</td><td>Registrar Pago y Aplicar Split de Comisión</td></tr>
+    <tr><td>Descripción</td><td>Registra el pago del servicio de agua y divide la comisión entre el cobrador y el equipo de soporte técnico.</td></tr>
+    <tr><td>Flujos de Entrada</td><td>ID Miembro, Monto, Mes, Año, Método de Pago, Descuento de Puntos.</td></tr>
+    <tr><td>Flujos de Salida</td><td>Comprobante de pago, Registro de comisión, Notificación de éxito al cobrador.</td></tr>
+    <tr><td>Almacenes</td><td><code>simap_pagos</code> (D1 - Escritura), <code>simap_comisiones</code> (D1 - Escritura), <code>simap_config</code> (D1 - Lectura)</td></tr>
+    <tr>
+      <td>Lógica del Proceso</td>
+      <td>
+        <strong>Pre:</strong> El hogar tiene meses pendientes. El cobrador está autenticado.<br>
+        1. Leer cuota básica de <code>simap_config</code> (B/.3.00).<br>
+        2. Restar descuento por canje de puntos si corresponde.<br>
+        3. Registrar pago en <code>simap_pagos</code> con estado <code>pendiente</code> y hash SHA-256.<br>
+        4. Calcular comisión: B/.1.00 proporcional al monto cobrado.<br>
+        5. Aplicar split: 40% cobrador / 60% desarrolladores.<br>
+        6. Escribir comisión en <code>simap_comisiones</code>.<br>
+        7. Retornar confirmación al Cobrador.<br>
+        <strong>Post:</strong> Pago y comisión escritos en IndexedDB de forma atómica.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Miniespecificación 2 — P-6.1: Calcular Puntaje de Riesgo de Morosidad</h3>
+<table class="mini-table">
+  <tbody>
+    <tr><td>ID del Proceso</td><td>P-6.1</td></tr>
+    <tr><td>Nombre</td><td>Calcular Puntaje de Riesgo de Morosidad</td></tr>
+    <tr><td>Descripción</td><td>Evalúa el comportamiento histórico de pagos de un hogar y le asigna un puntaje de riesgo de morosidad del 0 al 100.</td></tr>
+    <tr><td>Flujos de Entrada</td><td>Historial de pagos del hogar, fecha actual, asistencias a faina.</td></tr>
+    <tr><td>Flujos de Salida</td><td>Puntaje de riesgo (0-100), Nivel de prioridad (Verde/Amarillo/Naranja/Rojo).</td></tr>
+    <tr><td>Almacenes</td><td><code>simap_pagos</code> (D1 - Lectura), <code>simap_jornales</code> (D1 - Lectura), <code>simap_ai_cache</code> (D1 - Escritura)</td></tr>
+    <tr>
+      <td>Lógica del Proceso</td>
+      <td>
+        <strong>Pre:</strong> Existen registros de pagos históricos de al menos 3 meses.<br>
+        1. Obtener meses de deuda activa (Md).<br>
+        2. Analizar varianza del día de pago del mes (Vp).<br>
+        3. Evaluar tasa de inasistencia a faina sin sustituto (Ti).<br>
+        4. Calcular: <em>Puntaje = (Md × 40) + (Vp × 30) + (Ti × 30)</em>, acotado en [0, 100].<br>
+        5. Clasificar: Verde (0-25), Amarillo (26-50), Naranja (51-75), Rojo (76-100).<br>
+        6. Guardar en <code>simap_ai_cache</code> con TTL de 1 hora.<br>
+        <strong>Post:</strong> Puntaje disponible para cobrador, vecino e IA.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Miniespecificación 3 — P-9.3: Procesador de Transacciones FIFO (Sincronización)</h3>
+<table class="mini-table">
+  <tbody>
+    <tr><td>ID del Proceso</td><td>P-9.3</td></tr>
+    <tr><td>Nombre</td><td>Procesador de Transacciones FIFO</td></tr>
+    <tr><td>Descripción</td><td>Procesa las operaciones contables offline acumuladas en la cola local y las sube de forma secuencial a Supabase al detectar conexión.</td></tr>
+    <tr><td>Flujos de Entrada</td><td>Registros en cola de sincronización local.</td></tr>
+    <tr><td>Flujos de Salida</td><td>Solicitudes HTTP POST/PUT a Supabase, confirmación de actualización de estados.</td></tr>
+    <tr><td>Almacenes</td><td><code>simap_cola_sincronizacion</code> (D1 - Lectura/Escritura), Supabase (D2 - Escritura)</td></tr>
+    <tr>
+      <td>Lógica del Proceso</td>
+      <td>
+        <strong>Pre:</strong> El estado de red <code>useOnline</code> es <code>true</code>. Hay elementos en la cola.<br>
+        1. Leer el elemento más antiguo (criterio FIFO).<br>
+        2. Preparar el payload JSON del registro.<br>
+        3. Enviar solicitud HTTP POST o PUT a la API de Supabase.<br>
+        4. Si HTTP 200/201 OK:<br>
+        &nbsp;&nbsp;&nbsp;— Actualizar <code>estado_sincronizacion</code> a <code>sincronizado</code> en D1.<br>
+        &nbsp;&nbsp;&nbsp;— Eliminar el elemento de la cola.<br>
+        5. Si falla:<br>
+        &nbsp;&nbsp;&nbsp;— Incrementar contador de intentos.<br>
+        &nbsp;&nbsp;&nbsp;— Detener el procesamiento hasta recuperar la red.<br>
+        <strong>Post:</strong> Datos locales y en la nube quedan sincronizados íntegramente.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- J. DICCIONARIO DE DATOS -->
+<h2>J. DICCIONARIO DE DATOS</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width:22%">Nombre del Elemento</th>
+      <th style="width:13%">Tipo</th>
+      <th style="width:42%">Descripción / Composición</th>
+      <th style="width:23%">Flujo / Almacén</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>PAGO</strong></td>
+      <td>Flujo</td>
+      <td><code>id_pago + id_miembro + id_usuario_fk + monto + mes + anio + metodo_pago + descuento_aplicado + hash_seguridad + estado_sincronizacion + fecha_registro</code></td>
+      <td>Proceso 2.0 &rarr; D1</td>
+    </tr>
+    <tr>
+      <td><strong>COMISION</strong></td>
+      <td>Flujo</td>
+      <td><code>id_comision + id_pago_fk + id_cobrador_fk + monto_total + porcion_cobrador + porcion_desarrolladores + fecha_registro</code></td>
+      <td>Proceso 2.0 &rarr; D1</td>
+    </tr>
+    <tr>
+      <td><strong>PUNTOS</strong></td>
+      <td>Flujo</td>
+      <td><code>id_transaccion_puntos + id_miembro_fk + tipo_transaccion + puntos_variacion + fecha_registro</code></td>
+      <td>Proceso 5.0 &rarr; D1</td>
+    </tr>
+    <tr>
+      <td><strong>SINCRONIZACION_COLA</strong></td>
+      <td>Flujo</td>
+      <td><code>id_cola + tipo_operacion + tabla_destino + datos + estado + intentos + fecha_creacion</code></td>
+      <td>Proceso 9.0 &rarr; D1</td>
+    </tr>
+    <tr>
+      <td><strong>simap_pagos</strong></td>
+      <td>Almacén</td>
+      <td>Historial completo de pagos realizados por los vecinos comunitarios (local).</td>
+      <td>D1 — IndexedDB</td>
+    </tr>
+    <tr>
+      <td><strong>simap_comisiones</strong></td>
+      <td>Almacén</td>
+      <td>Registros individuales de ganancias acumuladas por cobrador en campo y soporte técnico.</td>
+      <td>D1 — IndexedDB</td>
+    </tr>
+    <tr>
+      <td><strong>simap_puntos</strong></td>
+      <td>Almacén</td>
+      <td>Balance de puntos acumulados por cada hogar para el canje de recompensas.</td>
+      <td>D1 — IndexedDB</td>
+    </tr>
+    <tr>
+      <td><strong>simap_cola_sincronizacion</strong></td>
+      <td>Almacén</td>
+      <td>Búfer temporal de escrituras offline hasta que se restaura la conexión a internet.</td>
+      <td>D1 — IndexedDB</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- K. REFERENCIAS -->
+<h2>K. REFERENCIAS BIBLIOGRÁFICAS (APA)</h2>
+<ol>
+  <li>Pressman, R. S. (2014). <em>Ingeniería del Software: Un enfoque práctico</em> (7.ª ed.). McGraw-Hill.</li>
+  <li>Sommerville, I. (2011). <em>Ingeniería de Software</em> (9.ª ed.). Pearson Educación.</li>
+  <li>Gane, C., & Sarson, T. (1979). <em>Structured Systems Analysis: Tools and Techniques</em>. Prentice-Hall.</li>
+</ol>
+
+</body>
+</html>

@@ -1,0 +1,444 @@
+
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+  <meta charset="utf-8">
+  <title>JAAR Digital - Diagramas de Flujo de Datos (DFD)</title>
+  <!--[if gte mso 9]>
+  <xml>
+    <w:WordDocument>
+      <w:View>Print</w:View>
+      <w:Zoom>100</w:Zoom>
+      <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+  </xml>
+  <![endif]-->
+  <style>
+    body {
+      font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+      color: #333333;
+      line-height: 1.5;
+      margin: 1in;
+    }
+    h1 {
+      color: #0f4c81;
+      font-size: 20pt;
+      border-bottom: 2px solid #0f4c81;
+      padding-bottom: 5px;
+      margin-top: 24pt;
+      margin-bottom: 12pt;
+      page-break-after: avoid;
+    }
+    h2 {
+      color: #1b6ca8;
+      font-size: 15pt;
+      margin-top: 18pt;
+      margin-bottom: 8pt;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 3px;
+      page-break-after: avoid;
+    }
+    h3 {
+      color: #003366;
+      font-size: 12pt;
+      margin-top: 12pt;
+      margin-bottom: 6pt;
+      page-break-after: avoid;
+    }
+    p {
+      font-size: 11pt;
+      margin-bottom: 8pt;
+      text-align: justify;
+    }
+    li {
+      font-size: 11pt;
+      margin-bottom: 4pt;
+    }
+    ul, ol {
+      margin-bottom: 10pt;
+      padding-left: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 12pt 0;
+    }
+    th {
+      background-color: #0f4c81;
+      color: white;
+      font-weight: bold;
+      padding: 8px;
+      border: 1px solid #cbd5e1;
+      text-align: left;
+      font-size: 10.5pt;
+    }
+    td {
+      padding: 8px;
+      border: 1px solid #cbd5e1;
+      font-size: 10pt;
+      vertical-align: top;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    code {
+      font-family: 'Consolas', 'Courier New', Courier, monospace;
+      background-color: #f1f5f9;
+      padding: 2px 4px;
+      font-size: 9.5pt;
+      color: #0f4c81;
+    }
+    pre.code {
+      font-family: 'Consolas', 'Courier New', Courier, monospace;
+      background-color: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid #10b981;
+      padding: 12px;
+      margin: 10pt 0;
+      font-size: 9pt;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      line-height: 1.3;
+    }
+    .code-title {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 8.5pt;
+      font-weight: bold;
+      color: #0f4c81;
+      margin-top: 12pt;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #cbd5e1;
+      margin: 20pt 0;
+    }
+    .title-box {
+      border: 2px solid #0f4c81;
+      padding: 25px;
+      margin-bottom: 30pt;
+      background-color: #f8fafc;
+      text-align: center;
+    }
+    .title-box h1 {
+      border-bottom: none;
+      margin-top: 0;
+      color: #0f4c81;
+      font-size: 24pt;
+      margin-bottom: 10px;
+    }
+    .subtitle {
+      font-size: 13pt;
+      color: #475569;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      font-weight: normal;
+      line-height: 1.4;
+    }
+    .meta-info {
+      font-size: 10pt;
+      color: #64748b;
+      margin-top: 15px;
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="title-box">
+    <h1>DIAGRAMAS DE FLUJO DE DATOS (DFD)</h1>
+    <div class="subtitle">Flujos de Datos Completos para SIMAP Digital · Cuentas Claras 💧</div>
+    <div class="meta-info">
+      <strong>Proyecto:</strong> SIMAP Digital / JAAR Digital<br>
+      <strong>Ámbito Geográfico:</strong> República de Panamá (Regiones Rurales)<br>
+      <strong>Estado:</strong> Documentación Técnica Completa de Arquitectura e Ingeniería de Software<br>
+      <strong>Fecha:</strong> Junio 2026
+    </div>
+  </div>
+
+    <h1>Diagramas de Flujo de Datos (DFD) · SIMAP Digital 💧</h1>
+  <p>Este documento presenta los <strong>Diagramas de Flujo de Datos (DFD)</strong> completos para la plataforma <strong>SIMAP Digital (JAAR Digital)</strong>. Estos diagramas detallan cómo fluye la información a través del sistema, desde la interacción con los distintos roles de usuario (entidades externas) hasta el almacenamiento local y la sincronización con la nube, en concordancia con el principio de diseño <em>Offline-First</em>.</p>
+  <hr>
+  <h2>1. Simbología y Glosario de Términos</h2>
+  <p>Para la representación de los diagramas, se utiliza la notación basada en el estándar de <strong>Gane & Sarson</strong>, adaptada para su visualización interactiva con diagramas Mermaid:</p>
+  <ul>
+    <li><strong>Entidades Externas (Rectángulos Azules):</strong> Representan a los actores (roles) que envían o reciben datos desde/hacia el sistema.</li>
+    <li><strong>Procesos (Rectángulos Redondeados Verdes):</strong> Representan las funciones del sistema que transforman o redirigen los flujos de datos.</li>
+    <li><strong>Almacenes de Datos (Cilindros Naranjas/Amarillos):</strong> Representan los repositorios físicos o lógicos de almacenamiento de datos (<code>D1</code> para la base de datos local IndexedDB y <code>D2</code> para la base de datos en la nube Supabase).</li>
+    <li><strong>Flujos de Datos (Flechas Rotuladas):</strong> Indican la dirección y la naturaleza de los datos transmitidos.</li>
+  </ul>
+  <hr>
+  <h2>2. DFD Nivel 0: Diagrama de Contexto</h2>
+  <p>El Diagrama de Contexto define los límites de la plataforma <strong>SIMAP Digital</strong> y muestra las interacciones generales del sistema completo (como una sola burbuja de proceso) con las cinco entidades externas principales del proyecto.</p>
+  <div class="code-title">MERMAID</div>
+  <pre class="code">flowchart TD
+    %% Estilo de Elementos
+    classDef entidad fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b;
+    classDef proceso fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px,color:#1b5e20;
+
+    %% Nodos
+    V[Vecino / Cliente]:::entidad
+    C[Cobrador en Campo]:::entidad
+    A[Administrador Global]:::entidad
+    M[Auditor del MINSA]:::entidad
+    D[Soporte Técnico / Dev]:::entidad
+    
+    SIMAP((1.0\nSIMAP Digital\nCuentas Claras)):::proceso
+
+    %% Flujos de Vecino
+    V --&gt;|1. Solicitud de Registro\n2. Credenciales de Acceso\n3. Confirmación de Jornal| SIMAP
+    SIMAP --&gt;|4. Historial de Pagos y Puntos\n5. Estado de Riesgo Amigable\n6. Notificaciones y Avisos| V
+
+    %% Flujos de Cobrador
+    C --&gt;|7. Registro de Cobros (Varios Modos)\n8. Registro de Asistencias a Jornal\n9. Registro de Gastos\n10. Credenciales de Acceso| SIMAP
+    SIMAP --&gt;|11. Ruta Inteligente e IA\n12. Sugerencias de Diálogo IA\n13. Consulta de Comisiones\n14. Estado de Conexión/Sincronía| C
+
+    %% Flujos de Admin
+    A --&gt;|15. Aprobación/Rechazo de Vecinos\n16. Configuración de Reglas (Split/Puntos)\n17. Consulta de Auditoría y Métricas| SIMAP
+    SIMAP --&gt;|18. Tablero de Recaudo y Alertas\n19. Logs de Auditoría y Finanzas| A
+
+    %% Flujos de MINSA
+    M --&gt;|20. Solicitud de Reportes Trimestrales/Anuales| SIMAP
+    SIMAP --&gt;|21. Reportes Oficiales en PDF/Excel| M
+
+    %% Flujos de Dev
+    D --&gt;|22. Solicitud de Logs de Sistema| SIMAP
+    SIMAP --&gt;|23. Log de Auditoría sin Datos Sensibles| D</pre>
+  <hr>
+  <h2>3. DFD Nivel 1: Diagrama General de Procesos</h2>
+  <p>Este nivel desglosa el sistema en sus procesos lógicos fundamentales, especificando la interacción de cada proceso con las entidades externas y con los dos almacenes de datos: el local (<code>D1: IndexedDB</code>) y el remoto (<code>D2: Supabase</code>).</p>
+  <div class="code-title">MERMAID</div>
+  <pre class="code">flowchart TD
+    %% Estilos
+    classDef entidad fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b;
+    classDef proceso fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
+    classDef almacen fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100;
+
+    %% Entidades
+    V[Vecino / Cliente]:::entidad
+    C[Cobrador en Campo]:::entidad
+    A[Administrador Global]:::entidad
+    M[Auditor del MINSA]:::entidad
+    D[Soporte Técnico / Dev]:::entidad
+
+    %% Almacenes
+    D1[(D1: IndexedDB\nBase de Datos Local)]:::almacen
+    D2[(D2: Supabase\nBase de Datos Nube)]:::almacen
+
+    %% Procesos
+    P1[1.0\nAutenticación y RBAC]:::proceso
+    P2[2.0\nGestión de Cobros\ny Comisiones]:::proceso
+    P3[3.0\nControl de Caja\ny Gastos]:::proceso
+    P4[4.0\nGestión de Jornales\ny Asistencia]:::proceso
+    P5[5.0\nMotor de Gamificación\ny Recompensas]:::proceso
+    P6[6.0\nInteligencia Artificial\ny Analítica]:::proceso
+    P7[7.0\nGeneración de\nReportes y Auditoría]:::proceso
+    P8[8.0\nForo de Avisos y\nNotificaciones]:::proceso
+    P9[9.0\nSincronización\nOffline-First]:::proceso
+
+    %% Flujos de Proceso 1.0 (Auth)
+    V &amp; C &amp; A &amp; M &amp; D --&gt;|Credenciales| P1
+    P1 --&gt;|Consulta de Credenciales| D1
+    P1 --&gt;|Acceso Concedido / Denegado| V &amp; C &amp; A &amp; M &amp; D
+
+    %% Flujos de Proceso 2.0 (Cobros)
+    C --&gt;|Registro de Pago\n(Estándar, Parcial, Diario, Anticipado)| P2
+    P2 --&gt;|Escribir Registro de Pago y Comisión| D1
+    D1 --&gt;|Leer Estado de Cuentas y Saldos| P2
+    P2 --&gt;|Monto de Comisión del Cobrador| C
+
+    %% Flujos de Proceso 3.0 (Caja/Gastos)
+    C &amp; A --&gt;|Detalles de Gasto| P3
+    P3 --&gt;|Escribir Egreso / Gasto| D1
+
+    %% Flujos de Proceso 4.0 (Jornales)
+    C --&gt;|Asistencia de Vecinos / Sustitutos| P4
+    V --&gt;|Confirmación de Asistencia| P4
+    P4 --&gt;|Escribir Jornal y Multas| D1
+
+    %% Flujos de Proceso 5.0 (Gamificación)
+    P2 --&gt;|Notificar Pago Exitoso| P5
+    P4 --&gt;|Notificar Asistencia a Jornal| P5
+    P5 --&gt;|Otorgar Puntos / Aplicar Descuento| D1
+    D1 --&gt;|Leer Puntos Acumulados| P5
+    P5 --&gt;|Información de Puntos y Descuentos| V
+
+    %% Flujos de Proceso 6.0 (IA y Analítica)
+    D1 --&gt;|Historial de Pagos y Asistencias| P6
+    P6 --&gt;|Sugerencia Empática y Ruta Inteligente| C
+    P6 --&gt;|Nivel de Riesgo Traducido| V
+    P6 --&gt;|Alertas de Anomalía y Métricas| A
+
+    %% Flujos de Proceso 7.0 (Reportes)
+    M &amp; A --&gt;|Filtros y Rango de Fechas| P7
+    P7 --&gt;|Leer Historial Financiero y Auditoría| D1
+    P7 --&gt;|Reportes PDF/Excel, Logs Técnicos| M &amp; A &amp; D
+
+    %% Flujos de Proceso 8.0 (Foro)
+    A --&gt;|Publicar Aviso| P8
+    P8 --&gt;|Escribir Aviso| D1
+    D1 --&gt;|Leer Avisos Activos| P8
+    P8 --&gt;|Avisos en Foro| V &amp; C
+
+    %% Flujos de Proceso 9.0 (Sync Offline-First)
+    D1 --&gt;|Leer Cola de Sync ('pendiente')| P9
+    P9 --&gt;|Escribir Datos Nuevos / Actualizar Sync| D2
+    D2 --&gt;|Confirmar Sincronía Exitosa| P9
+    P9 --&gt;|Actualizar Estado a 'sincronizado'| D1</pre>
+  <hr>
+  <h2>4. DFD Nivel 2: Detalle de Procesos Críticos</h2>
+  <h3>4.1 Subproceso 2.0 y 5.0: Procesamiento de Cobros, Comisiones y Puntos</h3>
+  <p>Este diagrama detalla la lógica interna cuando el cobrador procesa un cobro, integrando las comisiones y el motor de puntos de gamificación.</p>
+  <div class="code-title">MERMAID</div>
+  <pre class="code">flowchart TD
+    classDef entidad fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b;
+    classDef proceso fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
+    classDef almacen fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100;
+
+    C[Cobrador en Campo]:::entidad
+    D1[(D1: IndexedDB)]:::almacen
+
+    P2_1[2.1 Seleccionar Vecino y Obtener Saldos]:::proceso
+    P2_2[2.2 Validar Descuento de Puntos y Canje]:::proceso
+    P2_3[2.3 Registrar Pago y Aplicar Split de Comisión]:::proceso
+    P5_1[5.1 Calcular y Otorgar Puntos Automáticos]:::proceso
+
+    C --&gt;|Selecciona Vecino| P2_1
+    D1 --&gt;|Historial de Deudas y Puntos| P2_1
+    P2_1 --&gt;|Muestra Opciones de Cobro| C
+
+    C --&gt;|Solicita Uso de Puntos| P2_2
+    P2_2 --&gt;|Verifica y Resta Puntos| D1
+    P2_2 --&gt;|Retorna Descuento Aplicado| P2_3
+
+    C --&gt;|Confirma Pago en Efectivo| P2_3
+    P2_3 --&gt;|Escribe Pago en 'simap_pagos'\n(Monto Neto + Puntos)| D1
+    P2_3 --&gt;|Calcula Split: 40% Cobrador / 60% Dev| P2_3
+    P2_3 --&gt;|Escribe Comisión en 'simap_comisiones'| D1
+    P2_3 --&gt;|Confirma Comisión Ganada| C
+
+    P2_3 --&gt;|Notifica Pago Exitoso| P5_1
+    P5_1 --&gt;|Valida Fecha de Pago (¿Antes del 15?)| P5_1
+    P5_1 --&gt;|Escribe Puntos Ganados\n(+2 Base, +5 Puntual, +10 Anticipado)| D1</pre>
+  <h3>4.2 Subproceso 6.0: Motor de Inteligencia Artificial y Alertas</h3>
+  <p>Describe cómo los datos almacenados localmente alimentan los modelos analíticos de la IA para generar valor operativo.</p>
+  <div class="code-title">MERMAID</div>
+  <pre class="code">flowchart TD
+    classDef entidad fill:#e1f5fe,stroke:#0288d1,stroke-width:2px,color:#01579b;
+    classDef proceso fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
+    classDef almacen fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100;
+
+    C[Cobrador]:::entidad
+    V[Vecino]:::entidad
+    A[Administrador]:::entidad
+    D1[(D1: IndexedDB)]:::almacen
+
+    P6_1[6.1 Calcular Puntaje de Riesgo de Morosidad]:::proceso
+    P6_2[6.2 Optimizar Ruta de Cobro y Diálogo IA]:::proceso
+    P6_3[6.3 Detección de Anomalías de Recaudo]:::proceso
+    P6_4[6.4 Traducción de Estado de Cuenta a Cliente]:::proceso
+
+    D1 --&gt;|Patrón Histórico de Pagos| P6_1
+    P6_1 --&gt;|Escribe Puntaje de Riesgo (0-100)| D1
+
+    C --&gt;|Activa Ruta Inteligente| P6_2
+    D1 --&gt;|Sectores y Puntajes de Riesgo| P6_2
+    P6_2 --&gt;|Lista de Vecinos Priorizados| C
+    P6_2 --&gt;|Sugerencia de Diálogo Empático| C
+
+    D1 --&gt;|Tendencia de Recaudo por Sector| P6_3
+    P6_3 --&gt;|Cálculo de Desviación Estándar (z-score)| P6_3
+    P6_3 --&gt;|Alertas de Descenso Inusual| A
+
+    V --&gt;|Accede a su Historial| P6_4
+    D1 --&gt;|Puntaje de Riesgo y Deudas| P6_4
+    P6_4 --&gt;|Mensaje Amigable y Recomendaciones| V</pre>
+  <h3>4.3 Subproceso 9.0: Sincronización Offline-First</h3>
+  <p>Detalla el flujo bidireccional del motor de sincronización que asegura la consistencia entre la base de datos local y la nube.</p>
+  <div class="code-title">MERMAID</div>
+  <pre class="code">flowchart TD
+    classDef proceso fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20;
+    classDef almacen fill:#fff3e0,stroke:#ef6c00,stroke-width:2px,color:#e65100;
+
+    D1[(D1: IndexedDB\nLocal)]:::almacen
+    D2[(D2: Supabase\nNube)]:::almacen
+
+    P9_1[9.1 Monitor de Conectividad 'useOnline']:::proceso
+    P9_2[9.2 Consultar Cola de Sincronización]:::proceso
+    P9_3[9.3 Procesador de Transacciones (FIFO)]:::proceso
+    P9_4[9.4 Actualización de Estados de Sincronía]:::proceso
+
+    P9_1 --&gt;|Detecta Red Activa| P9_2
+    P9_2 --&gt;|Lee registros con estado 'pendiente'| D1
+    P9_2 --&gt;|Envía lote de operaciones en orden| P9_3
+    P9_3 --&gt;|Realiza inserción / actualización| D2
+    D2 --&gt;|Retorna Confirmación HTTP 200/201 OK| P9_3
+    P9_3 --&gt;|Notifica Éxito de Sincronización| P9_4
+    P9_4 --&gt;|Actualiza estado_sincronizacion = 'sincronizado'| D1
+    P9_4 --&gt;|Elimina operación de la cola de sync| D1</pre>
+  <hr>
+  <h2>5. Diccionario de Datos</h2>
+  <p>Este diccionario describe las principales estructuras de datos que fluyen entre los procesos y almacenes detallados anteriormente.</p>
+  <h3>5.1 Flujo de Datos: Registro de Pago (`PAGO`)</h3>
+  <ul>
+    <li><strong>Origen:</strong> Proceso 2.0 (Gestión de Cobros)</li>
+    <li><strong>Destino:</strong> Almacén D1 (IndexedDB) -> Sincronizado a D2 (Supabase)</li>
+    <li><strong>Estructura:</strong></li>
+    <li><code>id_pago</code> (Entero, Auto-incremental, Clave Primaria)</li>
+    <li><code>id_miembro</code> (Entero, Relación con Vecino)</li>
+    <li><code>id_usuario_fk</code> (Entero, Cobrador que procesó)</li>
+    <li><code>monto</code> (Decimal, B/. cobrados en total)</li>
+    <li><code>mes</code> (Entero, 1-12)</li>
+    <li><code>anio</code> (Entero, Ej. 2026)</li>
+    <li><code>metodo_pago</code> (Texto, 'efectivo' | 'puntos_canje')</li>
+    <li><code>descuento_aplicado</code> (Decimal, Monto deducido por puntos)</li>
+    <li><code>hash_seguridad</code> (Texto, SHA-256 de verificación de integridad)</li>
+    <li><code>estado_sincronizacion</code> (Texto, 'pendiente' | 'sincronizado')</li>
+    <li><code>fecha_registro</code> (DateTime, Timestamp local)</li>
+    <li><code>fecha_sincronizacion</code> (DateTime, Timestamp del servidor)</li>
+  </ul>
+  <h3>5.2 Flujo de Datos: Comisión por Cobro (`COMISION`)</h3>
+  <ul>
+    <li><strong>Origen:</strong> Proceso 2.0 (Gestión de Cobros y Comisiones)</li>
+    <li><strong>Destino:</strong> Almacén D1 (IndexedDB)</li>
+    <li><strong>Estructura:</strong></li>
+    <li><code>id_comision</code> (Entero, Clave Primaria)</li>
+    <li><code>id_pago_fk</code> (Entero, Referencia al pago original)</li>
+    <li><code>id_cobrador_fk</code> (Entero, Referencia al cobrador beneficiado)</li>
+    <li><code>monto_total</code> (Decimal, B/. 1.00 por defecto)</li>
+    <li><code>porcion_cobrador</code> (Decimal, 40% del total = B/. 0.40)</li>
+    <li><code>porcion_desarrolladores</code> (Decimal, 60% del total = B/. 0.60)</li>
+    <li><code>fecha_registro</code> (DateTime)</li>
+  </ul>
+  <h3>5.3 Flujo de Datos: Registro de Puntos (`PUNTOS`)</h3>
+  <ul>
+    <li><strong>Origen:</strong> Proceso 5.0 (Motor de Gamificación y Recompensas)</li>
+    <li><strong>Destino:</strong> Almacén D1 (IndexedDB)</li>
+    <li><strong>Estructura:</strong></li>
+    <li><code>id_transaccion_puntos</code> (Entero, Clave Primaria)</li>
+    <li><code>id_miembro_fk</code> (Entero, Referencia al vecino beneficiado)</li>
+    <li><code>tipo_transaccion</code> (Texto, 'pago_basico' | 'pago_puntual' | 'jornal_personal' | 'jornal_sustituto' | 'canje_descuento')</li>
+    <li><code>puntos_variacion</code> (Entero, Positivo para acumulación, Negativo para canje)</li>
+    <li><code>fecha_registro</code> (DateTime)</li>
+  </ul>
+  <h3>5.4 Flujo de Datos: Cola de Sincronización (`SINCRONIZACION_COLA`)</h3>
+  <ul>
+    <li><strong>Origen:</strong> Procesos de Escritura (2.0, 3.0, 4.0) cuando no hay conexión</li>
+    <li><strong>Destino:</strong> Almacén D1 (IndexedDB)</li>
+    <li><strong>Estructura:</strong></li>
+    <li><code>id_cola</code> (Entero, Clave Primaria)</li>
+    <li><code>tipo_operacion</code> (Texto, 'INSERT' | 'UPDATE' | 'DELETE')</li>
+    <li><code>tabla_destino</code> (Texto, 'pagos' | 'jornales' | 'gastos')</li>
+    <li><code>datos</code> (JSON, Contenido completo del objeto a sincronizar)</li>
+    <li><code>estado</code> (Texto, 'pendiente' | 'error' | 'reintentando')</li>
+    <li><code>intentos</code> (Entero, Contador para reintentos automáticos)</li>
+    <li><code>fecha_creacion</code> (DateTime)</li>
+  </ul>
+  <hr>
+  <p><em>Documentación arquitectónica de flujos de datos elaborada para la plataforma SIMAP Digital - Cuentas Claras v2.0.</em></p>
+
+
+</body>
+</html>
