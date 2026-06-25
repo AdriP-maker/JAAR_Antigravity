@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <mxCell id="CU_22_Deteccion_Anomalias_pool" value="CU-22: Sistema Detecta Anomalía en Recaudo" style="shape=pool;startSize=30;horizontal=1;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;collapsible=0;marginBottom=0;swimlaneHead=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="430" height="800" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_lane0" value="Sistema / IA" style="swimlane;startSize=30;horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="CU_22_Deteccion_Anomalias_pool">
+      <mxGeometry x="0" y="0" width="200" height="800" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_lane1" value="Admin" style="swimlane;startSize=30;horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="CU_22_Deteccion_Anomalias_pool">
+      <mxGeometry x="200" y="0" width="200" height="800" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_10" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="118" y="78" width="24" height="24" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_11" value="Ejecuta análisis&#xa;de anomalías (diario)" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="50" y="148" width="160" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_12" value="Calcula tasa recaudo&#xa;por sector" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="50" y="228" width="160" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_13" value="Aplica z-score&#xa;vs promedio histórico" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="50" y="308" width="160" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_14" value="¿z-score &gt; 2?" style="rhombus;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="70" y="380" width="120" height="60" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_15" value="Genera alerta:&#xa;sector y desviación" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="50" y="468" width="160" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_16" value="Ve alerta en&#xa;tablero de métricas" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane1">
+      <mxGeometry x="50" y="548" width="160" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_17" value="Marca alerta:&#xa;&quot;investigada / resuelta&quot;" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane1">
+      <mxGeometry x="50" y="628" width="160" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_18" value="Sin anomalías,&#xa;no genera alerta" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="50" y="468" width="160" height="44" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_19" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;double=1;" vertex="1" parent="CU_22_Deteccion_Anomalias_lane0">
+      <mxGeometry x="118" y="718" width="24" height="24" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_10" target="CU_22_Deteccion_Anomalias_11" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_11" target="CU_22_Deteccion_Anomalias_12" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_12" target="CU_22_Deteccion_Anomalias_13" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_13" target="CU_22_Deteccion_Anomalias_14" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_24" value="Sí" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_14" target="CU_22_Deteccion_Anomalias_15" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_15" target="CU_22_Deteccion_Anomalias_16" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_16" target="CU_22_Deteccion_Anomalias_17" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_17" target="CU_22_Deteccion_Anomalias_19" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_28" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_14" target="CU_22_Deteccion_Anomalias_18" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+    <mxCell id="CU_22_Deteccion_Anomalias_29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_22_Deteccion_Anomalias_18" target="CU_22_Deteccion_Anomalias_19" parent="1">
+      <mxGeometry relative="1" as="geometry"/>
+    </mxCell>
+  </root>
+</mxGraphModel>
