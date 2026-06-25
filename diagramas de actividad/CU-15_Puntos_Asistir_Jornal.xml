@@ -3,73 +3,73 @@
   <root>
     <mxCell id="0"/>
     <mxCell id="1" parent="0"/>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_pool" value="CU-15: Vecino Acumula Puntos por Asistir a Jornal" style="shape=pool;startSize=30;horizontal=1;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;collapsible=0;marginBottom=0;swimlaneHead=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;fontSize=13;" vertex="1" parent="1">
-      <mxGeometry x="20" y="20" width="430" height="720" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_pool" value="CU-15: Vecino Acumula Puntos por Asistir a Jornal" style="swimlane;html=1;horizontal=0;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=13;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="1">
+      <mxGeometry x="20" y="20" width="516" height="896" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_lane0" value="Cobrador" style="swimlane;startSize=30;horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_pool">
-      <mxGeometry x="0" y="0" width="200" height="720" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_lane0" value="Cobrador" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_pool">
+      <mxGeometry x="0" y="0" width="240" height="896" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_lane1" value="Sistema" style="swimlane;startSize=30;horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_pool">
-      <mxGeometry x="200" y="0" width="200" height="720" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_lane1" value="Sistema" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_pool">
+      <mxGeometry x="240" y="0" width="240" height="896" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_10" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
-      <mxGeometry x="118" y="78" width="24" height="24" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_10" value="" style="ellipse;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
+      <mxGeometry x="108" y="104" width="24" height="24" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_11" value="Accede a sección&#xa;de jornales" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
-      <mxGeometry x="50" y="148" width="160" height="44" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_11" value="Accede a sección&#xa;de jornales" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
+      <mxGeometry x="30" y="193" width="180" height="46" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_12" value="Selecciona jornal&#xa;y busca hogar" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
-      <mxGeometry x="50" y="228" width="160" height="44" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_12" value="Selecciona jornal&#xa;y busca hogar" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
+      <mxGeometry x="30" y="293" width="180" height="46" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_13" value="¿Tipo de&#xa;asistencia?" style="rhombus;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
-      <mxGeometry x="70" y="300" width="120" height="60" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_13" value="¿Tipo de&#xa;asistencia?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
+      <mxGeometry x="65" y="386" width="110" height="60" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_14" value="Registra asistencia&#xa;personal" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
-      <mxGeometry x="50" y="388" width="160" height="44" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_14" value="Registra asistencia&#xa;personal" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
+      <mxGeometry x="30" y="493" width="180" height="46" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_15" value="Otorga 8 pts&#xa;(jornal_personal)" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
-      <mxGeometry x="50" y="468" width="160" height="44" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_15" value="Otorga 8 pts&#xa;(jornal_personal)" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
+      <mxGeometry x="30" y="593" width="180" height="46" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_16" value="Registra asistencia&#xa;sustituto" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
-      <mxGeometry x="50" y="388" width="160" height="44" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_16" value="Registra asistencia&#xa;sustituto" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
+      <mxGeometry x="30" y="493" width="180" height="46" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_17" value="Otorga 3 pts&#xa;(jornal_sustituto)" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
-      <mxGeometry x="50" y="468" width="160" height="44" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_17" value="Otorga 3 pts&#xa;(jornal_sustituto)" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
+      <mxGeometry x="30" y="593" width="180" height="46" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_18" value="Muestra confirmación" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
-      <mxGeometry x="50" y="548" width="160" height="44" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_18" value="Muestra confirmación" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane1">
+      <mxGeometry x="30" y="693" width="180" height="46" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_19" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;double=1;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
-      <mxGeometry x="118" y="638" width="24" height="24" as="geometry"/>
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_19" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" vertex="1" parent="CU_15_Puntos_Asistir_Jornal_lane0">
+      <mxGeometry x="108" y="804" width="24" height="24" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_10" target="CU_15_Puntos_Asistir_Jornal_11" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_10" target="CU_15_Puntos_Asistir_Jornal_11" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_11" target="CU_15_Puntos_Asistir_Jornal_12" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_11" target="CU_15_Puntos_Asistir_Jornal_12" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_12" target="CU_15_Puntos_Asistir_Jornal_13" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_12" target="CU_15_Puntos_Asistir_Jornal_13" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_23" value="Personal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_13" target="CU_15_Puntos_Asistir_Jornal_14" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_23" value="Personal" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_13" target="CU_15_Puntos_Asistir_Jornal_14" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_14" target="CU_15_Puntos_Asistir_Jornal_15" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_14" target="CU_15_Puntos_Asistir_Jornal_15" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_15" target="CU_15_Puntos_Asistir_Jornal_18" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_15" target="CU_15_Puntos_Asistir_Jornal_18" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_26" value="Sustituto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_13" target="CU_15_Puntos_Asistir_Jornal_16" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_26" value="Sustituto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_13" target="CU_15_Puntos_Asistir_Jornal_16" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_16" target="CU_15_Puntos_Asistir_Jornal_17" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_16" target="CU_15_Puntos_Asistir_Jornal_17" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_17" target="CU_15_Puntos_Asistir_Jornal_18" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_17" target="CU_15_Puntos_Asistir_Jornal_18" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
-    <mxCell id="CU_15_Puntos_Asistir_Jornal_29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;fontSize=10;" edge="1" source="CU_15_Puntos_Asistir_Jornal_18" target="CU_15_Puntos_Asistir_Jornal_19" parent="1">
+    <mxCell id="CU_15_Puntos_Asistir_Jornal_29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_15_Puntos_Asistir_Jornal_18" target="CU_15_Puntos_Asistir_Jornal_19" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>
   </root>

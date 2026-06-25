@@ -10,15 +10,16 @@ const path = require('path');
 const OUTPUT_DIR = __dirname;
 
 // ─── Medidas del layout ───────────────────────────────────────────────────────
-const LANE_W   = 200;   // ancho de cada swim-lane
-const ROW_H    = 80;    // altura de cada fila
-const BOX_W    = 160;   // ancho de caja de acción
-const BOX_H    = 44;    // alto de caja de acción
-const DEC_W    = 120;   // ancho rombo de decisión
+const LANE_W   = 240;   // ancho de cada swim-lane (más ancho para textos largos)
+const ROW_H    = 100;   // altura de cada fila (más alto para flujo de flechas limpio)
+const BOX_W    = 180;   // ancho de caja de acción
+const BOX_H    = 46;    // alto de caja de acción
+const DEC_W    = 110;   // ancho rombo de decisión
 const DEC_H    = 60;    // alto rombo de decisión
 const CIRCLE_D = 24;    // diámetro nodos inicio/fin
-const HEADER_H = 30;    // altura cabecera del pool/lane
-const PAD_TOP  = 20;    // padding superior dentro del lane
+const HEADER_H = 36;    // altura cabecera del pool/lane
+const PAD_TOP  = 30;    // padding superior dentro del lane
+
 
 // ─── Datos de los 23 diagramas ────────────────────────────────────────────────
 // nodes: { id, type:'start'|'action'|'decision'|'end', label, lane }
@@ -633,82 +634,83 @@ function buildXML(diagram) {
   const rows   = computeRows(nodes, edges);
   const maxRow = Math.max(...rows) + 1;
 
-  // Canvas size
-  const poolW = nLanes * LANE_W + 30;
+  // Ancho del pool: 36 (cabecera lateral) + nLanes * LANE_W
+  const poolW = 36 + nLanes * LANE_W;
   const poolH = HEADER_H + maxRow * ROW_H + PAD_TOP + 30;
 
-  // Unique ID prefix per diagram
+  // Prefijo único de ID por diagrama
   const pfx = diagram.file.replace(/[^a-z0-9]/gi,'_');
 
-  let idCounter = 10; // start after reserved IDs
+  let idCounter = 10;
   const newId = () => `${pfx}_${idCounter++}`;
 
-  // Map node id → draw.io cell id
+  // Mapeo ID nodo → ID celda draw.io
   const cellIds = {};
 
-  // Build node positions
+  // Posiciones de los nodos locales al carril
   const nodePos = {};
   for (let i = 0; i < nodes.length; i++) {
     const nd  = nodes[i];
-    const lnX = nd.lane * LANE_W + 30; // +30 for pool label column
-    const cx  = lnX + LANE_W / 2;
-    const cy  = HEADER_H + PAD_TOP + rows[i] * ROW_H + ROW_H / 2;
-    nodePos[nd.id] = { cx, cy };
+    // Centrado horizontalmente dentro de su carril
+    const lx = LANE_W / 2;
+    // Posición Y local: cabecera del carril + padding + offset de fila
+    const ly = HEADER_H + PAD_TOP + rows[i] * ROW_H + ROW_H / 2;
+    nodePos[nd.id] = { lx, ly };
   }
 
   let cells = '';
 
-  // ── Pool (outer container) ────────────────────────────────────────────────
+  // ── Pool (contenedor principal con cabecera a la izquierda) ────────────────
   const poolId = `${pfx}_pool`;
-  cells += `    <mxCell id="${poolId}" value="${esc(title)}" style="shape=pool;startSize=30;horizontal=1;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;collapsible=0;marginBottom=0;swimlaneHead=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;fontSize=13;" vertex="1" parent="1">
+  cells += `    <mxCell id="${poolId}" value="${esc(title)}" style="swimlane;html=1;horizontal=0;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=13;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="1">
       <mxGeometry x="20" y="20" width="${poolW}" height="${poolH}" as="geometry"/>
     </mxCell>\n`;
 
-  // ── Swim-lanes ────────────────────────────────────────────────────────────
+  // ── Swim-lanes (carriles de actores con cabecera arriba) ───────────────────
   const laneIds = [];
   for (let i = 0; i < nLanes; i++) {
     const lid = `${pfx}_lane${i}`;
     laneIds.push(lid);
-    cells += `    <mxCell id="${lid}" value="${esc(lanes[i])}" style="swimlane;startSize=${HEADER_H};horizontal=0;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=12;" vertex="1" parent="${poolId}">
+    cells += `    <mxCell id="${lid}" value="${esc(lanes[i])}" style="swimlane;html=1;horizontal=1;startSize=${HEADER_H};fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="${poolId}">
       <mxGeometry x="${i * LANE_W}" y="0" width="${LANE_W}" height="${poolH}" as="geometry"/>
     </mxCell>\n`;
   }
 
-  // ── Nodes ─────────────────────────────────────────────────────────────────
+  // ── Nodos ─────────────────────────────────────────────────────────────────
   for (let i = 0; i < nodes.length; i++) {
     const nd  = nodes[i];
     const cid = newId();
     cellIds[nd.id] = cid;
-    const { cx, cy } = nodePos[nd.id];
+    const { lx, ly } = nodePos[nd.id];
     const parentLane = laneIds[nd.lane];
 
-    // Convert pool-relative coords to lane-relative coords
-    const lx = cx - nd.lane * LANE_W;
-    const ly = cy;
-
     if (nd.type === 'start') {
-      cells += `    <mxCell id="${cid}" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="${parentLane}">
+      // Círculo blanco vacío con borde negro
+      cells += `    <mxCell id="${cid}" value="" style="ellipse;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="${parentLane}">
       <mxGeometry x="${lx - CIRCLE_D/2}" y="${ly - CIRCLE_D/2}" width="${CIRCLE_D}" height="${CIRCLE_D}" as="geometry"/>
     </mxCell>\n`;
 
     } else if (nd.type === 'end') {
-      cells += `    <mxCell id="${cid}" value="" style="ellipse;fillColor=#000000;strokeColor=#000000;double=1;" vertex="1" parent="${parentLane}">
+      // Nodo final UML clásico (círculo relleno en centro y anillo exterior)
+      cells += `    <mxCell id="${cid}" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" vertex="1" parent="${parentLane}">
       <mxGeometry x="${lx - CIRCLE_D/2}" y="${ly - CIRCLE_D/2}" width="${CIRCLE_D}" height="${CIRCLE_D}" as="geometry"/>
     </mxCell>\n`;
 
     } else if (nd.type === 'decision') {
-      cells += `    <mxCell id="${cid}" value="${esc(nd.label)}" style="rhombus;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="${parentLane}">
+      // Rombo de decisión blanco con borde negro
+      cells += `    <mxCell id="${cid}" value="${esc(nd.label)}" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="${parentLane}">
       <mxGeometry x="${lx - DEC_W/2}" y="${ly - DEC_H/2}" width="${DEC_W}" height="${DEC_H}" as="geometry"/>
     </mxCell>\n`;
 
     } else { // action
-      cells += `    <mxCell id="${cid}" value="${esc(nd.label)}" style="rounded=1;arcSize=20;fillColor=#ffffff;strokeColor=#000000;align=center;verticalAlign=middle;fontSize=11;" vertex="1" parent="${parentLane}">
+      // Caja de acción redondeada blanca con borde negro
+      cells += `    <mxCell id="${cid}" value="${esc(nd.label)}" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="${parentLane}">
       <mxGeometry x="${lx - BOX_W/2}" y="${ly - BOX_H/2}" width="${BOX_W}" height="${BOX_H}" as="geometry"/>
     </mxCell>\n`;
     }
   }
 
-  // ── Edges ─────────────────────────────────────────────────────────────────
+  // ── Conectores (Edges) ────────────────────────────────────────────────────
   for (const [srcId, dstId, lbl] of edges) {
     const eid    = newId();
     const srcCid = cellIds[srcId];
@@ -719,19 +721,40 @@ function buildXML(diagram) {
     const dstNode = nodes.find(n => n.id === dstId);
     const crossLane = srcNode.lane !== dstNode.lane;
 
-    let edgeStyle = 'edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;';
-    if (crossLane) {
-      edgeStyle = 'edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;';
-    }
+    let edgeStyle = 'edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;';
 
-    // Back-edge (loop): override exit to right side
-    const srcRow = rows[nodes.findIndex(n=>n.id===srcId)];
-    const dstRow = rows[nodes.findIndex(n=>n.id===dstId)];
+    const srcIdx = nodes.findIndex(n => n.id === srcId);
+    const dstIdx = nodes.findIndex(n => n.id === dstId);
+    const srcRow = rows[srcIdx];
+    const dstRow = rows[dstIdx];
+
     if (dstRow < srcRow) {
-      edgeStyle = 'edgeStyle=orthogonalEdgeStyle;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;';
+      // Bucle hacia arriba (retorno)
+      if (srcNode.lane === dstNode.lane) {
+        // En el mismo carril: salir por la derecha, entrar por la derecha
+        edgeStyle += 'exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;';
+      } else if (dstNode.lane < srcNode.lane) {
+        // Hacia la izquierda: salir por la izquierda, entrar por la izquierda
+        edgeStyle += 'exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;';
+      } else {
+        // Hacia la derecha: salir por la derecha, entrar por la derecha
+        edgeStyle += 'exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;';
+      }
+    } else if (crossLane) {
+      // Cruce de carriles (horizontal o diagonal hacia abajo)
+      if (dstNode.lane > srcNode.lane) {
+        // De izquierda a derecha: sale del lado derecho del origen, entra en el lado izquierdo del destino
+        edgeStyle += 'exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;';
+      } else {
+        // De derecha a izquierda: sale del lado izquierdo del origen, entra en el lado derecho del destino
+        edgeStyle += 'exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;';
+      }
+    } else {
+      // Flujo normal hacia abajo en el mismo carril
+      edgeStyle += 'exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;';
     }
 
-    cells += `    <mxCell id="${eid}" value="${esc(lbl)}" style="${edgeStyle}fontSize=10;" edge="1" source="${srcCid}" target="${dstCid}" parent="1">
+    cells += `    <mxCell id="${eid}" value="${esc(lbl)}" style="${edgeStyle}fontSize=10;fontColor=#000000;" edge="1" source="${srcCid}" target="${dstCid}" parent="1">
       <mxGeometry relative="1" as="geometry"/>
     </mxCell>\n`;
   }
@@ -745,6 +768,7 @@ function buildXML(diagram) {
 ${cells}  </root>
 </mxGraphModel>`;
 }
+
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
