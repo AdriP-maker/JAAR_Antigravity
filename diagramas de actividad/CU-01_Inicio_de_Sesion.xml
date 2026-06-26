@@ -1,76 +1,94 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+<mxGraphModel dx="1144" dy="586" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
   <root>
-    <mxCell id="0"/>
-    <mxCell id="1" parent="0"/>
-    <mxCell id="CU_01_Inicio_de_Sesion_pool" value="CU-01: Inicio de Sesión" style="swimlane;html=1;horizontal=0;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=13;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="1">
-      <mxGeometry x="20" y="20" width="516" height="996" as="geometry"/>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="CU_01_Inicio_de_Sesion_pool" parent="1" style="swimlane;html=1;horizontal=0;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=13;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" value="CU-01: Inicio de Sesión" vertex="1">
+      <mxGeometry height="960" width="780" x="20" y="30" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_lane0" value="Usuario" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="CU_01_Inicio_de_Sesion_pool">
-      <mxGeometry x="0" y="0" width="240" height="996" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_27" edge="1" parent="CU_01_Inicio_de_Sesion_pool" source="CU_01_Inicio_de_Sesion_17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_01_Inicio_de_Sesion_19" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_lane1" value="Sistema" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="CU_01_Inicio_de_Sesion_pool">
-      <mxGeometry x="240" y="0" width="240" height="996" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_23" edge="1" parent="CU_01_Inicio_de_Sesion_pool" source="CU_01_Inicio_de_Sesion_13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_01_Inicio_de_Sesion_14" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_10" value="" style="ellipse;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane0">
-      <mxGeometry x="108" y="104" width="24" height="24" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_lane0" parent="CU_01_Inicio_de_Sesion_pool" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" value="Usuario" vertex="1">
+      <mxGeometry height="960" width="374" x="36" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_11" value="Abre la aplicación&#xa;y ve pantalla Login" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane0">
-      <mxGeometry x="30" y="193" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_10" parent="CU_01_Inicio_de_Sesion_lane0" style="ellipse;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;" value="" vertex="1">
+      <mxGeometry height="24" width="24" x="108" y="104" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_12" value="Ingresa usuario&#xa;y contraseña" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane0">
-      <mxGeometry x="30" y="793" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_11" parent="CU_01_Inicio_de_Sesion_lane0" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Abre la aplicación&#xa;y ve pantalla Login" vertex="1">
+      <mxGeometry height="46" width="180" x="30" y="193" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_13" value="Presiona &quot;Ingresar&quot;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane0">
-      <mxGeometry x="30" y="393" width="180" height="46" as="geometry"/>
+    <mxCell id="_kFaGAuZsycxbgnrSGoI-1" edge="1" parent="CU_01_Inicio_de_Sesion_lane0" source="CU_01_Inicio_de_Sesion_12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="CU_01_Inicio_de_Sesion_13">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_14" value="Valida credenciales&#xa;contra simap_usuarios" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane1">
-      <mxGeometry x="30" y="493" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_12" parent="CU_01_Inicio_de_Sesion_lane0" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Ingresa usuario&#xa;y contraseña" vertex="1">
+      <mxGeometry height="46" width="180" x="24" y="290" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_15" value="¿Credenciales&#xa;válidas?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane1">
-      <mxGeometry x="65" y="586" width="110" height="60" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_13" parent="CU_01_Inicio_de_Sesion_lane0" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Presiona &quot;Ingresar&quot;" vertex="1">
+      <mxGeometry height="46" width="180" x="24" y="393" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_16" value="Guarda rol y usuario&#xa;en localStorage" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane1">
-      <mxGeometry x="30" y="693" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_19" parent="CU_01_Inicio_de_Sesion_lane0" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" value="" vertex="1">
+      <mxGeometry height="24" width="24" x="108" y="904" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_17" value="Redirige a vista&#xa;según rol" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane1">
-      <mxGeometry x="30" y="793" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_20" edge="1" parent="CU_01_Inicio_de_Sesion_lane0" source="CU_01_Inicio_de_Sesion_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_01_Inicio_de_Sesion_11" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_18" value="Muestra mensaje&#xa;de error" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane1">
-      <mxGeometry x="30" y="693" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_21" edge="1" parent="CU_01_Inicio_de_Sesion_lane0" source="CU_01_Inicio_de_Sesion_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_01_Inicio_de_Sesion_12" value="">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="114" y="239" />
+        </Array>
+      </mxGeometry>
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_19" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" vertex="1" parent="CU_01_Inicio_de_Sesion_lane0">
-      <mxGeometry x="108" y="904" width="24" height="24" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_lane1" parent="CU_01_Inicio_de_Sesion_pool" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" value="Sistema" vertex="1">
+      <mxGeometry height="960" width="370" x="410" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_10" target="CU_01_Inicio_de_Sesion_11" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_14" parent="CU_01_Inicio_de_Sesion_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Valida credenciales&#xa;contra simap_usuarios" vertex="1">
+      <mxGeometry height="46" width="180" x="65" y="393" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_11" target="CU_01_Inicio_de_Sesion_12" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_15" parent="CU_01_Inicio_de_Sesion_lane1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="¿Credenciales&#xa;válidas?" vertex="1">
+      <mxGeometry height="60" width="110" x="140" y="463" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_12" target="CU_01_Inicio_de_Sesion_13" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_16" parent="CU_01_Inicio_de_Sesion_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Guarda rol y usuario&#xa;en localStorage" vertex="1">
+      <mxGeometry height="46" width="180" x="160" y="650" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_13" target="CU_01_Inicio_de_Sesion_14" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_17" parent="CU_01_Inicio_de_Sesion_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Redirige a vista&#xa;según rol" vertex="1">
+      <mxGeometry height="46" width="180" x="30" y="793" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_14" target="CU_01_Inicio_de_Sesion_15" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_24" edge="1" parent="CU_01_Inicio_de_Sesion_lane1" source="CU_01_Inicio_de_Sesion_14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_01_Inicio_de_Sesion_15" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_25" value="Sí" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_15" target="CU_01_Inicio_de_Sesion_16" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_25" edge="1" parent="CU_01_Inicio_de_Sesion_lane1" source="CU_01_Inicio_de_Sesion_15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="CU_01_Inicio_de_Sesion_16" value="Sí">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="160" y="540" as="sourcePoint" />
+      </mxGeometry>
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_16" target="CU_01_Inicio_de_Sesion_17" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_26" edge="1" parent="CU_01_Inicio_de_Sesion_lane1" source="CU_01_Inicio_de_Sesion_16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_01_Inicio_de_Sesion_17" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_27" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_17" target="CU_01_Inicio_de_Sesion_19" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="_kFaGAuZsycxbgnrSGoI-2" edge="1" parent="CU_01_Inicio_de_Sesion_lane1" source="CU_01_Inicio_de_Sesion_15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_01_Inicio_de_Sesion_18" value="">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="585" y="570" as="sourcePoint" />
+        <mxPoint x="550" y="723" as="targetPoint" />
+      </mxGeometry>
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_28" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_15" target="CU_01_Inicio_de_Sesion_18" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="_kFaGAuZsycxbgnrSGoI-3" connectable="0" parent="_kFaGAuZsycxbgnrSGoI-2" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="No" vertex="1">
+      <mxGeometry relative="1" x="-0.1795" y="-3" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
     </mxCell>
-    <mxCell id="CU_01_Inicio_de_Sesion_29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_01_Inicio_de_Sesion_18" target="CU_01_Inicio_de_Sesion_12" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_01_Inicio_de_Sesion_18" parent="CU_01_Inicio_de_Sesion_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Muestra mensaje&#xa;de error" vertex="1">
+      <mxGeometry height="46" width="180" x="20" y="560" as="geometry" />
+    </mxCell>
+    <mxCell id="_kFaGAuZsycxbgnrSGoI-5" edge="1" parent="CU_01_Inicio_de_Sesion_pool" source="CU_01_Inicio_de_Sesion_18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="CU_01_Inicio_de_Sesion_12">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="_kFaGAuZsycxbgnrSGoI-6" connectable="0" parent="_kFaGAuZsycxbgnrSGoI-5" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Vuelve a intentarlo&lt;/font&gt;" vertex="1">
+      <mxGeometry relative="1" x="0.1394" y="-1" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
     </mxCell>
   </root>
 </mxGraphModel>

@@ -1,82 +1,83 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+<mxGraphModel dx="1030" dy="527" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
   <root>
-    <mxCell id="0"/>
-    <mxCell id="1" parent="0"/>
-    <mxCell id="CU_11_Comision_Automatica_pool" value="CU-11: Cobrador Registra Pago y Recibe Comisión" style="swimlane;html=1;horizontal=0;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=13;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="1">
-      <mxGeometry x="20" y="20" width="516" height="1096" as="geometry"/>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="CU_11_Comision_Automatica_pool" parent="1" style="swimlane;html=1;horizontal=0;childLayout=stackLayout;horizontalStack=1;resizeParent=1;resizeParentMax=0;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=13;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" value="CU-11: Cobrador Registra Pago y Recibe Comisión" vertex="1">
+      <mxGeometry height="880" width="790" x="20" y="20" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_lane0" value="Cobrador" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="CU_11_Comision_Automatica_pool">
-      <mxGeometry x="0" y="0" width="240" height="1096" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_lane0" parent="CU_11_Comision_Automatica_pool" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" value="Cobrador" vertex="1">
+      <mxGeometry height="880" width="344" x="36" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_lane1" value="Sistema" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" vertex="1" parent="CU_11_Comision_Automatica_pool">
-      <mxGeometry x="240" y="0" width="240" height="1096" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_10" parent="CU_11_Comision_Automatica_lane0" style="ellipse;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;" value="" vertex="1">
+      <mxGeometry height="24" width="24" x="108" y="104" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_10" value="" style="ellipse;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;verticalLabelPosition=bottom;verticalAlign=top;" vertex="1" parent="CU_11_Comision_Automatica_lane0">
-      <mxGeometry x="108" y="104" width="24" height="24" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_11" parent="CU_11_Comision_Automatica_lane0" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Registra pago&#xa;estándar B/.3.00" vertex="1">
+      <mxGeometry height="46" width="180" x="30" y="193" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_11" value="Registra pago&#xa;estándar B/.3.00" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane0">
-      <mxGeometry x="30" y="193" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_12" parent="CU_11_Comision_Automatica_lane0" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Confirma el pago" vertex="1">
+      <mxGeometry height="46" width="180" x="30" y="293" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_12" value="Confirma el pago" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane0">
-      <mxGeometry x="30" y="293" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_18" parent="CU_11_Comision_Automatica_lane0" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Ve: &quot;Comisión:&#xa;B/.0.40&quot;" vertex="1">
+      <mxGeometry height="46" width="180" x="30" y="700" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_13" value="Calcula comisión&#xa;automática B/.1.00" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane1">
-      <mxGeometry x="30" y="393" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_20" parent="CU_11_Comision_Automatica_lane0" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" value="" vertex="1">
+      <mxGeometry height="24" width="24" x="108" y="790" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_14" value="Aplica split:&#xa;60% dev / 40% cobrador" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane1">
-      <mxGeometry x="30" y="493" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_21" edge="1" parent="CU_11_Comision_Automatica_lane0" source="CU_11_Comision_Automatica_10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_11" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_15" value="Crea registro de&#xa;comisión (atómico)" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane1">
-      <mxGeometry x="30" y="593" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_22" edge="1" parent="CU_11_Comision_Automatica_lane0" source="CU_11_Comision_Automatica_11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_12" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_16" value="¿Transacción&#xa;exitosa?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane1">
-      <mxGeometry x="65" y="686" width="110" height="60" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_29" edge="1" parent="CU_11_Comision_Automatica_lane0" source="CU_11_Comision_Automatica_18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_20" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_17" value="Confirma pago&#xa;y comisión" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane1">
-      <mxGeometry x="30" y="793" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_23" edge="1" parent="CU_11_Comision_Automatica_pool" source="CU_11_Comision_Automatica_12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_13" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_18" value="Ve: &quot;Comisión:&#xa;B/.0.40&quot;" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane0">
-      <mxGeometry x="30" y="893" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_28" edge="1" parent="CU_11_Comision_Automatica_pool" source="CU_11_Comision_Automatica_17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_18" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_19" value="Revierte todo&#xa;y muestra error" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane1">
-      <mxGeometry x="30" y="793" width="180" height="46" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_31" edge="1" parent="CU_11_Comision_Automatica_pool" source="CU_11_Comision_Automatica_19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_20" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_20" value="" style="ellipse;html=1;shape=endState;fillColor=#000000;strokeColor=#000000;strokeWidth=1.2;" vertex="1" parent="CU_11_Comision_Automatica_lane0">
-      <mxGeometry x="108" y="1004" width="24" height="24" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_lane1" parent="CU_11_Comision_Automatica_pool" style="swimlane;html=1;horizontal=1;startSize=36;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;fontStyle=1;fontSize=12;swimlaneBackground=#ffffff;collapsible=0;container=1;connectable=0;" value="Sistema" vertex="1">
+      <mxGeometry height="880" width="410" x="380" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_10" target="CU_11_Comision_Automatica_11" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_13" parent="CU_11_Comision_Automatica_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Calcula comisión&#xa;automática B/.1.00" vertex="1">
+      <mxGeometry height="46" width="180" x="90" y="293" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_22" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_11" target="CU_11_Comision_Automatica_12" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_14" parent="CU_11_Comision_Automatica_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Aplica split:&#xa;60% dev / 40% cobrador" vertex="1">
+      <mxGeometry height="46" width="180" x="80" y="360" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_12" target="CU_11_Comision_Automatica_13" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_15" parent="CU_11_Comision_Automatica_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Crea registro de&#xa;comisión (atómico)" vertex="1">
+      <mxGeometry height="46" width="180" x="80" y="440" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_24" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_13" target="CU_11_Comision_Automatica_14" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_16" parent="CU_11_Comision_Automatica_lane1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="¿Transacción&#xa;exitosa?" vertex="1">
+      <mxGeometry height="60" width="110" x="170" y="518" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_25" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_14" target="CU_11_Comision_Automatica_15" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_17" parent="CU_11_Comision_Automatica_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Confirma pago&#xa;y comisión" vertex="1">
+      <mxGeometry height="46" width="180" x="210" y="610" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_26" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_15" target="CU_11_Comision_Automatica_16" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_19" parent="CU_11_Comision_Automatica_lane1" style="rounded=1;arcSize=18;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;align=center;verticalAlign=middle;fontSize=11;strokeWidth=1.2;" value="Revierte todo&#xa;y muestra error" vertex="1">
+      <mxGeometry height="46" width="180" x="10" y="610" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_27" value="Sí" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_16" target="CU_11_Comision_Automatica_17" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_24" edge="1" parent="CU_11_Comision_Automatica_lane1" source="CU_11_Comision_Automatica_13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_14" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_17" target="CU_11_Comision_Automatica_18" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_25" edge="1" parent="CU_11_Comision_Automatica_lane1" source="CU_11_Comision_Automatica_14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_15" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_29" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_18" target="CU_11_Comision_Automatica_20" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_26" edge="1" parent="CU_11_Comision_Automatica_lane1" source="CU_11_Comision_Automatica_15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_16" value="">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_30" value="No" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_16" target="CU_11_Comision_Automatica_19" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_27" edge="1" parent="CU_11_Comision_Automatica_lane1" source="CU_11_Comision_Automatica_16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="CU_11_Comision_Automatica_17" value="Sí">
+      <mxGeometry relative="1" as="geometry">
+        <mxPoint x="185" y="590" as="sourcePoint" />
+      </mxGeometry>
     </mxCell>
-    <mxCell id="CU_11_Comision_Automatica_31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" edge="1" source="CU_11_Comision_Automatica_19" target="CU_11_Comision_Automatica_20" parent="1">
-      <mxGeometry relative="1" as="geometry"/>
+    <mxCell id="CU_11_Comision_Automatica_30" edge="1" parent="CU_11_Comision_Automatica_lane1" source="CU_11_Comision_Automatica_16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;strokeColor=#000000;strokeWidth=1.2;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;fontSize=10;fontColor=#000000;" target="CU_11_Comision_Automatica_19" value="No">
+      <mxGeometry relative="1" as="geometry" />
     </mxCell>
   </root>
 </mxGraphModel>
