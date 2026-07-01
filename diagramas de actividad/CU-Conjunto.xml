@@ -1,0 +1,387 @@
+<mxGraphModel dx="2060" dy="1054" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+  <root>
+    <mxCell id="0" />
+    <mxCell id="1" parent="0" />
+    <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=18;fontStyle=1;fontColor=#1a237e;" value="JAAR - Diagrama de Casos de Uso General" vertex="1">
+      <mxGeometry height="40" width="860" x="400" as="geometry" />
+    </mxCell>
+    <mxCell id="sistema" parent="1" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];shape=mxgraph.flowchart.start_2;fillColor=none;strokeColor=#1a237e;strokeWidth=2;rounded=1;arcSize=2;" value="" vertex="1">
+      <mxGeometry height="1020" width="1360" x="160" y="80" as="geometry" />
+    </mxCell>
+    <mxCell id="sistema_label" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;fontStyle=1;fontColor=#1a237e;" value="«Sistema» JAAR - Junta de Agua y Alcantarillado Rural" vertex="1">
+      <mxGeometry height="30" width="760" x="450" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="pkg1" parent="1" style="swimlane;startSize=28;fillColor=#e8eaf6;strokeColor=#3949ab;fontColor=#1a237e;fontStyle=1;fontSize=11;rounded=1;arcSize=4;" value="🔐 Autenticación y Acceso" vertex="1">
+      <mxGeometry height="180" width="300" x="570" y="150" as="geometry" />
+    </mxCell>
+    <mxCell id="cu01" parent="pkg1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3949ab;fontColor=#1a237e;fontSize=10;align=center;" value="CU-01&#xa;Inicio de Sesión" vertex="1">
+      <mxGeometry height="50" width="120" x="20" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu02" parent="pkg1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3949ab;fontColor=#1a237e;fontSize=10;align=center;" value="CU-02&#xa;Registro Vecino" vertex="1">
+      <mxGeometry height="50" width="120" x="160" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu03" parent="pkg1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#3949ab;fontColor=#1a237e;fontSize=10;align=center;" value="CU-03&#xa;Egreso / Logout" vertex="1">
+      <mxGeometry height="50" width="120" x="90" y="110" as="geometry" />
+    </mxCell>
+    <mxCell id="pkg2" parent="1" style="swimlane;startSize=28;fillColor=#e8f5e9;strokeColor=#388e3c;fontColor=#1b5e20;fontStyle=1;fontSize=11;rounded=1;arcSize=4;" value="🏘️ Gestión Comunitaria" vertex="1">
+      <mxGeometry height="180" width="300" x="900" y="180" as="geometry" />
+    </mxCell>
+    <mxCell id="cu04" parent="pkg2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#388e3c;fontColor=#1b5e20;fontSize=10;align=center;" value="CU-04&#xa;Registro Jornal" vertex="1">
+      <mxGeometry height="50" width="120" x="20" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu05" parent="pkg2" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#388e3c;fontColor=#1b5e20;fontSize=10;align=center;" value="CU-05&#xa;Aprobación / Rechazo" vertex="1">
+      <mxGeometry height="50" width="120" x="160" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="pkg3" parent="1" style="swimlane;startSize=28;fillColor=#fff8e1;strokeColor=#f57f17;fontColor=#e65100;fontStyle=1;fontSize=11;rounded=1;arcSize=4;" value="💳 Gestión de Pagos" vertex="1">
+      <mxGeometry height="220" width="500" x="310" y="340" as="geometry" />
+    </mxCell>
+    <mxCell id="cu06" parent="pkg3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f57f17;fontColor=#e65100;fontSize=10;align=center;" value="CU-06&#xa;Pago Mensual&#xa;Estándar" vertex="1">
+      <mxGeometry height="60" width="110" x="15" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu07" parent="pkg3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f57f17;fontColor=#e65100;fontSize=10;align=center;" value="CU-07&#xa;Pago Parcial" vertex="1">
+      <mxGeometry height="60" width="110" x="140" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu08" parent="pkg3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f57f17;fontColor=#e65100;fontSize=10;align=center;" value="CU-08&#xa;Pago Anticipado" vertex="1">
+      <mxGeometry height="60" width="110" x="265" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu09" parent="pkg3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f57f17;fontColor=#e65100;fontSize=10;align=center;" value="CU-09&#xa;Puesta al Día" vertex="1">
+      <mxGeometry height="60" width="110" x="60" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="cu10" parent="pkg3" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#f57f17;fontColor=#e65100;fontSize=10;align=center;" value="CU-10&#xa;Pago Diario" vertex="1">
+      <mxGeometry height="60" width="110" x="200" y="140" as="geometry" />
+    </mxCell>
+    <mxCell id="pkg4" parent="1" style="swimlane;startSize=28;fillColor=#fce4ec;strokeColor=#c62828;fontColor=#b71c1c;fontStyle=1;fontSize=11;rounded=1;arcSize=4;" value="💰 Comisiones del Cobrador" vertex="1">
+      <mxGeometry height="190" width="300" x="1091" y="370" as="geometry" />
+    </mxCell>
+    <mxCell id="cu11" parent="pkg4" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c62828;fontColor=#b71c1c;fontSize=10;align=center;" value="CU-11&#xa;Comisión&#xa;Automática" vertex="1">
+      <mxGeometry height="60" width="110" x="15" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu12" parent="pkg4" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c62828;fontColor=#b71c1c;fontSize=10;align=center;" value="CU-12&#xa;Consulta&#xa;Ganancias" vertex="1">
+      <mxGeometry height="60" width="110" x="170" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu13" parent="pkg4" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#c62828;fontColor=#b71c1c;fontSize=10;align=center;" value="CU-13&#xa;Config. Split" vertex="1">
+      <mxGeometry height="60" width="110" x="90" y="120" as="geometry" />
+    </mxCell>
+    <mxCell id="pkg6" parent="1" style="swimlane;startSize=28;fillColor=#e0f7fa;strokeColor=#00838f;fontColor=#004d40;fontStyle=1;fontSize=11;rounded=1;arcSize=4;" value="🤖 Inteligencia y Análisis de Riesgo" vertex="1">
+      <mxGeometry height="182.5" width="860" x="414" y="790" as="geometry" />
+    </mxCell>
+    <mxCell id="cu18" parent="pkg6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00838f;fontColor=#004d40;fontSize=10;align=center;" value="CU-18&#xa;Puntaje de&#xa;Riesgo" vertex="1">
+      <mxGeometry height="60" width="115" x="15" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu19" parent="pkg6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00838f;fontColor=#004d40;fontSize=10;align=center;" value="CU-19&#xa;Ruta Inteligente&#xa;de Cobro" vertex="1">
+      <mxGeometry height="60" width="115" x="150" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu20" parent="pkg6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00838f;fontColor=#004d40;fontSize=10;align=center;" value="CU-20&#xa;Predicción de&#xa;Morosidad" vertex="1">
+      <mxGeometry height="60" width="115" x="285" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu21" parent="pkg6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00838f;fontColor=#004d40;fontSize=10;align=center;" value="CU-21&#xa;Tablero de&#xa;Recaudo" vertex="1">
+      <mxGeometry height="60" width="115" x="420" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu22" parent="pkg6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00838f;fontColor=#004d40;fontSize=10;align=center;" value="CU-22&#xa;Detección de&#xa;Anomalías" vertex="1">
+      <mxGeometry height="60" width="115" x="555" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu23" parent="pkg6" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#00838f;fontColor=#004d40;fontSize=10;align=center;" value="CU-23&#xa;Estado de Riesgo&#xa;para Cliente" vertex="1">
+      <mxGeometry height="60" width="115" x="690" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu_ext_ia" parent="pkg6" style="text;html=1;fontSize=9;fontColor=#00838f;fontStyle=2;align=center;" value="«include» Autenticación  |  «extend» desde Pagos y Comisiones" vertex="1">
+      <mxGeometry height="30" width="660" x="100" y="132.5" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_vecino_icon" parent="1" style="shape=umlActor;fillColor=#1565c0;strokeColor=#0d47a1;fontColor=#0d47a1;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="" vertex="1">
+      <mxGeometry height="50" width="40" x="90" y="400" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_vecino_label" parent="1" style="text;html=1;align=center;verticalAlign=top;strokeColor=none;fillColor=none;fontStyle=1;fontSize=12;fontColor=#0d47a1;" value="Vecino" vertex="1">
+      <mxGeometry height="25" width="70" x="75" y="455" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_cobrador_icon" parent="1" style="shape=umlActor;fillColor=#c62828;strokeColor=#b71c1c;fontColor=#b71c1c;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="" vertex="1">
+      <mxGeometry height="50" width="40" x="90" y="660" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_cobrador_label" parent="1" style="text;html=1;align=center;verticalAlign=top;strokeColor=none;fillColor=none;fontStyle=1;fontSize=12;fontColor=#b71c1c;" value="Cobrador" vertex="1">
+      <mxGeometry height="25" width="80" x="70" y="715" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_admin_icon" parent="1" style="shape=umlActor;fillColor=#2e7d32;strokeColor=#1b5e20;fontColor=#1b5e20;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="" vertex="1">
+      <mxGeometry height="50" width="40" x="1540" y="300" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_admin_label" parent="1" style="text;html=1;align=center;verticalAlign=top;strokeColor=none;fillColor=none;fontStyle=1;fontSize=12;fontColor=#1b5e20;" value="Admin" vertex="1">
+      <mxGeometry height="25" width="70" x="1525" y="355" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_ia_icon" parent="1" style="shape=umlActor;fillColor=#00695c;strokeColor=#004d40;fontColor=#004d40;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" value="" vertex="1">
+      <mxGeometry height="50" width="40" x="1540" y="900" as="geometry" />
+    </mxCell>
+    <mxCell id="actor_ia_label" parent="1" style="text;html=1;align=center;verticalAlign=top;strokeColor=none;fillColor=none;fontStyle=1;fontSize=12;fontColor=#004d40;" value="Sistema / IA" vertex="1">
+      <mxGeometry height="25" width="80" x="1520" y="955" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_v_cu01" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu01">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="350" y="280" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_v_cu02" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu02">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="400" y="290" />
+          <mxPoint x="580" y="280" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_v_cu03" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu03">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="290" y="360" />
+          <mxPoint x="510" y="340" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_v_cu06" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu06">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_v_cu07" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu07">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="290" y="440" />
+          <mxPoint x="410" y="450" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_v_cu08" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu08">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="390" y="460" />
+          <mxPoint x="500" y="470" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_v_cu09" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu09">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_v_cu10" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu10">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="460" y="480" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_v_cu16" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu16">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="500" y="590" />
+          <mxPoint x="870" y="570" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_v_cu23" edge="1" parent="1" source="actor_vecino_icon" style="endArrow=none;strokeColor=#1565c0;strokeWidth=1.5;" target="cu23">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="600" y="680" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_c_cu06" edge="1" parent="1" source="actor_cobrador_icon" style="endArrow=none;strokeColor=#c62828;strokeWidth=1.5;" target="cu06">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_c_cu07" edge="1" parent="1" source="actor_cobrador_icon" style="endArrow=none;strokeColor=#c62828;strokeWidth=1.5;" target="cu07">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="280" y="540" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_c_cu08" edge="1" parent="1" source="actor_cobrador_icon" style="endArrow=none;strokeColor=#c62828;strokeWidth=1.5;" target="cu08">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="310" y="630" />
+          <mxPoint x="440" y="570" />
+          <mxPoint x="500" y="500" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_c_cu09" edge="1" parent="1" source="actor_cobrador_icon" style="endArrow=none;strokeColor=#c62828;strokeWidth=1.5;" target="cu09">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_c_cu10" edge="1" parent="1" source="actor_cobrador_icon" style="endArrow=none;strokeColor=#c62828;strokeWidth=1.5;" target="cu10">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="460" y="600" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_c_cu12" edge="1" parent="1" source="actor_cobrador_icon" style="endArrow=none;strokeColor=#c62828;strokeWidth=1.5;" target="cu12">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1110" y="500" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_c_cu19" edge="1" parent="1" source="actor_cobrador_icon" style="endArrow=none;strokeColor=#c62828;strokeWidth=1.5;" target="cu19">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_a_cu04" edge="1" parent="1" source="actor_admin_icon" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="cu04">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1140" y="320" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_a_cu05" edge="1" parent="1" source="actor_admin_icon" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="cu05">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_a_cu13" edge="1" parent="1" source="actor_admin_icon" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="cu13">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1370" y="470" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_a_cu17" edge="1" parent="1" source="actor_admin_icon" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="cu17">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1370" y="540" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_a_cu18" edge="1" parent="1" source="pkg5" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="cu18">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_a_cu21" edge="1" parent="1" source="actor_admin_icon" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="cu21">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1340" y="650" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_a_cu22" edge="1" parent="1" source="actor_admin_icon" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="cu22">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1390" y="640" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_ia_cu11" edge="1" parent="1" source="actor_ia_icon" style="endArrow=none;strokeColor=#00695c;strokeWidth=1.5;" target="cu11">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="rel_ia_cu14" edge="1" parent="1" source="actor_ia_icon" style="endArrow=none;strokeColor=#00695c;strokeWidth=1.5;" target="cu14">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1330" y="790" />
+          <mxPoint x="850" y="750" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_ia_cu15" edge="1" parent="1" source="actor_ia_icon" style="endArrow=none;strokeColor=#00695c;strokeWidth=1.5;" target="cu15">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1270" y="740" />
+          <mxPoint x="1080" y="730" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_ia_cu18" edge="1" parent="1" source="actor_ia_icon" style="endArrow=none;strokeColor=#00695c;strokeWidth=1.5;" target="cu18">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1030" y="960" />
+          <mxPoint x="730" y="960" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_ia_cu19" edge="1" parent="1" source="actor_ia_icon" style="endArrow=none;strokeColor=#00695c;strokeWidth=1.5;" target="cu19">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1080" y="930" />
+          <mxPoint x="720" y="900" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_ia_cu20" edge="1" parent="1" source="actor_ia_icon" style="endArrow=none;strokeColor=#00695c;strokeWidth=1.5;" target="cu20">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1170" y="920" />
+          <mxPoint x="830" y="890" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="rel_ia_cu22" edge="1" parent="1" source="actor_ia_icon" style="endArrow=none;strokeColor=#00695c;strokeWidth=1.5;" target="cu22">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1170" y="910" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="inc_pago_login" edge="1" parent="1" source="cu06" style="endArrow=open;endSize=8;dashed=1;strokeColor=#555555;strokeWidth=1.2;fontSize=9;fontColor=#555555;" target="cu01" value="«include»">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    <mxCell id="ext_cu06_cu14" edge="1" parent="1" source="cu14" style="endArrow=open;endSize=8;dashed=1;strokeColor=#7b1fa2;strokeWidth=1.2;fontSize=9;fontColor=#7b1fa2;" target="cu06" value="«extend»">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="590" y="630" />
+          <mxPoint x="510" y="540" />
+          <mxPoint x="480" y="480" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_cu04_cu15" edge="1" parent="1" source="cu15" style="endArrow=open;endSize=8;dashed=1;strokeColor=#7b1fa2;strokeWidth=1.2;fontSize=9;fontColor=#7b1fa2;" target="cu04" value="«extend»">
+      <mxGeometry relative="1" x="0.3336" as="geometry">
+        <mxPoint as="offset" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_cu06_cu11" edge="1" parent="1" source="cu11" style="endArrow=open;endSize=8;dashed=1;strokeColor=#c62828;strokeWidth=1.2;fontSize=9;fontColor=#c62828;" target="cu06" value="«extend»">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="610" y="470" />
+          <mxPoint x="480" y="460" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="ext_cu07_cu20" edge="1" parent="1" source="cu20" style="endArrow=open;endSize=8;dashed=1;strokeColor=#00838f;strokeWidth=1.2;fontSize=9;fontColor=#00838f;" target="cu07" value="«extend»">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="490" y="660" />
+        </Array>
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="legend" parent="1" style="swimlane;startSize=24;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;fontStyle=1;fontSize=10;rounded=1;" value="Leyenda" vertex="1">
+      <mxGeometry height="120" width="260" x="1380" y="1020" as="geometry" />
+    </mxCell>
+    <mxCell id="leg1" parent="legend" style="text;html=1;fontSize=9;fontColor=#333333;" value="─── Asociación actor-CU" vertex="1">
+      <mxGeometry height="20" width="240" x="10" y="30" as="geometry" />
+    </mxCell>
+    <mxCell id="leg2" parent="legend" style="text;html=1;fontSize=9;fontColor=#555555;" value="- - - «include» relación obligatoria" vertex="1">
+      <mxGeometry height="20" width="240" x="10" y="55" as="geometry" />
+    </mxCell>
+    <mxCell id="leg3" parent="legend" style="text;html=1;fontSize=9;fontColor=#555555;" value="- - - «extend» relación opcional" vertex="1">
+      <mxGeometry height="20" width="240" x="10" y="75" as="geometry" />
+    </mxCell>
+    <mxCell id="leg4" parent="legend" style="text;html=1;fontSize=9;fontColor=#1a237e;" value="■ Paquetes temáticos agrupan CUs" vertex="1">
+      <mxGeometry height="20" width="240" x="10" y="95" as="geometry" />
+    </mxCell>
+    <mxCell id="YLFIkEbY4wbpJknAPn5G-1" edge="1" parent="1" source="actor_admin_icon" style="endArrow=none;strokeColor=#2e7d32;strokeWidth=1.5;" target="pkg5" value="">
+      <mxGeometry relative="1" as="geometry">
+        <Array as="points">
+          <mxPoint x="1350" y="530" />
+        </Array>
+        <mxPoint x="1540" y="335" as="sourcePoint" />
+        <mxPoint x="488" y="966" as="targetPoint" />
+      </mxGeometry>
+    </mxCell>
+    <mxCell id="pkg5" parent="1" style="swimlane;startSize=28;fillColor=#f3e5f5;strokeColor=#7b1fa2;fontColor=#4a148c;fontStyle=1;fontSize=11;rounded=1;arcSize=4;" value="⭐ Sistema de Puntos" vertex="1">
+      <mxGeometry height="170" width="500" x="670" y="590" as="geometry" />
+    </mxCell>
+    <mxCell id="cu14" parent="pkg5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7b1fa2;fontColor=#4a148c;fontSize=10;align=center;" value="CU-14&#xa;Puntos Pago&#xa;Puntual" vertex="1">
+      <mxGeometry height="60" width="110" x="15" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu15" parent="pkg5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7b1fa2;fontColor=#4a148c;fontSize=10;align=center;" value="CU-15&#xa;Puntos por&#xa;Jornal" vertex="1">
+      <mxGeometry height="60" width="110" x="140" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu16" parent="pkg5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7b1fa2;fontColor=#4a148c;fontSize=10;align=center;" value="CU-16&#xa;Canje de&#xa;Puntos" vertex="1">
+      <mxGeometry height="60" width="110" x="265" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu17" parent="pkg5" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#7b1fa2;fontColor=#4a148c;fontSize=10;align=center;" value="CU-17&#xa;Config. Reglas&#xa;de Puntos" vertex="1">
+      <mxGeometry height="60" width="110" x="370" y="40" as="geometry" />
+    </mxCell>
+    <mxCell id="cu_ext_puntos" parent="pkg5" style="text;html=1;fontSize=9;fontColor=#7b1fa2;fontStyle=2;align=center;" value="«extend» desde CU-06, CU-04" vertex="1">
+      <mxGeometry height="30" width="340" x="80" y="130" as="geometry" />
+    </mxCell>
+  </root>
+</mxGraphModel>
