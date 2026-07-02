@@ -99,3 +99,36 @@ export async function registerUser({ email, pass, nombre, sector }) {
   }
   return { success: true };
 }
+
+export async function recoverByHouse(casa) {
+  const { data } = await supabase.from('profiles').select('*').eq('sector', casa).single();
+  if (!data) return null;
+  return { user: data.email, nombre: data.nombre };
+}
+
+export async function registerJunta({ nombre_junta, ruc, admin_user, pass, email }) {
+  // Register the admin user in Supabase Auth
+  const { data: authData, error: authError } = await supabase.auth.signUp({
+    email: email || admin_user.trim(),
+    password: pass,
+    options: {
+      data: {
+        nombre: nombre_junta,
+        rol: 'admin'
+      }
+    }
+  });
+
+  if (authError) return { success: false, error: authError.message };
+
+  // Register the junta
+  const { error: juntaError } = await supabase.from('juntas').insert({
+    nombre: nombre_junta,
+    ruc: ruc,
+    estado: 'pendiente_global'
+  });
+
+  if (juntaError) return { success: false, error: juntaError.message };
+
+  return { success: true };
+}
