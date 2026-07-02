@@ -5,6 +5,19 @@
   justify-content: space-between;
   align-items: center;
   gap: var(--space-3);
+  background: var(--surface-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-default);
+  transition: all var(--transition-base);
+}
+
+.user-card-wrapper:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-glow);
 }
 
 .user-card-content {

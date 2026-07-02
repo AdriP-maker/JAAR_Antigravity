@@ -74,6 +74,14 @@ export default function App() {
     if (!dbInitialized) {
       initDB().catch(err => console.error('Failed to initialize DB:', err));
       dbInitialized = true;
+      
+      // Sync from Supabase on app load if session exists
+      const session = sessionStorage.getItem('simap_session');
+      if (session) {
+        import('./services/syncService').then(({ syncFromSupabase }) => {
+          syncFromSupabase();
+        });
+      }
     }
   }, []);
 
