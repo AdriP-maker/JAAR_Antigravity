@@ -3,13 +3,28 @@
  */
 
 import { supabase } from './supabase';
-import { ROLE_HOME } from '../utils/constants';
+import { ROLE_HOME, SYSTEM_USERS } from '../utils/constants';
 import db from './db';
 import { syncFromSupabase } from './syncService';
 
 const SESSION_KEY = 'simap_session';
 
 export async function login(email, password) {
+  // Mock bypass for system users (admin, cobrador, etc.)
+  const mockUser = SYSTEM_USERS.find(u => u.user === email.trim() && u.pass === password);
+  if (mockUser) {
+    const session = {
+      user: mockUser.user,
+      rol: mockUser.rol,
+      nombre: mockUser.nombre,
+      uid: `mock-uid-${mockUser.user}`,
+      loginAt: new Date().toISOString(),
+    };
+    sessionStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    await syncFromSupabase();
+    return { success: true, user: session };
+  }
+
   const { data, error } = await supabase.auth.signInWithPassword({
     email: email.trim(),
     password,
